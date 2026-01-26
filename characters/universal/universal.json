@@ -1,0 +1,124 @@
+{
+	"id": "universal",
+	"name": {
+		"en": "UNIVERSAL",
+		"jp": "ユニバーサル"
+	},
+	"themeColor": "#8C3FA0",
+	"age": "19",
+	"height": "177 cm",
+	"tagline": {
+		"en": "\"The one who ended everything.\"",
+		"jp": "「すべてを終わらせた者」"
+	},
+	"colorPalette": {
+		"primary": [
+			{
+				"name": "Hair",
+				"hex": "#3F2B2A"
+			},
+			{
+				"name": "Eyes",
+				"hex": "#E42F37"
+			},
+			{
+				"name": "Skin",
+				"hex": "#D4B8A2"
+			}
+		],
+		"secondary": [
+			{
+				"name": "Shirt",
+				"hex": "#5E2E6B"
+			},
+			{
+				"name": "Jacket",
+				"hex": "#F8F8F8"
+			},
+			{
+				"name": "Pants",
+				"hex": "#1A1A1A"
+			},
+			{
+				"name": "Sneakers",
+				"hex": "#1A1A1A"
+			},
+			{
+				"name": "Sneaker's Sole",
+				"hex": "#BFBFBF"
+			},
+			{
+				"name": "Crystal",
+				"hex": "#8C3FA0"
+			}
+		]
+	},
+	"appearance": {
+		"en": "Dark brown hair and red eyes. Wears a cropped white jacket, a purple turtleneck, and black trousers. Floating purple crystals surround him.",
+		"jp": "濃い茶色の髪に赤い瞳。白のクロップドジャケット、紫のタートルネック、黒のズボンを着用。周囲には紫の結晶が浮遊している。"
+	},
+	"personality": {
+		"en": "Generally depressed and lonely. He desires closeness and feels more at peace when he is around the new [[engineer|ENGINEER]].",
+		"jp": "全体的に落ち込んで孤独を感じている。親密さを求め、新しい[[engineer|エンジニア]]のそばにいるとより安らぎを感じる。"
+	},
+	"abilities": {
+		"en": "Through ENTROPY, manifests purple crystal shards that he controls telepathically. He uses these shards to slice through the air and create dimensional portals.",
+		"jp": "エントロピーを通じて、紫色の結晶の破片を顕現させ、テレパシーで操る。彼はこれらの破片を用いて空気を切り裂き、次元のポータルを創出する。"
+	},
+	"lore": {
+		"en": "He accidentally destroyed his home world and everyone in it. Now a rogue traveler, he seeks out the new [[engineer|ENGINEER]] to ease the guilt of his past.",
+		"jp": "彼は誤って故郷の惑星とそこに住む全ての人々を滅ぼしてしまった。今や放浪の旅人となった彼は、過去の罪悪感を和らげるため新たな[[engineer|エンジニア]]を探し求めている。"
+	},
+	"stats": {
+		"STR": 1,
+		"DEX": 2,
+		"INT": 7,
+		"VIT": 2,
+		"SPD": 3,
+		"PWR": 8
+	},
+	"images": [
+		{
+			"src": "characters/universal/main-lrg.png",
+			"label": {
+				"en": "Main",
+				"jp": "メイン"
+			}
+		},
+		{
+			"src": "characters/universal/full_body_main-lrg.png",
+			"label": {
+				"en": "Full Body",
+				"jp": "メインデザイン フルボディ"
+			}
+		},
+		{
+			"src": "characters/universal/potrait_main-lrg.png",
+			"label": {
+				"en": "Potrait",
+				"jp": "ポートレート"
+			}
+		},
+		{
+			"src": "characters/universal/full_body_alt-lrg.png",
+			"label": {
+				"en": "Alt. Full Body",
+				"jp": "代替 フルボディ"
+			}
+		},
+		{
+			"src": "characters/universal/potrait_alt-lrg.png",
+			"label": {
+				"en": "Alt. Potrait",
+				"jp": "代替 ポートレート"
+			}
+		},
+		{
+			"src": "characters/universal/misc-lrg.png",
+			"label": {
+				"en": "Misc.",
+				"jp": "その他"
+			}
+		}
+	]
+}

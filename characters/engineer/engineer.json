@@ -1,0 +1,156 @@
+{
+	"id": "engineer",
+	"name": {
+		"en": "ENGINEER",
+		"jp": "エンジニア"
+	},
+	"themeColor": "#D1F7FA",
+	"age": "19",
+	"height": "164 cm",
+	"tagline": {
+		"en": "\"Prodigy of Creation.\"",
+		"jp": "「創造の達人」"
+	},
+	"colorPalette": {
+		"primary": [
+			{
+				"name": "Hair",
+				"hex": "#5ECDE3"
+			},
+			{
+				"name": "Eyes",
+				"hex": "#FFDA45"
+			},
+			{
+				"name": "Skin",
+				"hex": "#FFE4CF"
+			}
+		],
+		"secondary": [
+			{
+				"name": "Shirt",
+				"hex": "#242833"
+			},
+			{
+				"name": "Pants",
+				"hex": "#AB8647"
+			},
+			{
+				"name": "Boots",
+				"hex": "#4D606E"
+			}
+		]
+	},
+	"appearance": {
+		"en": "Light blue hair and yellow eyes. Wears goggles, a grey hoodie, and brown utility pants with heavy metallic boots.",
+		"jp": "水色の髪に黄色い瞳。ゴーグル、グレーのフーディー、茶色の作業用パンツに重厚な金属製のブーツを履いている。"
+	},
+	"personality": {
+		"en": "Energetic, lively, and optimistic. He loves to tinker and build new inventions.",
+		"jp": "元気で活発、そして楽観的。彼はいじくり回したり新しい発明品を作ったりするのが大好きだ。"
+	},
+	"abilities": {
+		"en": "Wields a hammer powered by the \"F3X Core.\" It uses ENTROPY to bend reality, allowing him to deal massive damage or materialize new objects.",
+		"jp": "「F3Xコア」で駆動するハンマーを振るう。エントロピーを用いて現実を歪め、巨大なダメージを与えるか新たな物体を実体化させる。"
+	},
+	"lore": {
+		"en": "He saved his world by defeating his version of [[universal|UNIVERSAL]]. He captured the resulting ENTROPY energy into his hammer to create the \"F3X Core\" and is now celebrated as a hero.",
+		"jp": "彼は自らの世界の[[universal|ユニバーサル]]を倒し、その世界を救った。生じたエントロピーエネルギーをハンマーに封じ込め「F3Xコア」を創り出し、今や英雄として称えられている。"
+	},
+	"stats": {
+		"STR": 6,
+		"DEX": 5,
+		"INT": 4,
+		"VIT": 3,
+		"SPD": 7,
+		"PWR": 3
+	},
+	"images": [
+		{
+			"src": "characters/engineer/main-lrg.png",
+			"label": {
+				"en": "Main",
+				"jp": "メイン"
+			}
+		},
+		{
+			"src": "characters/engineer/full_body_main-lrg.png",
+			"label": {
+				"en": "Full Body",
+				"jp": "メインデザイン フルボディ"
+			}
+		},
+		{
+			"src": "characters/engineer/potrait_main-lrg.png",
+			"label": {
+				"en": "Potrait",
+				"jp": "ポートレート"
+			}
+		},
+		{
+			"src": "characters/engineer/full_body_alt-lrg.png",
+			"label": {
+				"en": "Alt. Full Body",
+				"jp": "代替 フルボディ"
+			}
+		},
+		{
+			"src": "characters/engineer/potrait_alt-lrg.png",
+			"label": {
+				"en": "Alt. Potrait",
+				"jp": "代替 ポートレート"
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】krei_ss_.png",
+			"label": {
+				"en": "【SKEB】krei_ss_",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】Asuke_0722.png",
+			"label": {
+				"en": "【SKEB】Asuke_0722",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】niisiro_F.png",
+			"label": {
+				"en": "【SKEB】niisiro_F",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】no_o_alcohol-1.png",
+			"label": {
+				"en": "【SKEB】no_o_alcohol-1",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】no_o_alcohol-2.png",
+			"label": {
+				"en": "【SKEB】no_o_alcohol-2",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/.skeb/【SKEB】kuroshima_neko.png",
+			"label": {
+				"en": "【SKEB】kuroshima_neko",
+				"jp": ""
+			}
+		}
+	],
+	"videos": [
+		{
+			"src": "characters/engineer/3d_weapon.mp4",
+			"label": {
+				"en": "F3X Hammer",
+				"jp": "F3X ハンマー"
+			}
+		}
+	]
+}
