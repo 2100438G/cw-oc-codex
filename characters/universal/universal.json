@@ -79,42 +79,42 @@
 	},
 	"images": [
 		{
-			"src": "characters/universal/main-lrg.png",
+			"src": "assets/universal/main.png",
 			"label": {
 				"en": "Main",
 				"jp": "メイン"
 			}
 		},
 		{
-			"src": "characters/universal/full_body_main-lrg.png",
+			"src": "assets/universal/full_body_main.png",
 			"label": {
 				"en": "Full Body",
 				"jp": "メインデザイン フルボディ"
 			}
 		},
 		{
-			"src": "characters/universal/potrait_main-lrg.png",
+			"src": "assets/universal/potrait_main.png",
 			"label": {
 				"en": "Potrait",
 				"jp": "ポートレート"
 			}
 		},
 		{
-			"src": "characters/universal/full_body_alt-lrg.png",
+			"src": "assets/universal/full_body_alt.png",
 			"label": {
 				"en": "Alt. Full Body",
 				"jp": "代替 フルボディ"
 			}
 		},
 		{
-			"src": "characters/universal/potrait_alt-lrg.png",
+			"src": "assets/universal/potrait_alt.png",
 			"label": {
 				"en": "Alt. Potrait",
 				"jp": "代替 ポートレート"
 			}
 		},
 		{
-			"src": "characters/universal/misc-lrg.png",
+			"src": "assets/universal/misc.png",
 			"label": {
 				"en": "Misc.",
 				"jp": "その他"

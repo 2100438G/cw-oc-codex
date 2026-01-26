@@ -67,77 +67,77 @@
 	},
 	"images": [
 		{
-			"src": "characters/engineer/main-lrg.png",
+			"src": "assets/engineer/main.png",
 			"label": {
 				"en": "Main",
 				"jp": "メイン"
 			}
 		},
 		{
-			"src": "characters/engineer/full_body_main-lrg.png",
+			"src": "assets/engineer/full_body_main.png",
 			"label": {
 				"en": "Full Body",
 				"jp": "メインデザイン フルボディ"
 			}
 		},
 		{
-			"src": "characters/engineer/potrait_main-lrg.png",
+			"src": "assets/engineer/potrait_main.png",
 			"label": {
 				"en": "Potrait",
 				"jp": "ポートレート"
 			}
 		},
 		{
-			"src": "characters/engineer/full_body_alt-lrg.png",
+			"src": "assets/engineer/full_body_alt.png",
 			"label": {
 				"en": "Alt. Full Body",
 				"jp": "代替 フルボディ"
 			}
 		},
 		{
-			"src": "characters/engineer/potrait_alt-lrg.png",
+			"src": "assets/engineer/potrait_alt.png",
 			"label": {
 				"en": "Alt. Potrait",
 				"jp": "代替 ポートレート"
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/krei_ss_.png",
+			"src": "characters/engineer/skeb/krei_ss_.png",
 			"label": {
 				"en": "【SKEB】krei_ss_",
 				"jp": ""
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/Asuke_0722.png",
+			"src": "characters/engineer/skeb/Asuke_0722.png",
 			"label": {
 				"en": "【SKEB】Asuke_0722",
 				"jp": ""
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/niisiro_F.png",
+			"src": "characters/engineer/skeb/niisiro_F.png",
 			"label": {
 				"en": "【SKEB】niisiro_F",
 				"jp": ""
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/no_o_alcohol-1.png",
+			"src": "characters/engineer/skeb/no_o_alcohol-1.png",
 			"label": {
 				"en": "【SKEB】no_o_alcohol-1",
 				"jp": ""
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/no_o_alcohol-2.png",
+			"src": "characters/engineer/skeb/no_o_alcohol-2.png",
 			"label": {
 				"en": "【SKEB】no_o_alcohol-2",
 				"jp": ""
 			}
 		},
 		{
-			"src": "characters/engineer/.skeb/kuroshima_neko.png",
+			"src": "characters/engineer/skeb/kuroshima_neko.png",
 			"label": {
 				"en": "【SKEB】kuroshima_neko",
 				"jp": ""
