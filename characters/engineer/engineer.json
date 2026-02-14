@@ -102,7 +102,14 @@
 			}
 		},
 		{
-			"src": "characters/engineer/skeb/krei_ss_.png",
+			"src": "characters/engineer/skeb/krei_ss_-2.png",
+			"label": {
+				"en": "【SKEB】krei_ss_",
+				"jp": ""
+			}
+		},
+		{
+			"src": "characters/engineer/skeb/krei_ss_-1.png",
 			"label": {
 				"en": "【SKEB】krei_ss_",
 				"jp": ""
