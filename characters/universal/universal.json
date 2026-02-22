@@ -119,6 +119,13 @@
 				"en": "Misc.",
 				"jp": "その他"
 			}
+		},
+		{
+			"src": "assets/universal/skeb/kasuteraya_nyan-1.png",
+			"label": {
+				"en": "【SKEB】kasuteraya_nyan",
+				"jp": ""
+			}
 		}
 	]
 }
