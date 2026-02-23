@@ -126,6 +126,13 @@
 				"en": "【SKEB】kasuteraya_nyan",
 				"jp": ""
 			}
+		},
+		{
+			"src": "characters/engineer/skeb/kihir_o.png",
+			"label": {
+				"en": "【SKEB】kihir_o",
+				"jp": ""
+			}
 		}
 	]
 }
