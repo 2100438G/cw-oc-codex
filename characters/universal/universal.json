@@ -133,6 +133,13 @@
 				"en": "【SKEB】kihir_o",
 				"jp": ""
 			}
+		},
+		{
+			"src":"characters/engineer/skeb/jahopotto.jpg",
+			"label":{
+				"en":"【SKEB】jahopotto",
+				"jp":""
+			}
 		}
 	]
 }
