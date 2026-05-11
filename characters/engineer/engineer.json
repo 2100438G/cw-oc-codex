@@ -151,6 +151,13 @@
 			}
 		},
 		{
+			"src": "characters/universal/skeb/Asagohan_osushi.png",
+			"label": {
+				"en": "【SKEB】Asagohan_osushi",
+				"jp": ""
+			}
+		},
+		{
 			"src": "characters/engineer/skeb/kihir_o.png",
 			"label": {
 				"en": "【SKEB】kihir_o",
