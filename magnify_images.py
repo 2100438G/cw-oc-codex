@@ -19,8 +19,9 @@ def main():
 	ASSET_DIR = Path().resolve() / "assets"
 	
 	TARGET_DIRS = [Path(i).resolve() for i in [
-		"./characters/universal",
-		"./characters/engineer"
+		# "./characters/universal",
+		# "./characters/engineer"
+		"./characters/psycho"
 	]]
 
 	for target_dir in TARGET_DIRS:

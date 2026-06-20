@@ -6,8 +6,6 @@
 			"jp": "ユニバーサル"
 		},
 		"themeColor": "#8C3FA0",
-		"age": "19",
-		"height": "177 cm",
 		"tagline": {
 			"en": "\"The one who ended everything.\"",
 			"jp": "「すべてを終わらせた者」"
@@ -20,11 +18,16 @@
 			"jp": "エンジニア"
 		},
 		"themeColor": "#D1F7FA",
-		"age": "",
-		"height": "",
 		"tagline": {
 			"en": "\"Prodigy of Creation.\"",
 			"jp": "「創造の達人」"
+		}
+	},
+	{
+		"id": "psycho",
+		"name": {
+			"en": "PSYCHO",
+			"jp": ""
 		}
 	}
 ]
