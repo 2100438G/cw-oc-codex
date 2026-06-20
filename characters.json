@@ -25,9 +25,14 @@
 	},
 	{
 		"id": "psycho",
+		"themeColor": "#763938",
 		"name": {
 			"en": "PSYCHO",
-			"jp": ""
+			"jp": "サイコ"
+		},
+		"tagline": {
+			"en": "\"The Smiling Grave\"",
+			"jp": "「微笑む墓」"
 		}
 	}
 ]

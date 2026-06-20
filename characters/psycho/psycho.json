@@ -2,14 +2,14 @@
 	"id": "psycho",
 	"name": {
 		"en": "PSYCHO",
-		"jp": ""
+		"jp": "サイコ"
 	},
-	"themeColor": "#8C3FA0",
+	"themeColor": "#763938",
 	"age": "19",
 	"height": "177 cm",
 	"tagline": {
-		"en": "\"The one who ended everything.\"",
-		"jp": ""
+		"en": "\"The Smiling Grave\"",
+		"jp": "「微笑む墓」"
 	},
 	"colorPalette": {
 		"primary": [
@@ -29,137 +29,85 @@
 		"secondary": [
 			{
 				"name": "Shirt",
-				"hex": "#5E2E6B"
+				"hex": "#3f1b1a"
 			},
 			{
-				"name": "Jacket",
-				"hex": "#F8F8F8"
+				"name": "Coat",
+				"hex": "#222933"
 			},
 			{
 				"name": "Pants",
-				"hex": "#1A1A1A"
+				"hex": "#09090f"
 			},
 			{
-				"name": "Sneakers",
-				"hex": "#1A1A1A"
+				"name": "Leaher Shoes",
+				"hex": "#09090f"
 			},
 			{
-				"name": "Sneaker's Sole",
-				"hex": "#BFBFBF"
-			},
-			{
-				"name": "Crystal",
-				"hex": "#8C3FA0"
+				"name": "Belt & Thigh Strap",
+				"hex": "#fefefe"
 			}
 		]
 	},
 	"appearance": {
-		"en": "Dark brown hair and red eyes. Wears a cropped white jacket, a purple turtleneck, and black trousers. Floating purple crystals surround him.",
-		"jp": "濃い茶色の髪に赤い瞳。白のクロップドジャケット、紫のタートルネック、黒のズボンを着用。周囲には紫の結晶が浮遊している。"
+		"en": "Messy dark brown hair and red eyes. Wears a maroon shirt & black coat, usually over his shoulders. Very distinctive left fang. Has 2 knifes ready on slipped into his thigh strap.",
+		"jp": "乱れたダークブラウンの髪と赤い目。マルーン色のシャツと黒いコートを着ており、コートはたいてい肩にかかっている。左の牙が非常に特徴的だ。太もものストラップには、いつでも使えるように2本のナイフが差し込まれている。"
 	},
 	"personality": {
-		"en": "Generally depressed and lonely. He desires closeness and feels more at peace when he is around the new [[engineer|ENGINEER]].",
-		"jp": "全体的に落ち込んで孤独を感じている。親密さを求め、新しい[[engineer|エンジニア]]のそばにいるとより安らぎを感じる。"
+		"extra": "His rival [[]]",
+		"en": "Silent and observant. However, once in battle, he is extremely bloodthirsty and manicial.",
+		"jp": "物静かで観察力に優れている。しかし、一旦戦いに突入すると、極めて血に飢え、狂気じみた姿を見せる。"
 	},
 	"abilities": {
-		"en": "Through ENTROPY, manifests purple crystal shards that he controls telepathically. He uses these shards to slice through the air and create dimensional portals.",
-		"jp": "エントロピーを通じて、紫色の結晶の破片を顕現させ、テレパシーで操る。彼はこれらの破片を用いて空気を切り裂き、次元のポータルを創出する。"
+		"en": "Using his agility and speed to throw knifes at his opponents. These knifes are imbued with ENTROPY, which allows PSYCHO to loosely control the trajectory, speed and recall them at will.",
+		"jp": "その敏捷性とスピードを駆使して、敵にナイフを投げつける。これらのナイフには「エントロピー」が宿っており、サイコは軌道や速度をある程度制御したり、意のままに呼び戻したりすることができる。"
 	},
 	"lore": {
-		"en": "He accidentally destroyed his home world and everyone in it. Now a rogue traveler, he seeks out the new [[engineer|ENGINEER]] to ease the guilt of his past.",
-		"jp": "彼は誤って故郷の惑星とそこに住む全ての人々を滅ぼしてしまった。今や放浪の旅人となった彼は、過去の罪悪感を和らげるため新たな[[engineer|エンジニア]]を探し求めている。"
+		"en": "Abandoned by his guardians at a young age, PSYCHO was shaped by cruelty and neglect in the city slums. Through his discovery of imbued ENTROPY, he started eliminating those who wronged him and slowly killing anyone he deems unworthy.",
+		"jp": "幼い頃に保護者に捨てられたPSYCHOは、都会のスラム街での残酷な扱いと放置によってその人格が形成された。彼は「エントロピー」の力を手に入れたことをきっかけに、自分に害をなした者たちを排除し始め、やがては自分にとって価値がないと判断した者を次々と殺し始めた。"
 	},
 	"stats": {
-		"STR": 1,
-		"DEX": 2,
-		"INT": 7,
+		"STR": 7,
+		"DEX": 5,
+		"INT": 1,
 		"VIT": 2,
-		"SPD": 3,
-		"PWR": 8
+		"SPD": 7,
+		"PWR": 3
 	},
 	"images": [
 		{
-			"src": "assets/universal/main.png",
+			"src": "assets/psycho/main.png",
 			"label": {
 				"en": "Main",
 				"jp": "メイン"
 			}
 		},
 		{
-			"src": "assets/universal/full_body_main.png",
+			"src": "assets/psycho/full_body_front_main.png",
 			"label": {
 				"en": "Full Body",
 				"jp": "メインデザイン フルボディ"
 			}
 		},
 		{
-			"src": "assets/universal/potrait_main.png",
+			"src": "assets/psycho/potrait_main.png",
 			"label": {
 				"en": "Potrait",
 				"jp": "ポートレート"
 			}
 		},
 		{
-			"src": "assets/universal/full_body_alt.png",
+			"src": "assets/psycho/full_body_front_alt.png",
 			"label": {
 				"en": "Alt. Full Body",
 				"jp": "代替 フルボディ"
 			}
 		},
 		{
-			"src": "assets/universal/potrait_alt.png",
+			"src": "assets/psycho/potrait_alt.png",
 			"label": {
 				"en": "Alt. Potrait",
 				"jp": "代替 ポートレート"
-			}
-		},
-		{
-			"src": "assets/universal/misc.png",
-			"label": {
-				"en": "Misc.",
-				"jp": "その他"
-			}
-		},
-		{
-			"src": "characters/universal/skeb/kasuteraya_nyan-1.png",
-			"label": {
-				"en": "【SKEB】kasuteraya_nyan",
-				"jp": ""
-			}
-		},
-		{
-			"src": "characters/universal/skeb/kwhgsashi_mi.png",
-			"label": {
-				"en": "【SKEB】kwhgsashi_mi",
-				"jp": ""
-			}
-		},
-		{
-			"src": "characters/universal/skeb/anohi_moicido.png",
-			"label": {
-				"en": "【SKEB】anohi_moicido",
-				"jp": ""
-			}
-		},
-		{
-			"src": "characters/engineer/skeb/kihir_o.png",
-			"label": {
-				"en": "【SKEB】kihir_o",
-				"jp": ""
-			}
-		},
-		{
-			"src": "characters/universal/skeb/jahopotto.jpg",
-			"label": {
-				"en": "【SKEB】jahopotto",
-				"jp": ""
-			}
-		},
-		{
-			"src": "characters/universal/skeb/Asagohan_osushi.png",
-			"label": {
-				"en": "【SKEB】Asagohan_osushi",
-				"jp": ""
 			}
 		}
 	]
