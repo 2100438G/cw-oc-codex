@@ -46,20 +46,20 @@
 		]
 	},
 	"appearance": {
-		"en": "",
-		"jp": ""
+		"en": "Neat light blue hair and yellow eyes. Wears a white naval uniform, dark teal scarf and sailor peak cap. Has 2 scars on his left shoulder.",
+		"jp": "整った水色の髪と黄色い瞳。白い海軍制服に、濃いティール色のスカーフ、セーラー帽を身につけている。左肩に2つの傷跡がある。"
 	},
 	"personality": {
-		"en": "",
-		"jp": ""
+		"en": "Disciplined, calm, and relentless. A sharpshooter who almost never misses. Despite being a naval officer, he mostly patrols city coastlines.",
+		"jp": "規律正しく、冷静で、執拗だ。ほとんど外すことのない名射手である。海軍将校でありながら、主に都市の沿岸をパトロールしている。"
 	},
 	"abilities": {
-		"en": "",
-		"jp": ""
+		"en": "Wields a custom modified Mosin-Nagant rifle that fires ENTROPY-infused rounds. He can call in artillery bombardment from his naval fleet, which also uses ENTROPY technology.",
+		"jp": "「エントロピー」を込めた弾丸を発射する、特注の改造モシン・ナガン小銃を操る。また、同じく「エントロピー」技術を採用した自身の海軍艦隊に対し、砲撃を要請することもできる。"
 	},
 	"lore": {
-		"en": "",
-		"jp": ""
+		"en": "A young soldier who rose through the ranks of the NSU Military. The NSU Military has harnessed ENTROPY technology and installed it in all their fleets and coastal bases. CAPTAIN was injured during [[psycho|PSYCHO]]'s raid on a sea port. Now CAPTAIN and [[psycho|PSYCHO]] hunt each other in a cat-and-mouse game.",
+		"jp": "NSU軍で昇進を重ねてきた若い兵士。NSU軍は「エントロピー」技術を活用し、すべての艦隊および沿岸基地に導入している。キャプテンは、[[psycho|サイコ]]による海港への襲撃の際に負傷した。現在、キャプテンと[[psycho|サイコ]]は、猫とネズミのような駆け引きを繰り広げながら互いを追いかけ合っている。"
 	},
 	"stats": {
 		"STR": 7,

@@ -44,13 +44,13 @@
 				"hex": "#09090f"
 			},
 			{
-				"name": "Belt & Thigh Strap",
+				"name": "Belt and Thigh Strap",
 				"hex": "#fefefe"
 			}
 		]
 	},
 	"appearance": {
-		"en": "Messy dark brown hair and red eyes. Wears a maroon shirt & black coat, usually over his shoulders. Very distinctive left fang. Has 2 knifes ready on slipped into his thigh strap.",
+		"en": "Messy dark brown hair and red eyes. Wears a maroon shirt and black coat, usually over his shoulders. Very distinctive left fang. Has 2 knifes ready on slipped into his thigh strap.",
 		"jp": "乱れたダークブラウンの髪と赤い目。マルーン色のシャツと黒いコートを着ており、コートはたいてい肩にかかっている。左の牙が非常に特徴的だ。太もものストラップには、いつでも使えるように2本のナイフが差し込まれている。"
 	},
 	"personality": {
@@ -63,8 +63,8 @@
 		"jp": "その敏捷性とスピードを駆使して、敵にナイフを投げつける。これらのナイフには「エントロピー」が宿っており、サイコは軌道や速度をある程度制御したり、意のままに呼び戻したりすることができる。"
 	},
 	"lore": {
-		"en": "Abandoned by his guardians at a young age, PSYCHO was shaped by cruelty and neglect in the city slums. Through his discovery of imbued ENTROPY, he started eliminating those who wronged him and slowly killing anyone he deems unworthy.",
-		"jp": "幼い頃に保護者に捨てられたPSYCHOは、都会のスラム街での残酷な扱いと放置によってその人格が形成された。彼は「エントロピー」の力を手に入れたことをきっかけに、自分に害をなした者たちを排除し始め、やがては自分にとって価値がないと判断した者を次々と殺し始めた。"
+		"en": "Abandoned by his guardians at a young age, PSYCHO was shaped by cruelty and neglect in the city slums. He discovered ENTROPY and learned he could feed on it to grow stronger. The NSU Military ENTROPY-powered bases became his target. He raids them to consume their ENTROPY reserves.",
+		"jp": "幼い頃に保護者に捨てられたPSYCHOは、都市のスラム街での残酷な扱いと放置によってその人格が形成された。彼は「エントロピー」の存在を知り、それを吸収することでより強くなれることを学んだ。NSU軍の「エントロピー」を動力源とする基地が彼の標的となった。彼はそれらの基地を襲撃し、備蓄された「エントロピー」を吸収している。"
 	},
 	"stats": {
 		"STR": 7,
