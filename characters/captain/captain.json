@@ -1,0 +1,109 @@
+{
+	"id": "captain",
+	"name": {
+		"en": "CAPTAIN",
+		"jp": "キャプテン"
+	},
+	"themeColor": "#d4e0f3",
+	"age": "19",
+	"height": "168 cm",
+	"tagline": {
+		"en": "\"High seas\"",
+		"jp": "「公海」"
+	},
+	"colorPalette": {
+		"primary": [
+			{
+				"name": "Hair",
+				"hex": "#5ECDE3"
+			},
+			{
+				"name": "Eyes",
+				"hex": "#FFDA45"
+			},
+			{
+				"name": "Skin",
+				"hex": "#FFE4CF"
+			}
+		],
+		"secondary": [
+			{
+				"name": "Uniform",
+				"hex": "#ffffff"
+			},
+			{
+				"name": "Scarf",
+				"hex": "#1d323f"
+			},
+			{
+				"name": "Buttons",
+				"hex": "#e7e22f"
+			},
+			{
+				"name": "Boots",
+				"hex": "#000000"
+			}
+		]
+	},
+	"appearance": {
+		"en": "",
+		"jp": ""
+	},
+	"personality": {
+		"en": "",
+		"jp": ""
+	},
+	"abilities": {
+		"en": "",
+		"jp": ""
+	},
+	"lore": {
+		"en": "",
+		"jp": ""
+	},
+	"stats": {
+		"STR": 7,
+		"DEX": 3,
+		"INT": 7,
+		"VIT": 5,
+		"SPD": 4,
+		"PWR": 1
+	},
+	"images": [
+		{
+			"src": "assets/captain/main.png",
+			"label": {
+				"en": "Main",
+				"jp": "メイン"
+			}
+		},
+		{
+			"src": "assets/captain/full_body_main.png",
+			"label": {
+				"en": "Full Body",
+				"jp": "メインデザイン フルボディ"
+			}
+		},
+		{
+			"src": "assets/captain/potrait_main.png",
+			"label": {
+				"en": "Potrait",
+				"jp": "ポートレート"
+			}
+		},
+		{
+			"src": "assets/captain/full_body_alt.png",
+			"label": {
+				"en": "Alt. Full Body",
+				"jp": "代替 フルボディ"
+			}
+		},
+		{
+			"src": "assets/captain/potrait_alt.png",
+			"label": {
+				"en": "Alt. Potrait",
+				"jp": "代替 ポートレート"
+			}
+		}
+	]
+}

@@ -34,5 +34,17 @@
 			"en": "\"The Smiling Grave\"",
 			"jp": "「微笑む墓」"
 		}
+	},
+	{
+		"id": "captain",
+		"themeColor": "#d4e0f3",
+		"name": {
+			"en": "CAPTAIN",
+			"jp": "キャプテン"
+		},
+		"tagline": {
+			"en": "\"High seas\"",
+			"jp": "「公海」"
+		}
 	}
 ]
