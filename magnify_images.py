@@ -21,7 +21,9 @@ def main():
 	TARGET_DIRS = [Path(i).resolve() for i in [
 		# "./characters/universal",
 		# "./characters/engineer"
-		"./characters/psycho"
+		# "./characters/psycho"
+		"./characters/captain"
+
 	]]
 
 	for target_dir in TARGET_DIRS:
