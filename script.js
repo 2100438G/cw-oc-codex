@@ -12,6 +12,18 @@ const state = {
     lightboxIndex: 0
 };
 
+// Prefix a media src with the generated assets/ directory.
+// build.py writes every processed image/video into assets/<src>.
+function assetUrl(src) {
+    return 'assets/' + src;
+}
+
+// Thumbnail URL for carousel use. build.py generates 200x150 thumbnails
+// in assets/thumb/<src> (NEAREST for pixel art, LANCZOS otherwise).
+function thumbUrl(src) {
+    return 'assets/thumb/' + src;
+}
+
 // DOM Elements
 const elements = {
     loadingScreen: document.getElementById('loading-screen'),
@@ -274,7 +286,8 @@ function buildMediaArray(charData) {
             state.mediaItems.push({
                 type: 'image',
                 src: img.src,
-                label: img.label
+                label: img.label,
+                pixelArt: img.pixelArt === true
             });
         });
     }
@@ -285,7 +298,8 @@ function buildMediaArray(charData) {
             state.mediaItems.push({
                 type: 'video',
                 src: vid.src,
-                label: vid.label
+                label: vid.label,
+                pixelArt: false
             });
         });
     }
@@ -295,7 +309,8 @@ function buildMediaArray(charData) {
         state.mediaItems.push({
             type: 'video',
             src: charData.video,
-            label: { en: 'Motion Reference', jp: 'モーションリファレンス' }
+            label: { en: 'Motion Reference', jp: 'モーションリファレンス' },
+            pixelArt: false
         });
     }
 }
@@ -341,7 +356,7 @@ function resetAnimations() {
 function updateHeader(charData) {
     // Update background
     if (state.mediaItems.length > 0 && state.mediaItems[0].type === 'image') {
-        elements.headerBg.style.backgroundImage = `url('${state.mediaItems[0].src}')`;
+        elements.headerBg.style.backgroundImage = `url('${assetUrl(state.mediaItems[0].src)}')`;
     }
     
     // Update title
@@ -374,8 +389,10 @@ function updateMainDisplay(index) {
     
     if (item.type === 'image') {
         const img = document.createElement('img');
-        img.src = item.src;
+        img.src = assetUrl(item.src);
         img.alt = item.label.en || 'Character Reference';
+        if (item.pixelArt) img.classList.add('pixel-art');
+        img.decoding = 'async';
         img.onload = () => setTimeout(() => img.classList.add('loaded'), 50);
         elements.mainImageWrapper.appendChild(img);
         
@@ -383,12 +400,12 @@ function updateMainDisplay(index) {
         elements.mediaTypeBadge.querySelector('.badge-text').textContent = 'IMAGE';
     } else {
         const video = document.createElement('video');
-        video.src = item.src;
+        video.src = assetUrl(item.src);
         video.loop = true;
         video.muted = true;
         video.autoplay = true;
         video.playsInline = true;
-        video.onloadeddata = () => setTimeout(() => video.classList.add('loaded'), 50);
+        video.preload = 'auto';
         elements.mainImageWrapper.appendChild(video);
         
         elements.mediaTypeBadge.classList.add('video');
@@ -412,12 +429,14 @@ function updateCarousel() {
         const isVideo = item.type === 'video';
         const activeClass = index === 0 ? 'active' : '';
         const videoClass = isVideo ? 'video-item' : '';
+        const pixelArtClass = !isVideo && item.pixelArt ? 'pixel-art' : '';
+        const label = item.label.en || 'Reference';
         
         return `
             <div class="carousel-item ${activeClass} ${videoClass}" data-index="${index}">
                 ${isVideo ? 
-                    `<video src="${item.src}" muted></video>` : 
-                    `<img src="${item.src}" alt="${item.label.en || 'Reference'}">`
+                    `<video src="${assetUrl(item.src)}#t=0.1" muted preload="metadata" playsinline></video>` : 
+                    `<img src="${thumbUrl(item.src)}" alt="${label}" class="${pixelArtClass}" loading="lazy" decoding="async">`
                 }
                 <div class="item-badge">
                     ${isVideo ? 
@@ -708,16 +727,18 @@ function openLightbox(index) {
     elements.lightboxVideo.pause();
     
     if (item.type === 'image') {
-        elements.lightboxImage.src = item.src;
+        elements.lightboxImage.src = assetUrl(item.src);
+        if (item.pixelArt) elements.lightboxImage.classList.add('pixel-art');
+        else elements.lightboxImage.classList.remove('pixel-art');
         elements.lightboxImage.classList.add('active');
-        elements.downloadBtn.href = item.src;
+        elements.downloadBtn.href = assetUrl(item.src);
         elements.downloadBtn.download = `${state.currentCharacter.id}_${item.label.en || 'reference'}.png`;
         elements.downloadBtn.style.display = 'flex';
     } else {
-        elements.lightboxVideo.src = item.src;
+        elements.lightboxVideo.src = assetUrl(item.src);
         elements.lightboxVideo.classList.add('active');
         elements.lightboxVideo.play();
-        elements.downloadBtn.href = item.src;
+        elements.downloadBtn.href = assetUrl(item.src);
         elements.downloadBtn.download = `${state.currentCharacter.id}_motion_reference.mp4`;
         elements.downloadBtn.style.display = 'flex';
     }
@@ -759,15 +780,17 @@ function navigateLightbox(direction) {
         elements.lightboxVideo.pause();
         
         if (item.type === 'image') {
-            elements.lightboxImage.src = item.src;
+            elements.lightboxImage.src = assetUrl(item.src);
+            if (item.pixelArt) elements.lightboxImage.classList.add('pixel-art');
+            else elements.lightboxImage.classList.remove('pixel-art');
             elements.lightboxImage.classList.add('active');
-            elements.downloadBtn.href = item.src;
+            elements.downloadBtn.href = assetUrl(item.src);
             elements.downloadBtn.download = `${state.currentCharacter.id}_${item.label.en || 'reference'}.png`;
         } else {
-            elements.lightboxVideo.src = item.src;
+            elements.lightboxVideo.src = assetUrl(item.src);
             elements.lightboxVideo.classList.add('active');
             elements.lightboxVideo.play();
-            elements.downloadBtn.href = item.src;
+            elements.downloadBtn.href = assetUrl(item.src);
             elements.downloadBtn.download = `${state.currentCharacter.id}_motion_reference.mp4`;
         }
         

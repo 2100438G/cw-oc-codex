@@ -71,35 +71,35 @@
 	},
 	"images": [
 		{
-			"src": "assets/captain/main.png",
+			"src": "characters/captain/main.png",
 			"label": {
 				"en": "Main",
 				"jp": "メイン"
 			}
 		},
 		{
-			"src": "assets/captain/full_body_main.png",
+			"src": "characters/captain/full_body_main.png",
 			"label": {
 				"en": "Full Body",
 				"jp": "メインデザイン フルボディ"
 			}
 		},
 		{
-			"src": "assets/captain/potrait_main.png",
+			"src": "characters/captain/potrait_main.png",
 			"label": {
 				"en": "Potrait",
 				"jp": "ポートレート"
 			}
 		},
 		{
-			"src": "assets/captain/full_body_alt.png",
+			"src": "characters/captain/full_body_alt.png",
 			"label": {
 				"en": "Alt. Full Body",
 				"jp": "代替 フルボディ"
 			}
 		},
 		{
-			"src": "assets/captain/potrait_alt.png",
+			"src": "characters/captain/potrait_alt.png",
 			"label": {
 				"en": "Alt. Potrait",
 				"jp": "代替 ポートレート"

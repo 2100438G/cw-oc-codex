@@ -67,35 +67,35 @@
 	},
 	"images": [
 		{
-			"src": "assets/engineer/main.png",
+			"src": "characters/engineer/main.png",
 			"label": {
 				"en": "Main",
 				"jp": "メイン"
 			}
 		},
 		{
-			"src": "assets/engineer/full_body_main.png",
+			"src": "characters/engineer/full_body_main.png",
 			"label": {
 				"en": "Full Body",
 				"jp": "メインデザイン フルボディ"
 			}
 		},
 		{
-			"src": "assets/engineer/potrait_main.png",
+			"src": "characters/engineer/potrait_main.png",
 			"label": {
 				"en": "Potrait",
 				"jp": "ポートレート"
 			}
 		},
 		{
-			"src": "assets/engineer/full_body_alt.png",
+			"src": "characters/engineer/full_body_alt.png",
 			"label": {
 				"en": "Alt. Full Body",
 				"jp": "代替 フルボディ"
 			}
 		},
 		{
-			"src": "assets/engineer/potrait_alt.png",
+			"src": "characters/engineer/potrait_alt.png",
 			"label": {
 				"en": "Alt. Potrait",
 				"jp": "代替 ポートレート"
@@ -165,7 +165,7 @@
 			}
 		},
 		{
-			"src": "assets/engineer/f3x_texture.png",
+			"src": "characters/engineer/f3x_texture.png",
 			"label": {
 				"en": "F3X Hammer Texture",
 				"jp": "F3X ハンマーテクスチャ"
