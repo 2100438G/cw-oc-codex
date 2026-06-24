@@ -222,9 +222,9 @@ body::after { content: ''; position: fixed; top: 0; left: 0; width: 200%; height
 .stat-val { font-family: 'Bebas Neue',sans-serif; font-size: 1.25rem; color: var(--bg-primary); }
 
 .palette-content { display: flex; flex-direction: column; gap: 0.4rem; }
-.palette-row { display: flex; gap: 0.4rem; }
+.palette-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .palette-row.primary { gap: 0.5rem; }
-.color-swatch { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
+.color-swatch { flex: 1 1 80px; min-width: 70px; display: flex; flex-direction: column; gap: 0.25rem; }
 .swatch-color { height: 32px; border: 1px solid var(--border-color); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
 .palette-row.primary .swatch-color { height: 40px; }
 .swatch-color:hover { transform: scale(1.05); box-shadow: 0 3px 12px rgba(0,0,0,0.35); }
