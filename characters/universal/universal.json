@@ -59,12 +59,11 @@
 		{"type": "image", "src": "characters/universal/reference_art.png",				"label": {"en": "Reference Sheet", "jp": "参考資料"}, "category": "reference"},
 		{"type": "image", "src": "characters/universal/portal.png",						"label": {"en": "Portal", "jp": "ポータル"}, "category": "other"},
 		{"type": "image", "src": "characters/universal/misc.png",						"label": {"en": "Misc.", "jp": "その他"}, "category": "other"},
-		{"type": "image", "src": "characters/universal/skeb/kasuteraya_nyan-1.png",		"label": {"en": "【SKEB】kasuteraya_nyan #1", "jp": ""}, "category": "skeb", "artist": "kasuteraya_nyan"},
-		{"type": "image", "src": "characters/universal/skeb/kwhgsashi_mi.png",			"label": {"en": "【SKEB】kwhgsashi_mi", "jp": ""}, "category": "skeb", "artist": "kwhgsashi_mi"},
-		{"type": "image", "src": "characters/universal/skeb/anohi_moicido.png",			"label": {"en": "【SKEB】anohi_moicido", "jp": ""}, "category": "skeb", "artist": "anohi_moicido"},
-		{"type": "image", "src": "characters/universal/skeb/kihir_o.png",				"label": {"en": "【SKEB】kihir_o", "jp": ""}, "category": "skeb", "artist": "kihir_o"},
-		{"type": "image", "src": "characters/universal/skeb/jahopotto.jpg",				"label": {"en": "【SKEB】jahopotto", "jp": ""}, "category": "skeb", "artist": "jahopotto"},
-		{"type": "image", "src": "characters/universal/skeb/Asagohan_osushi.png",		"label": {"en": "【SKEB】Asagohan_osushi", "jp": ""}, "category": "skeb", "artist": "Asagohan_osushi"},
-		{"type": "image", "src": "characters/engineer/skeb/kihir_o.png",				"label": {"en": "【SKEB】kihir_o (w/ Engineer)", "jp": ""}, "category": "skeb", "artist": "kihir_o"}
+		{"type": "image", "src": "skeb/@kasuteraya_nyan/3576283-2.png",					"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "kasuteraya_nyan"},
+		{"type": "image", "src": "skeb/@kwhgsashi_mi/3669179-2.png",					"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "kwhgsashi_mi"},
+		{"type": "image", "src": "skeb/@anohi_moicido/3576365-2.png",					"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "anohi_moicido"},
+		{"type": "image", "src": "skeb/@kihir_o/3450836-2.png",							"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "kihir_o"},
+		{"type": "image", "src": "skeb/@jahopotto/3693011-2.jpg",						"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "jahopotto"},
+		{"type": "image", "src": "skeb/@Asagohan_osushi/3607952-1.png",					"label": {"en": "【SKEB】", "jp": ""}, "category": "skeb", "artist": "Asagohan_osushi"}
 	]
 }
