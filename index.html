@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,25 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader">
             <div class="loader-ring"></div>
             <div class="loader-ring delay"></div>
-            <span class="loader-text">LOADING<span class="dots"></span></span>
+            <span class="loader-text" data-lang-key="loading">LOADING<span class="dots"></span></span>
         </div>
     </div>
 
-    <!-- ============================================
-         CHARACTER SELECT PAGE
-         ============================================ -->
+    <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">
+        <span class="lang-option" data-lang="jp">日本語</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-option" data-lang="en">EN</span>
+    </button>
+
+    <!-- SELECT PAGE -->
     <section id="select-page" class="select-page">
         <div class="select-background">
             <div class="select-orb orb-1"></div>
@@ -33,24 +36,18 @@
             <header class="select-header">
                 <div class="header-badge">
                     <span class="badge-line"></span>
-                    <span class="badge-text">Project: Card Wars</span>
+                    <span class="badge-text" data-lang-key="project">Project: Card Wars</span>
                     <span class="badge-line"></span>
                 </div>
                 <h1 class="select-title">THE CODEX</h1>
                 <h2 class="select-title-jp">カードウォーズ・コーデックス</h2>
                 <div class="select-underline"></div>
-                <p class="select-subtitle">Select</p>
-                <p class="select-subtitle-jp">一つ選べ</p>
+                <p class="select-subtitle" data-lang-key="select">Select</p>
             </header>
-
-            <div class="character-grid" id="character-grid">
-                <!-- Character cards will be generated here -->
-            </div>
-
+            <div class="character-grid" id="character-grid"></div>
             <footer class="select-footer">
                 <div class="footer-line"></div>
-                <p>Character Design Archives</p>
-                <p class="jp">キャラクターデザインアーカイブ</p>
+                <p data-lang-key="archives">Character Design Archives</p>
                 <div class="footer-decoration">
                     <span class="dec-dot"></span>
                     <span class="dec-dot"></span>
@@ -60,182 +57,143 @@
         </div>
     </section>
 
-    <!-- ============================================
-         CHARACTER DETAIL PAGE
-         ============================================ -->
+    <!-- CHARACTER DETAIL PAGE -->
     <main id="character-page" class="character-page hidden">
-        
-        <!-- Back Button -->
+
         <nav class="back-nav">
             <button class="back-btn" id="back-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="back-icon">
                     <polyline points="15 18 9 12 15 6"/>
                 </svg>
-                <span class="back-text">
-                    <span class="en">ALL CHARACTERS</span>
-                    <span class="jp">キャラクター一覧</span>
-                </span>
+                <span class="back-text" data-lang-key="back">ALL CHARACTERS</span>
             </button>
         </nav>
 
-        <!-- Grand Title Header -->
-        <header class="character-header" id="character-header">
-            <div class="header-background" id="header-bg"></div>
-            <div class="header-content">
-                <p class="title-pre" id="title-pre">CHARACTER FILE</p>
-                <h1 class="character-title" id="character-title">
-                    <span class="title-en" id="title-en">CHARACTER NAME</span>
-                </h1>
-                <h2 class="character-title-jp" id="title-jp">キャラクター名</h2>
-                <div class="title-underline"></div>
-                <div class="character-tagline" id="character-tagline"></div>
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero-section">
+            <canvas class="particle-canvas" id="particle-canvas"></canvas>
+            <div class="hero-speedlines"></div>
+            <div class="hero-bracket hero-bracket-left">「</div>
+            <div class="hero-bracket hero-bracket-right">」</div>
+            <div class="hero-art" id="hero-art">
+                <img id="hero-image" src="" alt="" />
             </div>
-        </header>
+            <div class="hero-text" id="hero-text">
+                <p class="hero-badges" id="hero-badges"></p>
+                <h1 class="hero-title">
+                    <span class="hero-title-primary" id="hero-title-primary"></span>
+                    <span class="hero-title-secondary" id="hero-title-secondary"></span>
+                </h1>
+                <div class="hero-underline"></div>
+                <p class="hero-tagline" id="hero-tagline"></p>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-chevron"></div>
+                <span class="scroll-text" data-lang-key="scroll">SCROLL</span>
+            </div>
+        </section>
 
-        <!-- Main Content Area: Art + Wrapped Panels -->
-        <section class="main-content">
-            
-            <!-- Top Row: Panels + Art + Panels -->
-            <div class="content-grid">
-                
-                <!-- Left Panels -->
-                <aside class="side-panel left-panel" id="left-panel">
-                    <div class="panel-card" id="bio-card">
-                        <div class="panel-header">
-                            <h3 class="panel-title">PROFILE</h3>
-                            <span class="panel-title-jp">プロフィール</span>
-                        </div>
-                        <div class="bio-grid" id="bio-grid">
-                            <div class="bio-item">
-                                <span class="bio-label">AGE / 年齢</span>
-                                <span class="bio-value" id="bio-age">--</span>
-                            </div>
-                            <div class="bio-item">
-                                <span class="bio-label">HEIGHT / 身長</span>
-                                <span class="bio-value" id="bio-height">--</span>
-                            </div>
-                        </div>
+        <!-- CONTENT -->
+        <div class="content-column">
+
+            <!-- PROFILE -->
+            <section class="detail-section" id="profile-section">
+                <div class="detail-header">
+                    <h3 class="detail-title" data-lang-key="profile">PROFILE</h3>
+                    <div class="detail-accent"></div>
+                </div>
+                <div class="profile-grid">
+                    <div class="profile-art" id="profile-art-container">
+                        <img id="profile-art-img" src="" alt="" />
                     </div>
-
-                    <div class="panel-card" id="appearance-card">
-                        <div class="panel-header">
-                            <h3 class="panel-title">APPEARANCE</h3>
-                            <span class="panel-title-jp">外見</span>
+                    <div class="profile-info">
+                        <p class="profile-stats" id="profile-stats"></p>
+                        <div class="profile-block">
+                            <h4 class="profile-block-title" data-lang-key="appearance">APPEARANCE</h4>
+                            <div class="profile-block-body" id="detail-appearance"></div>
                         </div>
-                        <div class="panel-content" id="appearance-content"></div>
-                    </div>
-
-                    <div class="panel-card" id="personality-card">
-                        <div class="panel-header">
-                            <h3 class="panel-title">PERSONALITY</h3>
-                            <span class="panel-title-jp">性格</span>
+                        <div class="profile-block">
+                            <h4 class="profile-block-title" data-lang-key="personality">PERSONALITY</h4>
+                            <div class="profile-block-body" id="detail-personality"></div>
                         </div>
-                        <div class="panel-content" id="personality-content"></div>
-                    </div>
-                </aside>
-
-                <!-- Center: Art Display -->
-                <div class="center-stage">
-                    <div class="art-section" id="art-section">
-                        <div class="main-image-container" id="main-image-container">
-                            <div class="main-image-wrapper" id="main-image-wrapper">
-                                <div class="placeholder-content">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                                        <path d="M21 15l-5-5L5 21"/>
-                                    </svg>
-                                    <p>Select a character</p>
-                                </div>
-                            </div>
-                            <div class="media-type-badge" id="media-type-badge">
-                                <span class="badge-icon"></span>
-                                <span class="badge-text">IMAGE</span>
-                            </div>
-                            <div class="image-label" id="image-label">Main Design</div>
-                        </div>
-                    </div>
-
-                    <!-- Media Carousel -->
-                    <div class="media-carousel" id="media-carousel">
-                        <button class="carousel-nav prev" id="carousel-prev">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="15 18 9 12 15 6"/>
-                            </svg>
-                        </button>
-                        <div class="carousel-track-container">
-                            <div class="carousel-track" id="carousel-track"></div>
-                        </div>
-                        <button class="carousel-nav next" id="carousel-next">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
+            </section>
 
-                <!-- Right Panels -->
-                <aside class="side-panel right-panel" id="right-panel">
-                    <div class="panel-card" id="abilities-card">
-                        <div class="panel-header">
-                            <h3 class="panel-title">ABILITIES</h3>
-                            <span class="panel-title-jp">能力</span>
-                        </div>
-                        <div class="panel-content" id="abilities-content"></div>
-                    </div>
+            <!-- OFFICIAL GALLERY -->
+            <section class="gallery-section" id="gallery-section-official">
+                <div class="gallery-zone-header">
+                    <h2 class="gallery-zone-title" data-lang-key="official_art">OFFICIAL ART</h2>
+                    <span class="gallery-zone-title-jp" data-lang-key="official_art_sub"></span>
+                    <div class="gallery-zone-accent"></div>
+                </div>
+                <div class="gallery-grid" id="gallery-grid-official"></div>
+            </section>
 
-                    <div class="panel-card" id="lore-card">
-                        <div class="panel-header">
-                            <h3 class="panel-title">LORE</h3>
-                            <span class="panel-title-jp">設定</span>
-                        </div>
-                        <div class="panel-content" id="lore-content"></div>
-                    </div>
-                </aside>
-            </div>
+            <!-- ABILITIES -->
+            <section class="detail-section" id="abilities-section">
+                <div class="detail-header">
+                    <h3 class="detail-title" data-lang-key="abilities">ABILITIES</h3>
+                    <div class="detail-accent"></div>
+                </div>
+                <div class="detail-body" id="detail-abilities"></div>
+            </section>
 
-            <!-- Bottom Row: Stats + Palette -->
-            <div class="bottom-panels">
-                <div class="panel-card stats-card">
-                    <div class="panel-header">
-                        <h3 class="panel-title">COMBAT STATS</h3>
-                        <span class="panel-title-jp">戦闘能力</span>
+            <!-- LORE -->
+            <section class="detail-section" id="lore-section">
+                <div class="detail-header">
+                    <h3 class="detail-title" data-lang-key="lore">LORE</h3>
+                    <div class="detail-accent"></div>
+                </div>
+                <div class="detail-body" id="detail-lore"></div>
+            </section>
+
+            <!-- STATS & PALETTE -->
+            <section class="stats-palette-section" id="stats-palette-section">
+                <div class="sp-block">
+                    <div class="sp-header">
+                        <h3 class="sp-title" data-lang-key="stats">COMBAT STATS</h3>
+                        <div class="sp-accent"></div>
                     </div>
                     <div class="stats-content">
-                        <div class="radar-container">
-                            <canvas id="radar-chart"></canvas>
-                        </div>
+                        <div class="radar-container"><canvas id="radar-chart"></canvas></div>
                         <div class="stats-list" id="stats-list"></div>
                     </div>
                 </div>
-
-                <div class="panel-card palette-card">
-                    <div class="panel-header">
-                        <h3 class="panel-title">COLOR PALETTE</h3>
-                        <span class="panel-title-jp">カラーパレット</span>
+                <div class="sp-block">
+                    <div class="sp-header">
+                        <h3 class="sp-title" data-lang-key="palette">COLOR PALETTE</h3>
+                        <div class="sp-accent"></div>
                     </div>
-                    <div class="palette-content" id="palette-content">
-                        <!-- Color swatches will be generated here -->
-                    </div>
+                    <div class="palette-content" id="palette-content"></div>
                 </div>
-            </div>
+            </section>
 
-        </section>
+            <!-- COMMISSIONED GALLERY -->
+            <section class="gallery-section" id="gallery-section-commissioned">
+                <div class="gallery-zone-header">
+                    <h2 class="gallery-zone-title" data-lang-key="commissioned">COMMISSIONED</h2>
+                    <span class="gallery-zone-title-jp" data-lang-key="commissioned_sub"></span>
+                    <div class="gallery-zone-accent"></div>
+                </div>
+                <div class="gallery-grid" id="gallery-grid-commissioned"></div>
+            </section>
 
-        <!-- Footer -->
-        <footer class="page-footer">
-            <p class="footer-text">Project: Card Wars</p>
-            <p class="footer-text jp">カードウォーズ</p>
-            <p class="footer-sub">Character Design Archives / キャラクターデザインアーカイブ</p>
-        </footer>
+            <footer class="page-footer">
+                <div class="footer-line"></div>
+                <p class="footer-text" data-lang-key="project">Project: Card Wars</p>
+                <p class="footer-sub" data-lang-key="archives">Character Design Archives</p>
+            </footer>
+
+        </div>
     </main>
 
-    <!-- Lightbox -->
+    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-backdrop"></div>
         <div class="lightbox-container">
             <div class="lightbox-content">
-                <img id="lightbox-image" src="" alt="">
+                <img id="lightbox-image" src="" alt="" />
                 <video id="lightbox-video" loop muted playsinline></video>
             </div>
             <div class="lightbox-sidebar">
@@ -249,34 +207,30 @@
                         <polyline points="7 10 12 15 17 10"/>
                         <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    <span>Download Original</span>
-                    <span class="jp">オリジナルをダウンロード</span>
+                    <span data-lang-key="download">Download</span>
                 </a>
                 <button id="lightbox-close" class="lightbox-close">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"/>
                         <line x1="6" y1="6" x2="18" y2="18"/>
                     </svg>
-                    <span>Close</span>
+                    <span data-lang-key="close">Close</span>
                 </button>
             </div>
         </div>
         <button class="lightbox-nav prev" id="lightbox-prev">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <button class="lightbox-nav next" id="lightbox-next">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
         <div class="lightbox-hint">
-            <span>Use arrow keys to navigate • ESC to close</span>
-            <span class="jp">矢印キーで移動 • ESCで閉じる</span>
+            <span data-lang-key="navigate_hint">← → Navigate · ESC Close</span>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

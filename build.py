@@ -45,7 +45,8 @@ STATIC_FILES = [
     "index.html",
     "style.css",
     "script.js",
-    "characters.json",
+    "character_index.txt",
+    "lang.json",
     "favicon.ico",
     "favicon.svg",
 ]
@@ -164,7 +165,7 @@ def build_character_json(char_id: str, dry_run: bool) -> int:
 
     data = read_json(json_path)
     missing = 0
-    media_fields = ["images", "videos"]
+    media_fields = ["assets"]
     for field in media_fields:
         entries = data.get(field, []) or []
         for entry in entries:
@@ -222,17 +223,43 @@ def clean_dirs(dry_run: bool) -> None:
 def run_build(dry_run: bool) -> int:
     clean_dirs(dry_run)
 
-    chars = read_json(ROOT / "characters.json")
+    # Read character list from text file, generate index from per-character JSONs
+    index_path = ROOT / "character_index.txt"
+    if not index_path.exists():
+        log("MISSING", str(index_path.relative_to(ROOT)), "(character_index.txt)")
+        return 1
+
+    char_ids = [line.strip() for line in index_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    chars = []
     upscaled = 0
     copied = 0
     missing = 0
 
-    for char in chars:
-        cid = char["id"]
+    for cid in char_ids:
+        json_path = ROOT / "characters" / cid / f"{cid}.json"
+        if not json_path.exists():
+            log("MISSING", str(json_path.relative_to(ROOT)), f"(character json for {cid})")
+            missing += 1
+            continue
+        char_data = read_json(json_path)
+        chars.append({
+            "id": cid,
+            "name": char_data.get("name", {}),
+            "themeColor": char_data.get("themeColor", "#6366f1"),
+            "tagline": char_data.get("tagline")
+        })
         print()
         log("CHAR", cid)
         m = build_character_json(cid, dry_run)
         missing += m
+
+    # Write generated characters.json to _site/
+    if not dry_run:
+        out = SITE_DIR / "characters.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        with out.open("w", encoding="utf-8") as f:
+            json.dump(chars, f, indent="\t", ensure_ascii=False)
+        log("GEN", "characters.json", f"({len(chars)} characters)")
 
     print()
     missing += copy_static(dry_run)

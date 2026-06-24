@@ -13,36 +13,15 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{
-				"name": "Hair",
-				"hex": "#5ECDE3"
-			},
-			{
-				"name": "Eyes",
-				"hex": "#FFDA45"
-			},
-			{
-				"name": "Skin",
-				"hex": "#FFE4CF"
-			}
+			{ "name": "Hair",  "hex": "#5ECDE3" },
+			{ "name": "Eyes",  "hex": "#FFDA45" },
+			{ "name": "Skin",  "hex": "#FFE4CF" }
 		],
 		"secondary": [
-			{
-				"name": "Uniform",
-				"hex": "#ffffff"
-			},
-			{
-				"name": "Scarf",
-				"hex": "#1d323f"
-			},
-			{
-				"name": "Buttons",
-				"hex": "#e7e22f"
-			},
-			{
-				"name": "Boots",
-				"hex": "#000000"
-			}
+			{ "name": "Uniform", "hex": "#ffffff" },
+			{ "name": "Scarf",   "hex": "#1d323f" },
+			{ "name": "Buttons", "hex": "#e7e22f" },
+			{ "name": "Boots",   "hex": "#000000" }
 		]
 	},
 	"appearance": {
@@ -69,41 +48,12 @@
 		"SPD": 4,
 		"PWR": 1
 	},
-	"images": [
-		{
-			"src": "characters/captain/main.png",
-			"label": {
-				"en": "Main",
-				"jp": "メイン"
-			}
-		},
-		{
-			"src": "characters/captain/full_body_main.png",
-			"label": {
-				"en": "Full Body",
-				"jp": "メインデザイン フルボディ"
-			}
-		},
-		{
-			"src": "characters/captain/potrait_main.png",
-			"label": {
-				"en": "Potrait",
-				"jp": "ポートレート"
-			}
-		},
-		{
-			"src": "characters/captain/full_body_alt.png",
-			"label": {
-				"en": "Alt. Full Body",
-				"jp": "代替 フルボディ"
-			}
-		},
-		{
-			"src": "characters/captain/potrait_alt.png",
-			"label": {
-				"en": "Alt. Potrait",
-				"jp": "代替 ポートレート"
-			}
-		}
+	"assets": [
+		{ "type": "image", "src": "characters/captain/main.png",              "label": { "en": "Main", "jp": "メイン" }, "category": "official" },
+		{ "type": "image", "src": "characters/captain/full_body_main.png",     "label": { "en": "Full Body", "jp": "メインデザイン フルボディ" }, "category": "official" },
+		{ "type": "image", "src": "characters/captain/potrait_main.png",       "label": { "en": "Potrait", "jp": "ポートレート" }, "category": "official" },
+		{ "type": "image", "src": "characters/captain/full_body_alt.png",      "label": { "en": "Alt. Full Body", "jp": "代替 フルボディ" }, "category": "official" },
+		{ "type": "image", "src": "characters/captain/potrait_alt.png",        "label": { "en": "Alt. Potrait", "jp": "代替 ポートレート" }, "category": "official" },
+		{ "type": "image", "src": "characters/captain/reference_art.png",      "label": { "en": "Reference Sheet", "jp": "参考資料" }, "category": "reference" }
 	]
 }

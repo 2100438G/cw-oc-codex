@@ -1,0 +1,22 @@
+{
+	"official_art":   { "jp": "公式アート",         "en": "OFFICIAL ART" },
+	"commissioned":   { "jp": "委託作品",             "en": "COMMISSIONED" },
+	"profile":        { "jp": "プロフィール",         "en": "PROFILE" },
+	"appearance":     { "jp": "外見",                 "en": "APPEARANCE" },
+	"personality":    { "jp": "性格",                 "en": "PERSONALITY" },
+	"abilities":      { "jp": "能力",                 "en": "ABILITIES" },
+	"lore":           { "jp": "設定",                 "en": "LORE" },
+	"stats":          { "jp": "戦闘能力",              "en": "COMBAT STATS" },
+	"palette":        { "jp": "カラーパレット",        "en": "COLOR PALETTE" },
+	"age":            { "jp": "年齢",                 "en": "AGE" },
+	"height":         { "jp": "身長",                 "en": "HT" },
+	"select":         { "jp": "一つ選べ",              "en": "SELECT" },
+	"back":           { "jp": "キャラクター一覧",      "en": "ALL CHARACTERS" },
+	"scroll":         { "jp": "スクロール",            "en": "SCROLL" },
+	"loading":        { "jp": "ロード中",              "en": "LOADING" },
+	"project":        { "jp": "カードウォーズ",        "en": "Project: Card Wars" },
+	"archives":       { "jp": "キャラクターデザインアーカイブ", "en": "Character Design Archives" },
+	"download":       { "jp": "ダウンロード",          "en": "Download" },
+	"close":          { "jp": "閉じる",                "en": "Close" },
+	"navigate_hint":  { "jp": "← → 移動 · ESC 閉じる", "en": "← → Navigate · ESC Close" }
+}

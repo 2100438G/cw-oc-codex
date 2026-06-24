@@ -13,53 +13,28 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{
-				"name": "Hair",
-				"hex": "#3F2B2A"
-			},
-			{
-				"name": "Eyes",
-				"hex": "#E42F37"
-			},
-			{
-				"name": "Skin",
-				"hex": "#D4B8A2"
-			}
+			{ "name": "Hair",  "hex": "#3F2B2A" },
+			{ "name": "Eyes",  "hex": "#E42F37" },
+			{ "name": "Skin",  "hex": "#D4B8A2" }
 		],
 		"secondary": [
-			{
-				"name": "Shirt",
-				"hex": "#3f1b1a"
-			},
-			{
-				"name": "Coat",
-				"hex": "#222933"
-			},
-			{
-				"name": "Pants",
-				"hex": "#09090f"
-			},
-			{
-				"name": "Leaher Shoes",
-				"hex": "#09090f"
-			},
-			{
-				"name": "Belt and Thigh Strap",
-				"hex": "#fefefe"
-			}
+			{ "name": "Shirt",              "hex": "#3f1b1a" },
+			{ "name": "Coat",               "hex": "#222933" },
+			{ "name": "Pants",              "hex": "#09090f" },
+			{ "name": "Leather Shoes",      "hex": "#09090f" },
+			{ "name": "Belt and Thigh Strap","hex": "#fefefe" }
 		]
 	},
 	"appearance": {
-		"en": "Messy dark brown hair and red eyes. Wears a maroon shirt and black coat, usually over his shoulders. Very distinctive left fang. Has 2 knifes ready on slipped into his thigh strap.",
+		"en": "Messy dark brown hair and red eyes. Wears a maroon shirt and black coat, usually over his shoulders. Very distinctive left fang. Has 2 knives ready slipped into his thigh strap.",
 		"jp": "乱れたダークブラウンの髪と赤い目。マルーン色のシャツと黒いコートを着ており、コートはたいてい肩にかかっている。左の牙が非常に特徴的だ。太もものストラップには、いつでも使えるように2本のナイフが差し込まれている。"
 	},
 	"personality": {
-		"extra": "His rival [[]]",
-		"en": "Silent and observant. However, once in battle, he is extremely bloodthirsty and manicial.",
+		"en": "Silent and observant. However, once in battle, he is extremely bloodthirsty and maniacal.",
 		"jp": "物静かで観察力に優れている。しかし、一旦戦いに突入すると、極めて血に飢え、狂気じみた姿を見せる。"
 	},
 	"abilities": {
-		"en": "Using his agility and speed to throw knifes at his opponents. These knifes are imbued with ENTROPY, which allows PSYCHO to loosely control the trajectory, speed and recall them at will.",
+		"en": "Using his agility and speed to throw knives at his opponents. These knives are imbued with ENTROPY, which allows PSYCHO to loosely control the trajectory, speed and recall them at will.",
 		"jp": "その敏捷性とスピードを駆使して、敵にナイフを投げつける。これらのナイフには「エントロピー」が宿っており、サイコは軌道や速度をある程度制御したり、意のままに呼び戻したりすることができる。"
 	},
 	"lore": {
@@ -74,41 +49,14 @@
 		"SPD": 7,
 		"PWR": 3
 	},
-	"images": [
-		{
-			"src": "characters/psycho/main.png",
-			"label": {
-				"en": "Main",
-				"jp": "メイン"
-			}
-		},
-		{
-			"src": "characters/psycho/full_body_front_main.png",
-			"label": {
-				"en": "Full Body",
-				"jp": "メインデザイン フルボディ"
-			}
-		},
-		{
-			"src": "characters/psycho/potrait_main.png",
-			"label": {
-				"en": "Potrait",
-				"jp": "ポートレート"
-			}
-		},
-		{
-			"src": "characters/psycho/full_body_front_alt.png",
-			"label": {
-				"en": "Alt. Full Body",
-				"jp": "代替 フルボディ"
-			}
-		},
-		{
-			"src": "characters/psycho/potrait_alt.png",
-			"label": {
-				"en": "Alt. Potrait",
-				"jp": "代替 ポートレート"
-			}
-		}
+	"assets": [
+		{ "type": "image", "src": "characters/psycho/main.png",                    "label": { "en": "Main", "jp": "メイン" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/full_body_front_main.png",     "label": { "en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/full_body_back_main.png",      "label": { "en": "Full Body (Back)", "jp": "メインデザイン フルボディ (背面)" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/potrait_main.png",             "label": { "en": "Potrait", "jp": "ポートレート" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/full_body_front_alt.png",      "label": { "en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/full_body_back_alt.png",       "label": { "en": "Alt. Full Body (Back)", "jp": "代替 フルボディ (背面)" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/potrait_alt.png",              "label": { "en": "Alt. Potrait", "jp": "代替 ポートレート" }, "category": "official" },
+		{ "type": "image", "src": "characters/psycho/reference_art.png",            "label": { "en": "Reference Sheet", "jp": "参考資料" }, "category": "reference" }
 	]
 }
