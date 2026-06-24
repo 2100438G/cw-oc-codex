@@ -13,14 +13,14 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{ "name": "Hair",  "hex": "#5ECDE3" },
-			{ "name": "Eyes",  "hex": "#FFDA45" },
-			{ "name": "Skin",  "hex": "#FFE4CF" }
+			{"name": "Hair",	"hex": "#5ECDE3"},
+			{"name": "Eyes",	"hex": "#FFDA45"},
+			{"name": "Skin",	"hex": "#FFE4CF"}
 		],
 		"secondary": [
-			{ "name": "Shirt", "hex": "#242833" },
-			{ "name": "Pants", "hex": "#AB8647" },
-			{ "name": "Boots", "hex": "#4D606E" }
+			{"name": "Shirt",	"hex": "#242833"},
+			{"name": "Pants",	"hex": "#AB8647"},
+			{"name": "Boots",	"hex": "#4D606E"}
 		]
 	},
 	"appearance": {
@@ -48,23 +48,23 @@
 		"PWR": 3
 	},
 	"assets": [
-		{ "type": "image", "src": "characters/engineer/main.png",               "label": { "en": "Main", "jp": "メイン" }, "category": "official" },
-		{ "type": "image", "src": "characters/engineer/full_body_main.png",      "label": { "en": "Full Body", "jp": "メインデザイン フルボディ" }, "category": "official" },
-		{ "type": "image", "src": "characters/engineer/potrait_main.png",        "label": { "en": "Potrait", "jp": "ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/engineer/full_body_alt.png",       "label": { "en": "Alt. Full Body", "jp": "代替 フルボディ" }, "category": "official" },
-		{ "type": "image", "src": "characters/engineer/potrait_alt.png",         "label": { "en": "Alt. Potrait", "jp": "代替 ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/engineer/reference_art.png",       "label": { "en": "Reference Sheet", "jp": "参考資料" }, "category": "reference" },
-		{ "type": "image", "src": "characters/engineer/skeb/krei_ss_-2.png",    "label": { "en": "【SKEB】krei_ss_ #2", "jp": "" }, "category": "skeb", "artist": "krei_ss_" },
-		{ "type": "image", "src": "characters/engineer/skeb/krei_ss_-1.png",    "label": { "en": "【SKEB】krei_ss_ #1", "jp": "" }, "category": "skeb", "artist": "krei_ss_" },
-		{ "type": "image", "src": "characters/engineer/skeb/Asuke_0722.png",    "label": { "en": "【SKEB】Asuke_0722", "jp": "" }, "category": "skeb", "artist": "Asuke_0722" },
-		{ "type": "image", "src": "characters/engineer/skeb/niisiro_F.png",     "label": { "en": "【SKEB】niisiro_F", "jp": "" }, "category": "skeb", "artist": "niisiro_F" },
-		{ "type": "image", "src": "characters/engineer/skeb/no_o_alcohol-1.png","label": { "en": "【SKEB】no_o_alcohol #1", "jp": "" }, "category": "skeb", "artist": "no_o_alcohol" },
-		{ "type": "image", "src": "characters/engineer/skeb/no_o_alcohol-2.png","label": { "en": "【SKEB】no_o_alcohol #2", "jp": "" }, "category": "skeb", "artist": "no_o_alcohol" },
-		{ "type": "image", "src": "characters/engineer/skeb/kuroshima_neko.png","label": { "en": "【SKEB】kuroshima_neko", "jp": "" }, "category": "skeb", "artist": "kuroshima_neko" },
-		{ "type": "image", "src": "characters/engineer/skeb/Asagohan_osushi.png","label": { "en": "【SKEB】Asagohan_osushi", "jp": "" }, "category": "skeb", "artist": "Asagohan_osushi" },
-		{ "type": "image", "src": "characters/engineer/skeb/kihir_o.png",       "label": { "en": "【SKEB】kihir_o", "jp": "" }, "category": "skeb", "artist": "kihir_o" },
-		{ "type": "image", "src": "characters/universal/skeb/Asagohan_osushi.png","label": { "en": "【SKEB】Asagohan_osushi (w/ Universal)", "jp": "" }, "category": "skeb", "artist": "Asagohan_osushi" },
-		{ "type": "image", "src": "characters/engineer/f3x_texture.png",        "label": { "en": "F3X Hammer Texture", "jp": "F3X ハンマーテクスチャ" }, "category": "other" },
-		{ "type": "video", "src": "characters/engineer/3d_weapon.mp4",          "label": { "en": "F3X Hammer", "jp": "F3X ハンマー" } }
+		{"type": "image", "src": "characters/engineer/main.png",						"label": {"en": "Main", "jp": "メイン"}, "category": "official"},
+		{"type": "image", "src": "characters/engineer/full_body_main.png",				"label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}, "category": "official"},
+		{"type": "image", "src": "characters/engineer/potrait_main.png",				"label": {"en": "Potrait", "jp": "ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/engineer/full_body_alt.png",				"label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}, "category": "official"},
+		{"type": "image", "src": "characters/engineer/potrait_alt.png",					"label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/engineer/reference_art.png",				"label": {"en": "Reference Sheet", "jp": "参考資料"}, "category": "reference"},
+		{"type": "image", "src": "characters/engineer/skeb/krei_ss_-2.png",				"label": {"en": "【SKEB】krei_ss_ #2", "jp": ""}, "category": "skeb", "artist": "krei_ss_"},
+		{"type": "image", "src": "characters/engineer/skeb/krei_ss_-1.png",				"label": {"en": "【SKEB】krei_ss_ #1", "jp": ""}, "category": "skeb", "artist": "krei_ss_"},
+		{"type": "image", "src": "characters/engineer/skeb/Asuke_0722.png",				"label": {"en": "【SKEB】Asuke_0722", "jp": ""}, "category": "skeb", "artist": "Asuke_0722"},
+		{"type": "image", "src": "characters/engineer/skeb/niisiro_F.png",				"label": {"en": "【SKEB】niisiro_F", "jp": ""}, "category": "skeb", "artist": "niisiro_F"},
+		{"type": "image", "src": "characters/engineer/skeb/no_o_alcohol-1.png",			"label": {"en": "【SKEB】no_o_alcohol #1", "jp": ""}, "category": "skeb", "artist": "no_o_alcohol"},
+		{"type": "image", "src": "characters/engineer/skeb/no_o_alcohol-2.png",			"label": {"en": "【SKEB】no_o_alcohol #2", "jp": ""}, "category": "skeb", "artist": "no_o_alcohol"},
+		{"type": "image", "src": "characters/engineer/skeb/kuroshima_neko.png",			"label": {"en": "【SKEB】kuroshima_neko", "jp": ""}, "category": "skeb", "artist": "kuroshima_neko"},
+		{"type": "image", "src": "characters/engineer/skeb/Asagohan_osushi.png",		"label": {"en": "【SKEB】Asagohan_osushi", "jp": ""}, "category": "skeb", "artist": "Asagohan_osushi"},
+		{"type": "image", "src": "characters/engineer/skeb/kihir_o.png",				"label": {"en": "【SKEB】kihir_o", "jp": ""}, "category": "skeb", "artist": "kihir_o"},
+		{"type": "image", "src": "characters/universal/skeb/Asagohan_osushi.png",		"label": {"en": "【SKEB】Asagohan_osushi (w/ Universal)", "jp": ""}, "category": "skeb", "artist": "Asagohan_osushi"},
+		{"type": "image", "src": "characters/engineer/f3x_texture.png",					"label": {"en": "F3X Hammer Texture", "jp": "F3X ハンマーテクスチャ"}, "category": "other"},
+		{"type": "video", "src": "characters/engineer/3d_weapon.mp4",					"label": {"en": "F3X Hammer", "jp": "F3X ハンマー"} }
 	]
 }

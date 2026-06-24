@@ -13,17 +13,17 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{ "name": "Hair",  "hex": "#3F2B2A" },
-			{ "name": "Eyes",  "hex": "#E42F37" },
-			{ "name": "Skin",  "hex": "#D4B8A2" }
+			{"name": "Hair",		"hex": "#3F2B2A"},
+			{"name": "Eyes",		"hex": "#E42F37"},
+			{"name": "Skin",		"hex": "#D4B8A2"}
 		],
 		"secondary": [
-			{ "name": "Shirt",       "hex": "#5E2E6B" },
-			{ "name": "Jacket",      "hex": "#F8F8F8" },
-			{ "name": "Pants",       "hex": "#1A1A1A" },
-			{ "name": "Sneakers",    "hex": "#1A1A1A" },
-			{ "name": "Sneaker Sole","hex": "#BFBFBF" },
-			{ "name": "Crystal",     "hex": "#8C3FA0" }
+			{"name": "Shirt",		"hex": "#5E2E6B"},
+			{"name": "Jacket",		"hex": "#F8F8F8"},
+			{"name": "Pants",		"hex": "#1A1A1A"},
+			{"name": "Sneakers",	"hex": "#1A1A1A"},
+			{"name": "Sneaker Sole","hex": "#BFBFBF"},
+			{"name": "Crystal",		"hex": "#8C3FA0"}
 		]
 	},
 	"appearance": {
@@ -51,20 +51,20 @@
 		"PWR": 8
 	},
 	"assets": [
-		{ "type": "image", "src": "characters/universal/main.png",                  "label": { "en": "Main", "jp": "メイン" }, "category": "official" },
-		{ "type": "image", "src": "characters/universal/full_body_main.png",         "label": { "en": "Full Body", "jp": "メインデザイン フルボディ" }, "category": "official" },
-		{ "type": "image", "src": "characters/universal/potrait_main.png",           "label": { "en": "Potrait", "jp": "ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/universal/full_body_alt.png",          "label": { "en": "Alt. Full Body", "jp": "代替 フルボディ" }, "category": "official" },
-		{ "type": "image", "src": "characters/universal/potrait_alt.png",            "label": { "en": "Alt. Potrait", "jp": "代替 ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/universal/reference_art.png",          "label": { "en": "Reference Sheet", "jp": "参考資料" }, "category": "reference" },
-		{ "type": "image", "src": "characters/universal/portal.png",                 "label": { "en": "Portal", "jp": "ポータル" }, "category": "other" },
-		{ "type": "image", "src": "characters/universal/misc.png",                   "label": { "en": "Misc.", "jp": "その他" }, "category": "other" },
-		{ "type": "image", "src": "characters/universal/skeb/kasuteraya_nyan-1.png","label": { "en": "【SKEB】kasuteraya_nyan #1", "jp": "" }, "category": "skeb", "artist": "kasuteraya_nyan" },
-		{ "type": "image", "src": "characters/universal/skeb/kwhgsashi_mi.png",     "label": { "en": "【SKEB】kwhgsashi_mi", "jp": "" }, "category": "skeb", "artist": "kwhgsashi_mi" },
-		{ "type": "image", "src": "characters/universal/skeb/anohi_moicido.png",    "label": { "en": "【SKEB】anohi_moicido", "jp": "" }, "category": "skeb", "artist": "anohi_moicido" },
-		{ "type": "image", "src": "characters/universal/skeb/kihir_o.png",          "label": { "en": "【SKEB】kihir_o", "jp": "" }, "category": "skeb", "artist": "kihir_o" },
-		{ "type": "image", "src": "characters/universal/skeb/jahopotto.jpg",        "label": { "en": "【SKEB】jahopotto", "jp": "" }, "category": "skeb", "artist": "jahopotto" },
-		{ "type": "image", "src": "characters/universal/skeb/Asagohan_osushi.png",  "label": { "en": "【SKEB】Asagohan_osushi", "jp": "" }, "category": "skeb", "artist": "Asagohan_osushi" },
-		{ "type": "image", "src": "characters/engineer/skeb/kihir_o.png",           "label": { "en": "【SKEB】kihir_o (w/ Engineer)", "jp": "" }, "category": "skeb", "artist": "kihir_o" }
+		{"type": "image", "src": "characters/universal/main.png",						"label": {"en": "Main", "jp": "メイン"}, "category": "official"},
+		{"type": "image", "src": "characters/universal/full_body_main.png",				"label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}, "category": "official"},
+		{"type": "image", "src": "characters/universal/potrait_main.png",				"label": {"en": "Potrait", "jp": "ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/universal/full_body_alt.png",				"label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}, "category": "official"},
+		{"type": "image", "src": "characters/universal/potrait_alt.png",				"label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/universal/reference_art.png",				"label": {"en": "Reference Sheet", "jp": "参考資料"}, "category": "reference"},
+		{"type": "image", "src": "characters/universal/portal.png",						"label": {"en": "Portal", "jp": "ポータル"}, "category": "other"},
+		{"type": "image", "src": "characters/universal/misc.png",						"label": {"en": "Misc.", "jp": "その他"}, "category": "other"},
+		{"type": "image", "src": "characters/universal/skeb/kasuteraya_nyan-1.png",		"label": {"en": "【SKEB】kasuteraya_nyan #1", "jp": ""}, "category": "skeb", "artist": "kasuteraya_nyan"},
+		{"type": "image", "src": "characters/universal/skeb/kwhgsashi_mi.png",			"label": {"en": "【SKEB】kwhgsashi_mi", "jp": ""}, "category": "skeb", "artist": "kwhgsashi_mi"},
+		{"type": "image", "src": "characters/universal/skeb/anohi_moicido.png",			"label": {"en": "【SKEB】anohi_moicido", "jp": ""}, "category": "skeb", "artist": "anohi_moicido"},
+		{"type": "image", "src": "characters/universal/skeb/kihir_o.png",				"label": {"en": "【SKEB】kihir_o", "jp": ""}, "category": "skeb", "artist": "kihir_o"},
+		{"type": "image", "src": "characters/universal/skeb/jahopotto.jpg",				"label": {"en": "【SKEB】jahopotto", "jp": ""}, "category": "skeb", "artist": "jahopotto"},
+		{"type": "image", "src": "characters/universal/skeb/Asagohan_osushi.png",		"label": {"en": "【SKEB】Asagohan_osushi", "jp": ""}, "category": "skeb", "artist": "Asagohan_osushi"},
+		{"type": "image", "src": "characters/engineer/skeb/kihir_o.png",				"label": {"en": "【SKEB】kihir_o (w/ Engineer)", "jp": ""}, "category": "skeb", "artist": "kihir_o"}
 	]
 }

@@ -13,16 +13,16 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{ "name": "Hair",  "hex": "#3F2B2A" },
-			{ "name": "Eyes",  "hex": "#E42F37" },
-			{ "name": "Skin",  "hex": "#D4B8A2" }
+			{"name": "Hair",					"hex": "#3F2B2A"},
+			{"name": "Eyes",					"hex": "#E42F37"},
+			{"name": "Skin",					"hex": "#D4B8A2"}
 		],
 		"secondary": [
-			{ "name": "Shirt",              "hex": "#3f1b1a" },
-			{ "name": "Coat",               "hex": "#222933" },
-			{ "name": "Pants",              "hex": "#09090f" },
-			{ "name": "Leather Shoes",      "hex": "#09090f" },
-			{ "name": "Belt and Thigh Strap","hex": "#fefefe" }
+			{"name": "Shirt",					"hex": "#3f1b1a"},
+			{"name": "Coat",					"hex": "#222933"},
+			{"name": "Pants",					"hex": "#09090f"},
+			{"name": "Leather Shoes",			"hex": "#09090f"},
+			{"name": "Belt and Thigh Strap",	"hex": "#fefefe"}
 		]
 	},
 	"appearance": {
@@ -50,13 +50,13 @@
 		"PWR": 3
 	},
 	"assets": [
-		{ "type": "image", "src": "characters/psycho/main.png",                    "label": { "en": "Main", "jp": "メイン" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/full_body_front_main.png",     "label": { "en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/full_body_back_main.png",      "label": { "en": "Full Body (Back)", "jp": "メインデザイン フルボディ (背面)" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/potrait_main.png",             "label": { "en": "Potrait", "jp": "ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/full_body_front_alt.png",      "label": { "en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/full_body_back_alt.png",       "label": { "en": "Alt. Full Body (Back)", "jp": "代替 フルボディ (背面)" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/potrait_alt.png",              "label": { "en": "Alt. Potrait", "jp": "代替 ポートレート" }, "category": "official" },
-		{ "type": "image", "src": "characters/psycho/reference_art.png",            "label": { "en": "Reference Sheet", "jp": "参考資料" }, "category": "reference" }
+		{"type": "image", "src": "characters/psycho/main.png",							"label": {"en": "Main", "jp": "メイン"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/full_body_front_main.png",			"label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/full_body_back_main.png",			"label": {"en": "Full Body (Back)", "jp": "メインデザイン フルボディ (背面)"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/potrait_main.png",					"label": {"en": "Potrait", "jp": "ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/full_body_front_alt.png",			"label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/full_body_back_alt.png",			"label": {"en": "Alt. Full Body (Back)", "jp": "代替 フルボディ (背面)"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/potrait_alt.png",					"label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}, "category": "official"},
+		{"type": "image", "src": "characters/psycho/reference_art.png",					"label": {"en": "Reference Sheet", "jp": "参考資料"}, "category": "reference"}
 	]
 }
