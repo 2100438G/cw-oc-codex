@@ -13,7 +13,7 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{"name": "Hair",	"hex": "#5ECDE3"},
+			{"name": "Hair",	"hex": "#A9D1E6"},
 			{"name": "Eyes",	"hex": "#FFDA45"},
 			{"name": "Skin",	"hex": "#FFE4CF"}
 		],
