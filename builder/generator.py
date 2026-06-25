@@ -27,12 +27,15 @@ def flatten_assets(data: dict) -> list:
     for _vname, vtypes in variants.items():
         for _tname, entry in vtypes.items():
             if entry.get("src"):
-                assets.append({
+                item = {
                     "type": infer_type(entry["src"]),
                     "src": entry["src"],
                     "label": entry.get("label", {}),
                     "category": "official",
-                })
+                }
+                if entry.get("omit_website"):
+                    item["omit_website"] = True
+                assets.append(item)
 
     misc = data.get("misc", {})
     for _group, entries in misc.items():

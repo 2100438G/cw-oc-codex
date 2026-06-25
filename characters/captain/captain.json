@@ -54,10 +54,15 @@
 			"full_body": {"src": "characters/captain/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
 			"portrait":  {"src": "characters/captain/portrait_main.png",  "label": {"en": "Portrait", "jp": "ポートレート"}}
 		},
-		"alt": {
-			"full_body": {"src": "characters/captain/full_body_alt.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
-			"portrait":  {"src": "characters/captain/portrait_alt.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
+		"alt 1": {
+			"full_body": {"src": "characters/captain/full_body_alt_1.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}, "omit_website": true},
+			"portrait":  {"src": "characters/captain/portrait_alt_1.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}, "omit_website": true}
+		},
+		"alt 2": {
+			"full_body": {"src": "characters/captain/full_body_alt_2.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
+			"portrait":  {"src": "characters/captain/portrait_alt_2.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
 		}
+
 	},
 	"misc": {
 		"equipment": [
