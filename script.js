@@ -510,18 +510,30 @@ function animateHeroCutin() {
 
 	const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-	tl.to(speedlines, { opacity: 0.4, x: 0, duration: 0.25 })
-		.to(leftB, { left: '2vw', top: '36%', opacity: 0.55, duration: 0.4, ease: 'power4.out' }, '-=0.18')
-		.to(rightB, { right: '2vw', top: '48%', opacity: 0.55, duration: 0.4, ease: 'power4.out' }, '-=0.34')
+	tl.to(speedlines, { opacity: 1.0, x: 0, duration: 0.25 })
 
-		.to(img, { opacity: 1, scale: 1, duration: 0.25 }, '-=0.25')
-		.to(speedlines, { opacity: 0.12, x: 25, duration: 1 }, '-=0.15')
+		.to(leftB, { left: '2vw', top: '36%', opacity: 0.55, duration: 0.5, ease: 'power4.out' })
+		.to(rightB, { right: '2vw', top: '48%', opacity: 0.55, duration: 0.5, ease: 'power4.out' }, '<')
+		.to(img, { opacity: 1, scale: 1, duration: 3.95 }, '<')
+		.to(speedlines, { opacity: 0.12, x: 25, duration: 1 }, '<')
 
-		.to(els.heroBadges, { opacity: 1, y: 0, duration: 0.15 }, '-=0.25')
-		.to(els.heroTitlePrimary, { opacity: 1, y: 0, duration: 0.22, ease: 'power4.out' }, '-=0.1')
-		.to(els.heroTitleSecondary, { opacity: 1, y: 0, duration: 0.12 }, '-=0.12')
-		.to('.hero-underline', { opacity: 1, scaleX: 1, duration: 0.18 }, '-=0.08')
-		.to(els.heroTagline, { opacity: 1, y: 0, duration: 0.15 }, '-=0.1');
+		.to(els.heroBadges, { opacity: 1, y: 0, duration: 0.15 }, '<0.3')
+		.to(els.heroTitlePrimary, { opacity: 1, y: 0, duration: 2.22, ease: 'power4.out' }, '<-0.1')
+		.to(els.heroTitleSecondary, { opacity: 1, y: 0, duration: 2.12 }, '<0.1')
+		.to('.hero-underline', { opacity: 1, scaleX: 1, duration: 1.18 }, '<0.19')
+		.to(els.heroTagline, { opacity: 1, y: 0, duration: 1.15 }, '<0.25');
+
+	// OLD
+	// tl.to(speedlines, { opacity: 0.4, x: 0, duration: 0.25 })
+	// 	.to(leftB, { left: '2vw', top: '36%', opacity: 0.55, duration: 0.4, ease: 'power4.out' }, '-=0.18')
+	// 	.to(rightB, { right: '2vw', top: '48%', opacity: 0.55, duration: 0.4, ease: 'power4.out' }, '-=0.34')
+	// 	.to(img, { opacity: 1, scale: 1, duration: 0.25 }, '-=0.25')
+	// 	.to(speedlines, { opacity: 0.12, x: 25, duration: 1 }, '-=0.15')
+	// 	.to(els.heroBadges, { opacity: 1, y: 0, duration: 0.15 }, '-=0.25')
+	// 	.to(els.heroTitlePrimary, { opacity: 1, y: 0, duration: 0.22, ease: 'power4.out' }, '-=0.1')
+	// 	.to(els.heroTitleSecondary, { opacity: 1, y: 0, duration: 0.12 }, '-=0.12')
+	// 	.to('.hero-underline', { opacity: 1, scaleX: 1, duration: 0.18 }, '-=0.08')
+	// 	.to(els.heroTagline, { opacity: 1, y: 0, duration: 0.15 }, '-=0.1');
 
 	state.heroTimeline = tl;
 
