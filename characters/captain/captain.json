@@ -48,11 +48,20 @@
 		"SPD": 4,
 		"PWR": 1
 	},
-	"assets": [
-		{"type": "image", "src": "characters/captain/main.png",					"label": {"en": "Main", "jp": "メイン"}, "category": "official"},
-		{"type": "image", "src": "characters/captain/full_body_main.png",		"label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}, "category": "official"},
-		{"type": "image", "src": "characters/captain/potrait_main.png",			"label": {"en": "Potrait", "jp": "ポートレート"}, "category": "official"},
-		{"type": "image", "src": "characters/captain/full_body_alt.png",		"label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}, "category": "official"},
-		{"type": "image", "src": "characters/captain/potrait_alt.png",			"label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}, "category": "official"}
-	]
+	"main": {"src": "characters/captain/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body": {"src": "characters/captain/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
+			"potrait":   {"src": "characters/captain/potrait_main.png",  "label": {"en": "Potrait", "jp": "ポートレート"}}
+		},
+		"alt": {
+			"full_body": {"src": "characters/captain/full_body_alt.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
+			"potrait":   {"src": "characters/captain/potrait_alt.png",   "label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}}
+		}
+	},
+	"misc":{
+		"equipment": [
+			{"src": "characters/captain/anchor.png",   "label": {"en": "Peak Cap Logo", "jp": "Uh"}}
+		]
+	}
 }

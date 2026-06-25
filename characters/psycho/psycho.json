@@ -49,13 +49,17 @@
 		"SPD": 7,
 		"PWR": 3
 	},
-	"assets": [
-		{"type": "image", "src": "characters/psycho/main.png",							"label": {"en": "Main", "jp": "メイン"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/full_body_front_main.png",			"label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/full_body_back_main.png",			"label": {"en": "Full Body (Back)", "jp": "メインデザイン フルボディ (背面)"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/potrait_main.png",					"label": {"en": "Potrait", "jp": "ポートレート"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/full_body_front_alt.png",			"label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/full_body_back_alt.png",			"label": {"en": "Alt. Full Body (Back)", "jp": "代替 フルボディ (背面)"}, "category": "official"},
-		{"type": "image", "src": "characters/psycho/potrait_alt.png",					"label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}, "category": "official"}
-	]
+	"main": {"src": "characters/psycho/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body_front": {"src": "characters/psycho/full_body_front_main.png", "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
+			"full_body_back":  {"src": "characters/psycho/full_body_back_main.png",  "label": {"en": "Full Body (Back)",  "jp": "メインデザイン フルボディ (背面)"}},
+			"potrait":         {"src": "characters/psycho/potrait_main.png",          "label": {"en": "Potrait",           "jp": "ポートレート"}}
+		},
+		"alt": {
+			"full_body_front": {"src": "characters/psycho/full_body_front_alt.png",  "label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}},
+			"full_body_back":  {"src": "characters/psycho/full_body_back_alt.png",   "label": {"en": "Alt. Full Body (Back)",  "jp": "代替 フルボディ (背面)"}},
+			"potrait":         {"src": "characters/psycho/potrait_alt.png",           "label": {"en": "Alt. Potrait",           "jp": "代替 ポートレート"}}
+		}
+	}
 }

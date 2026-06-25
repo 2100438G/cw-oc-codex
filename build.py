@@ -24,6 +24,8 @@ from pathlib import Path
 
 from PIL import Image
 
+import refsheet
+
 # --------------------------------------------------------------------------
 # Config
 # --------------------------------------------------------------------------
@@ -156,6 +158,87 @@ def process_media_entry(src: str, dst_src: Path, dry_run: bool):
     return True
 
 
+def infer_type(src: str) -> str:
+    ext = Path(src).suffix.lower()
+    if ext in (".mp4", ".webm"):
+        return "video"
+    return "image"
+
+
+def flatten_assets(data: dict) -> list:
+    """Convert new schema (variants/misc/gallery/main) to flat assets[] array.
+
+    If the JSON already has a flat "assets" key (legacy), return it unchanged.
+    """
+    char_id = data.get("id", "")
+
+    # Legacy compatibility: if assets[] already exists, use it as-is
+    if "assets" in data and isinstance(data["assets"], list):
+        return data["assets"]
+
+    assets = []
+
+    # 1. "main" -> official
+    main = data.get("main")
+    if main and main.get("src"):
+        assets.append({
+            "type": infer_type(main["src"]),
+            "src": main["src"],
+            "label": main.get("label", {}),
+            "category": "official",
+        })
+
+    # 2. variants.*.* -> official
+    variants = data.get("variants", {})
+    for _vname, vtypes in variants.items():
+        for _tname, entry in vtypes.items():
+            if entry.get("src"):
+                assets.append({
+                    "type": infer_type(entry["src"]),
+                    "src": entry["src"],
+                    "label": entry.get("label", {}),
+                    "category": "official",
+                })
+
+    # 3. misc.*.[] -> other
+    misc = data.get("misc", {})
+    for _group, entries in misc.items():
+        for entry in entries:
+            if entry.get("src"):
+                assets.append({
+                    "type": infer_type(entry["src"]),
+                    "src": entry["src"],
+                    "label": entry.get("label", {}),
+                    "category": "other",
+                })
+
+    # 4. gallery[] -> skeb
+    gallery = data.get("gallery", [])
+    for entry in gallery:
+        if entry.get("src"):
+            item = {
+                "type": infer_type(entry["src"]),
+                "src": entry["src"],
+                "label": entry.get("label", {}),
+                "category": "skeb",
+            }
+            if entry.get("artist"):
+                item["artist"] = entry["artist"]
+            assets.append(item)
+
+    # 5. Auto-detect existing reference_art.png (manual reference sheet)
+    ref_path = ROOT / f"characters/{char_id}/reference_art.png"
+    if ref_path.exists():
+        assets.append({
+            "type": "image",
+            "src": f"characters/{char_id}/reference_art.png",
+            "label": {"en": "Reference Sheet", "jp": "参考資料"},
+            "category": "reference",
+        })
+
+    return assets
+
+
 def build_character_json(char_id: str, dry_run: bool) -> int:
     """Process one character. Returns count of MISSING entries."""
     json_path = ROOT / "characters" / char_id / f"{char_id}.json"
@@ -164,22 +247,35 @@ def build_character_json(char_id: str, dry_run: bool) -> int:
         return 1
 
     data = read_json(json_path)
+
+    # Flatten new schema -> assets[] for frontend compatibility
+    data["assets"] = flatten_assets(data)
+
+    # Generate reference sheet from variants (before processing assets)
+    refsheet_src = refsheet.generate(data, dry_run=dry_run, log_fn=log)
+    if refsheet_src:
+        # Avoid duplicating reference_sheet.png if already auto-detected
+        existing_refs = {e["src"] for e in data["assets"]}
+        if refsheet_src not in existing_refs:
+            data["assets"].append({
+                "type": "image",
+                "src": refsheet_src,
+                "label": {"en": "Reference Sheet (Auto)", "jp": "参考資料 (自動)"},
+                "category": "reference",
+            })
+
     missing = 0
-    media_fields = ["assets"]
-    for field in media_fields:
-        entries = data.get(field, []) or []
-        for entry in entries:
-            src = entry.get("src")
-            if not src:
-                continue
-            # dst_src is the path relative to assets/ that mirrors the source path
-            dst_src = Path(src)
-            result = process_media_entry(src, dst_src, dry_run)
-            if result is None:
-                missing += 1
-                entry["pixelArt"] = False
-            else:
-                entry["pixelArt"] = result
+    for entry in data["assets"]:
+        src = entry.get("src")
+        if not src:
+            continue
+        dst_src = Path(src)
+        result = process_media_entry(src, dst_src, dry_run)
+        if result is None:
+            missing += 1
+            entry["pixelArt"] = False
+        else:
+            entry["pixelArt"] = result
 
     # Write built JSON to _site/characters/<id>/<id>.json
     if not dry_run:
