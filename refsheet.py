@@ -1,7 +1,7 @@
 """Reference sheet generator using Pillow.
 
-Composites official variant art, character info, and color palette into a
-styled reference-sheet PNG with a white/light background.
+Composites official variant art, misc items, character info, and color palette
+into a styled reference-sheet PNG with a white/light background.
 
 Called from build.py during the build pipeline.
 """
@@ -11,6 +11,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
+FONT_PATH = ROOT / "fonts" / "MPLUS1p-Bold.ttf"
 
 # ---------- layout constants ----------
 PAGE_BG = "#F0F0F0"
@@ -21,20 +22,20 @@ TEXT_GRAY = "#666666"
 TEXT_LIGHT = "#999999"
 
 PAGE_WIDTH = 1600
-PAD_OUTER = 80
-PAD_INNER = 60
+PAD_OUTER = 32
+PAD_INNER = 36
 CONTENT_WIDTH = PAGE_WIDTH - 2 * (PAD_OUTER + PAD_INNER)
 
 UPSCALE_THRESHOLD = 512
 UPSCALE_FACTOR = 8
 
-IMAGE_GAP = 40
+IMAGE_GAP = 24
 
-SECTION_GAP = 48
-HEADING_GAP = 28
-TEXT_GAP = 10
-LABEL_GAP = 20
-PALETTE_GAP = 32
+SECTION_GAP = 20
+HEADING_GAP = 14
+TEXT_GAP = 6
+LABEL_GAP = 12
+PALETTE_GAP = 20
 
 # ---------- helpers ----------
 
@@ -44,50 +45,16 @@ def _hex(name):
     return tuple(int(v[i : i + 2], 16) for i in (0, 2, 4))
 
 
-_FONT_CACHE = {}
-
-
-def _load_font(size, bold=False, cjk=False):
-    key = (size, bold, cjk)
-    cached = _FONT_CACHE.get(key)
-    if cached:
-        return cached
-
-    if cjk:
-        candidates = [
-            "C:/Windows/Fonts/meiryob.ttc",
-            "C:/Windows/Fonts/meiryo.ttc",
-            "C:/Windows/Fonts/msgothic.ttc",
-            "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
-            "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
-            "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
-        ]
-    elif bold:
-        candidates = [
-            "C:/Windows/Fonts/arialbd.ttf",
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
-            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
-        ]
-    else:
-        candidates = [
-            "C:/Windows/Fonts/arial.ttf",
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-        ]
-
-    for p in candidates:
-        if Path(p).exists():
-            font = ImageFont.truetype(p, size)
-            _FONT_CACHE[key] = font
-            return font
-
-    font = ImageFont.load_default()
-    _FONT_CACHE[key] = font
-    return font
+def _font(size):
+    return ImageFont.truetype(str(FONT_PATH), size)
 
 
 def _bbox_h(draw, text, font):
     return draw.textbbox((0, 0), text, font=font)[3]
+
+
+def _text_w(draw, text, font):
+    return draw.textbbox((0, 0), text, font=font)[2]
 
 
 def _label_for(tname):
@@ -106,14 +73,44 @@ def _load_prep(src_path):
     return img
 
 
+# ---------- layout helpers ----------
+
+
+def _layout_group(imgs, labels, scale):
+    """Scale all images by *scale*, then flow-wrap into rows.
+    Each image keeps its own height.  Returns list of rows."""
+    scaled = []
+    for img, lbl in zip(imgs, labels):
+        if scale < 1.0:
+            nw = int(img.size[0] * scale)
+            nh = int(img.size[1] * scale)
+            img = img.resize((nw, nh), Image.NEAREST)
+        scaled.append((lbl, img))
+
+    rows = []
+    cur_row = []
+    cur_w = 0
+    for lbl, img in scaled:
+        iw = img.size[0]
+        if cur_row and cur_w + IMAGE_GAP + iw > CONTENT_WIDTH:
+            rows.append(cur_row)
+            cur_row = []
+            cur_w = 0
+        cur_row.append((lbl, img))
+        cur_w += iw + (IMAGE_GAP if len(cur_row) > 1 else 0)
+
+    if cur_row:
+        rows.append(cur_row)
+    return rows
+
+
 # ---------- main generator ----------
 
 
 def generate(char_data, dry_run=False, log_fn=None):
     char_id = char_data.get("id", "")
     variants = char_data.get("variants", {})
-    if not variants:
-        return None
+    misc = char_data.get("misc", {})
 
     src_rel = f"characters/{char_id}/reference_sheet.png"
     out_path = ROOT / src_rel
@@ -126,14 +123,14 @@ def generate(char_data, dry_run=False, log_fn=None):
         _log("REFSHEET", src_rel, "(dry-run)")
         return src_rel
 
-    # ---- fonts (all bold for readability) ------------------------------
-    f_title = _load_font(46, bold=True)
-    f_jpname = _load_font(30, cjk=True)
-    f_section = _load_font(32, bold=True)
-    f_info = _load_font(24, bold=True)
-    f_label = _load_font(20, bold=True)
-    f_swatch_name = _load_font(19, bold=True)
-    f_swatch_hex = _load_font(16, bold=True)
+    # ---- fonts ---------------------------------------------------------
+    f_title = _font(46)
+    f_jpname = _font(30)
+    f_section = _font(32)
+    f_info = _font(24)
+    f_label = _font(20)
+    f_swatch_name = _font(19)
+    f_swatch_hex = _font(16)
 
     # ---- colors --------------------------------------------------------
     accent = _hex(char_data.get("themeColor", "#6366f1"))
@@ -144,10 +141,13 @@ def generate(char_data, dry_run=False, log_fn=None):
     c_gray = _hex(TEXT_GRAY)
     c_light = _hex(TEXT_LIGHT)
 
-    # ---- load variant images (8x upscale only) -------------------------
-    vimgs = {}
-    all_missing = True
-    for vname, vtypes in variants.items():
+    # ---- load all images (variants + misc) -----------------------------
+    all_groups = []  # [(name, imgs, labels)]
+
+    for vname in variants:
+        vtypes = variants[vname]
+        imgs = []
+        labels = []
         for tname, entry in vtypes.items():
             src = entry.get("src", "")
             if not src:
@@ -155,38 +155,51 @@ def generate(char_data, dry_run=False, log_fn=None):
             sp = ROOT / src
             if not sp.exists():
                 continue
-            all_missing = False
-            vimgs[(vname, tname)] = _load_prep(sp)
+            imgs.append(_load_prep(sp))
+            labels.append(_label_for(tname))
+        if imgs:
+            all_groups.append((vname.upper(), imgs, labels))
 
-    if all_missing:
+    for group_name, entries in misc.items():
+        imgs = []
+        labels = []
+        for e in entries:
+            src = e.get("src", "")
+            if not src:
+                continue
+            if Path(src).suffix.lower() in (".mp4", ".webm"):
+                continue
+            sp = ROOT / src
+            if not sp.exists():
+                continue
+            imgs.append(_load_prep(sp))
+            label = e.get("label", {}).get("en", "")
+            if not label:
+                label = Path(src).stem.replace("_", " ").title()
+            labels.append(label)
+        if imgs:
+            all_groups.append((group_name.upper(), imgs, labels))
+
+    if not all_groups:
         return None
 
-    # ---- build variant blocks ------------------------------------------
-    var_blocks = []
-    for vname in variants:
-        keys = [(vname, t) for t in variants[vname].keys() if (vname, t) in vimgs]
-        if not keys:
-            continue
+    # ---- compute global scale ------------------------------------------
+    # Find the widest group (sum of image widths + gaps) and compute the
+    # power-of-2 scale needed so that every group fits in one row.
+    global_scale = 1.0
+    for _gname, imgs, _labels in all_groups:
+        total_w = sum(i.size[0] for i in imgs) + IMAGE_GAP * (len(imgs) - 1)
+        s = 1.0
+        while total_w * s > CONTENT_WIDTH:
+            s /= 2
+        if s < global_scale:
+            global_scale = s
 
-        imgs = [vimgs[k] for k in keys]
-        total_w = sum(i.width for i in imgs) + IMAGE_GAP * (len(imgs) - 1)
-
-        # Scale row down by powers of 1/2 until it fits content width.
-        # This keeps pixel blocks at integer sizes (4×4, 2×2, etc.)
-        scale = 1.0
-        while total_w * scale > CONTENT_WIDTH:
-            scale /= 2
-
-        row_imgs = []
-        for img in imgs:
-            if scale < 1.0:
-                nw = int(img.width * scale)
-                nh = int(img.height * scale)
-                row_imgs.append(img.resize((nw, nh), Image.NEAREST))
-            else:
-                row_imgs.append(img)
-
-        var_blocks.append((vname, keys, row_imgs))
+    # ---- layout all groups at global scale ------------------------------
+    layout = []
+    for gname, imgs, labels in all_groups:
+        rows = _layout_group(imgs, labels, global_scale)
+        layout.append((gname, rows))
 
     # ---- palette data --------------------------------------------------
     palette = char_data.get("colorPalette", {})
@@ -204,12 +217,13 @@ def generate(char_data, dry_run=False, log_fn=None):
     y += _bbox_h(dd, char_data["name"]["jp"], f_jpname) + HEADING_GAP + 3 + HEADING_GAP
     y += _bbox_h(dd, "Ag", f_info) + SECTION_GAP
 
-    # variant sections
-    for vname, _keys, row_imgs in var_blocks:
-        sh = _bbox_h(dd, vname.upper() + " VARIANT", f_section)
-        row_h = max(i.height for i in row_imgs) if row_imgs else 0
-        lbl_h = _bbox_h(dd, "Ag", f_label)
-        y += sh + HEADING_GAP + row_h + LABEL_GAP + lbl_h + SECTION_GAP
+    # all groups
+    for gname, rows in layout:
+        sh = _bbox_h(dd, gname, f_section)
+        y += sh + HEADING_GAP
+        for row in rows:
+            row_h = max(i.size[1] for _, i in row) if row else 0
+            y += row_h + LABEL_GAP + _bbox_h(dd, "Ag", f_label) + SECTION_GAP
 
     # palette
     if primary or secondary:
@@ -264,39 +278,32 @@ def generate(char_data, dry_run=False, log_fn=None):
 
     y += SECTION_GAP
 
-    # ---- variant sections ----------------------------------------------
-    for vname, keys, row_imgs in var_blocks:
-        section_label = vname.upper() + " VARIANT"
-        draw.text((x, y), section_label, fill=c_dark, font=f_section)
-        y += _bbox_h(draw, section_label, f_section) + HEADING_GAP
+    # ---- all groups ----------------------------------------------------
+    for gname, rows in layout:
+        draw.text((x, y), gname, fill=c_dark, font=f_section)
+        y += _bbox_h(draw, gname, f_section) + HEADING_GAP
 
-        row_h = max(i.height for i in row_imgs)
-        total_w = sum(i.width for i in row_imgs) + IMAGE_GAP * (len(row_imgs) - 1)
-        row_x = x + (CONTENT_WIDTH - total_w) // 2
+        for row in rows:
+            row_h = max(i.size[1] for _, i in row)
+            total_w = sum(i.size[0] for _, i in row) + IMAGE_GAP * (len(row) - 1)
+            row_x = x + (CONTENT_WIDTH - total_w) // 2
 
-        for idx, img in enumerate(row_imgs):
-            key = keys[idx]
-            img_w, img_h = img.size
+            for label, img in row:
+                img_w, img_h = img.size
+                img_y = y + (row_h - img_h) // 2
 
-            # center image vertically within row height
-            img_y = y + (row_h - img_h) // 2
+                page.paste(img, (row_x, img_y), img)
 
-            page.paste(img, (row_x, img_y), img)
+                tw = _text_w(draw, label, f_label)
+                draw.text(
+                    (row_x + (img_w - tw) // 2, y + row_h + LABEL_GAP),
+                    label,
+                    fill=c_light,
+                    font=f_label,
+                )
+                row_x += img_w + IMAGE_GAP
 
-            # type label centered below the row
-            tname = key[1]
-            tlbl = _label_for(tname)
-            tw = draw.textbbox((0, 0), tlbl, font=f_label)[2]
-            draw.text(
-                (row_x + (img_w - tw) // 2, y + row_h + LABEL_GAP),
-                tlbl,
-                fill=c_light,
-                font=f_label,
-            )
-
-            row_x += img_w + IMAGE_GAP
-
-        y += row_h + LABEL_GAP + _bbox_h(draw, "Ag", f_label) + SECTION_GAP
+            y += row_h + LABEL_GAP + _bbox_h(draw, "Ag", f_label) + SECTION_GAP
 
     # ---- color palette -------------------------------------------------
     if primary or secondary:
@@ -325,15 +332,21 @@ def generate(char_data, dry_run=False, log_fn=None):
                     width=1,
                 )
 
-                # name on line below swatch
+                # name centered under swatch
                 name_y = y + swatch_size + LABEL_GAP
-                draw.text((sw_x, name_y), name, fill=c_gray, font=f_swatch_name)
+                name_tw = _text_w(draw, name, f_swatch_name)
+                draw.text(
+                    (sw_x + (swatch_size - name_tw) // 2, name_y),
+                    name,
+                    fill=c_gray,
+                    font=f_swatch_name,
+                )
 
-                # hex on line below name
-                hex_tw = draw.textbbox((0, 0), hex_val, font=f_swatch_hex)[2]
+                # hex centered under name
+                hex_tw = _text_w(draw, hex_val, f_swatch_hex)
                 hex_y = name_y + _bbox_h(draw, name, f_swatch_name) + TEXT_GAP
                 draw.text(
-                    (sw_x + swatch_size - hex_tw, hex_y),
+                    (sw_x + (swatch_size - hex_tw) // 2, hex_y),
                     hex_val,
                     fill=c_light,
                     font=f_swatch_hex,

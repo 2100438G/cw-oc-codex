@@ -51,16 +51,21 @@
 	"variants": {
 		"main": {
 			"full_body": {"src": "characters/engineer/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
-			"potrait":   {"src": "characters/engineer/potrait_main.png",  "label": {"en": "Potrait", "jp": "ポートレート"}}
+			"portrait":  {"src": "characters/engineer/portrait_main.png",  "label": {"en": "Portrait", "jp": "ポートレート"}}
 		},
 		"alt": {
 			"full_body": {"src": "characters/engineer/full_body_alt.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
-			"potrait":   {"src": "characters/engineer/potrait_alt.png",   "label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}}
+			"portrait":  {"src": "characters/engineer/portrait_alt.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
 		}
 	},
 	"misc": {
-		"textures": [{"src": "characters/engineer/f3x_texture.png", "label": {"en": "F3X Hammer Texture", "jp": "F3X ハンマーテクスチャ"}}],
-		"weapons":  [{"src": "characters/engineer/3d_weapon.mp4",   "label": {"en": "F3X Hammer", "jp": "F3X ハンマー"}}]
+		"equipment": [
+			{"src": "characters/engineer/F3X_hammer.png",  "label": {"en": "F3X Hammer", "jp": "F3X ハンマー"}, "omit_website": true},
+			{"src": "characters/engineer/f3x_texture.png", "label": {"en": "F3X Texture", "jp": "F3X テクスチャ"}}
+		],
+		"weapons": [
+			{"src": "characters/engineer/3d_weapon.mp4", "label": {"en": "F3X Hammer 3D", "jp": "F3X 3D"}}
+		]
 	},
 	"gallery": [
 		{"src": "skeb/@krei_ss_/3549943-2.png",     "label": {"en": "【SKEB】", "jp": ""}, "artist": "krei_ss_"},

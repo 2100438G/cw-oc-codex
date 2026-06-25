@@ -52,16 +52,17 @@
 	"variants": {
 		"main": {
 			"full_body": {"src": "characters/captain/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
-			"potrait":   {"src": "characters/captain/potrait_main.png",  "label": {"en": "Potrait", "jp": "ポートレート"}}
+			"portrait":  {"src": "characters/captain/portrait_main.png",  "label": {"en": "Portrait", "jp": "ポートレート"}}
 		},
 		"alt": {
 			"full_body": {"src": "characters/captain/full_body_alt.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
-			"potrait":   {"src": "characters/captain/potrait_alt.png",   "label": {"en": "Alt. Potrait", "jp": "代替 ポートレート"}}
+			"portrait":  {"src": "characters/captain/portrait_alt.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
 		}
 	},
-	"misc":{
+	"misc": {
 		"equipment": [
-			{"src": "characters/captain/anchor.png",   "label": {"en": "Peak Cap Logo", "jp": "Uh"}}
+			{"src": "characters/captain/anchor.png", "label": {"en": "Anchor", "jp": ""}},
+			{"src": "characters/captain/rifle.png",  "label": {"en": "Rifle", "jp": ""}}
 		]
 	}
 }

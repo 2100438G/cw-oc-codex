@@ -205,12 +205,15 @@ def flatten_assets(data: dict) -> list:
     for _group, entries in misc.items():
         for entry in entries:
             if entry.get("src"):
-                assets.append({
+                item = {
                     "type": infer_type(entry["src"]),
                     "src": entry["src"],
                     "label": entry.get("label", {}),
                     "category": "other",
-                })
+                }
+                if entry.get("omit_website"):
+                    item["omit_website"] = True
+                assets.append(item)
 
     # 4. gallery[] -> skeb
     gallery = data.get("gallery", [])
@@ -224,6 +227,8 @@ def flatten_assets(data: dict) -> list:
             }
             if entry.get("artist"):
                 item["artist"] = entry["artist"]
+            if entry.get("omit_website"):
+                item["omit_website"] = True
             assets.append(item)
 
     # 5. Auto-detect existing reference_art.png (manual reference sheet)
@@ -262,6 +267,7 @@ def build_character_json(char_id: str, dry_run: bool) -> int:
                 "src": refsheet_src,
                 "label": {"en": "Reference Sheet (Auto)", "jp": "参考資料 (自動)"},
                 "category": "reference",
+                "omit_website": True,
             })
 
     missing = 0
@@ -276,6 +282,9 @@ def build_character_json(char_id: str, dry_run: bool) -> int:
             entry["pixelArt"] = False
         else:
             entry["pixelArt"] = result
+
+    # Strip omit_website entries before writing output for frontend
+    data["assets"] = [e for e in data["assets"] if not e.get("omit_website")]
 
     # Write built JSON to _site/characters/<id>/<id>.json
     if not dry_run:

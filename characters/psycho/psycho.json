@@ -54,12 +54,19 @@
 		"main": {
 			"full_body_front": {"src": "characters/psycho/full_body_front_main.png", "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
 			"full_body_back":  {"src": "characters/psycho/full_body_back_main.png",  "label": {"en": "Full Body (Back)",  "jp": "メインデザイン フルボディ (背面)"}},
-			"potrait":         {"src": "characters/psycho/potrait_main.png",          "label": {"en": "Potrait",           "jp": "ポートレート"}}
+			"portrait":        {"src": "characters/psycho/portrait_main.png",          "label": {"en": "Portrait",           "jp": "ポートレート"}}
 		},
 		"alt": {
 			"full_body_front": {"src": "characters/psycho/full_body_front_alt.png",  "label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}},
 			"full_body_back":  {"src": "characters/psycho/full_body_back_alt.png",   "label": {"en": "Alt. Full Body (Back)",  "jp": "代替 フルボディ (背面)"}},
-			"potrait":         {"src": "characters/psycho/potrait_alt.png",           "label": {"en": "Alt. Potrait",           "jp": "代替 ポートレート"}}
+			"portrait":        {"src": "characters/psycho/portrait_alt.png",           "label": {"en": "Alt. Portrait",           "jp": "代替 ポートレート"}}
 		}
+	},
+	"misc": {
+		"equipment": [
+			{"src": "characters/psycho/knife.png",         "label": {"en": "Knife", "jp": ""}},
+			{"src": "characters/psycho/gloves.png",        "label": {"en": "Gloves", "jp": ""}},
+			{"src": "characters/psycho/patent_shoes.png",  "label": {"en": "Patent Shoes", "jp": ""}}
+		]
 	}
 }
