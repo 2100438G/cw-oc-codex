@@ -1,3 +1,4 @@
+///@ts-nocheck
 /* ============================================
    THE CARD WARS CODEX
    Script — Language · Cut-In · Grid Gallery
