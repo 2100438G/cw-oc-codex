@@ -3,15 +3,14 @@
 Composites official variant art, misc items, character info, and color palette
 into a styled reference-sheet PNG with a white/light background.
 
-Called from build.py during the build pipeline.
+Called from builder.generator during the build pipeline.
 """
 
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parent
-FONT_PATH = ROOT / "fonts" / "MPLUS1p-Bold.ttf"
+from .config import ROOT, FONT_PATH
 
 # ---------- layout constants ----------
 PAGE_BG = "#F0F0F0"
