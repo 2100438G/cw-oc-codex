@@ -26,20 +26,20 @@
 		]
 	},
 	"appearance": {
-		"en": "",
-		"jp": ""
+		"en": "As part of his organization's requirement, he wears his royal clothing. Sleeveless golden trimmed shirt. His accessories are \"Infinity Armlet\", Flower Designed Belt, Tassel Earrings, Anklet, sandals & royal coat. However he dislikes wearing all these and is often seen without his royal coat.",
+		"jp": "所属組織の規定により、彼は王室の正装を身につけている。金色の縁取りが施されたノースリーブのシャツ。アクセサリーは「インフィニティ・アームレット」、花柄のベルト、タッセル付きイヤリング、アンクレット、サンダル、そして王室のコートだ。しかし、彼はこれらすべてを身につけることを嫌っており、王室のコートを着ていない姿がよく見られる。"
 	},
 	"personality": {
-		"en": "Very confident, playful, and a bit cheeky. He acts proud and likes to tease others, but he is actually a very kind person at heart.",
-		"jp": ""
+		"en": "Very confident, playful, and a mischievous. He acts proud and likes to tease others.",
+		"jp": "とても自信に満ちていて、遊び心があり、いたずら好きだ。誇らしげな態度を取り、他人をからかうのが好きだ。"
 	},
 	"abilities": {
-		"en": "",
-		"jp": ""
+		"en": "He doesn't have any abilities but only resources from his organization. Varying from tools, workers, weapons at his disposal.",
+		"jp": "彼には特別な能力はなく、組織から提供された資源しか持っていない。工具や労働者、武器など、さまざまなものが彼の自由に使える。"
 	},
 	"lore": {
-		"en": "",
-		"jp": ""
+		"en": "He is the young leader of a large organization in Asia, inherited by his parents with the rank \"KING\". He loves luxury and having fun, so he usually avoids doing actual work.",
+		"jp": "彼はアジアの大規模な組織の若きリーダーであり、両親から「キング」という地位を継承した。贅沢と遊びが大好きなので、普段は実際の仕事を避ける傾向にある。"
 	},
 	"stats": {
 		"STR": 5,
@@ -63,9 +63,9 @@
 	"misc": {
 		"equipment": [
 			{"src": "characters/king/earring.png",                      "label": {"en": "Earring", "jp": "タッセルイヤリング"}},
-			{"src": "characters/king/armlet.png",                       "label": {"en": "Armlet", "jp": "アームレット"}},
+			{"src": "characters/king/armlet.png",                       "label": {"en": "Infinity Armlet", "jp": "インフィニティ・アームレット"}},
 			{"src": "characters/king/bracelet_reference.png",           "label": {"en": "Bracelet", "jp": "腕当て"}},
-			{"src": "characters/king/belt_buckle.png",                  "label": {"en": "Bracelet", "jp": "ベルトのバックル"}}
+			{"src": "characters/king/belt_buckle.png",                  "label": {"en": "Belt Buckle", "jp": "ベルトのバックル"}}
 		]
 	}
 }
