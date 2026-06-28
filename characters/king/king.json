@@ -1,0 +1,63 @@
+{
+	"id": "king",
+	"name": {
+		"en": "KING",
+		"jp": "..."
+	},
+	"themeColor": "#E8A84D",
+	"age": "19",
+	"height": "174 cm",
+	"tagline": {
+		"en": "\"...\"",
+		"jp": "「...」"
+	},
+	"colorPalette": {
+		"primary": [
+			{"name": "Hair",					"hex": "#3F2B2A"},
+			{"name": "Eyes",					"hex": "#E42F37"},
+			{"name": "Skin",					"hex": "#D4B8A2"}
+		],
+		"secondary": [
+			{"name": "Shirt",					"hex": "#2e282a"},
+			{"name": "Pants",					"hex": "#30292b"},
+			{"name": "Trim Highlights",			"hex": "#e9d292"},
+			{"name": "Belt",					"hex": "#2e282a"},
+			{"name": "Belt Flower Buckle",		"hex": "#e1c06b"}
+		]
+	},
+	"appearance": {
+		"en": "",
+		"jp": ""
+	},
+	"personality": {
+		"en": "",
+		"jp": ""
+	},
+	"abilities": {
+		"en": "",
+		"jp": ""
+	},
+	"lore": {
+		"en": "",
+		"jp": ""
+	},
+	"stats": {
+		"STR": 1,
+		"DEX": 1,
+		"INT": 1,
+		"VIT": 1,
+		"SPD": 1,
+		"PWR": 1
+	},
+	"main": {"src": "characters/king/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body_front": {"src": "characters/king/full_body_main.png", "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
+			"portrait":        {"src": "characters/king/portrait_main.png",          "label": {"en": "Portrait",           "jp": "ポートレート"}}
+		},
+		"alt": {
+			"full_body_front": {"src": "characters/king/full_body_alt.png",  "label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}},
+			"portrait":        {"src": "characters/king/portrait_alt.png",           "label": {"en": "Alt. Portrait",           "jp": "代替 ポートレート"}}
+		}
+	}
+}
