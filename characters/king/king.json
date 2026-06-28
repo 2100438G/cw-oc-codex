@@ -2,14 +2,14 @@
 	"id": "king",
 	"name": {
 		"en": "KING",
-		"jp": "..."
+		"jp": "キング"
 	},
 	"themeColor": "#E8A84D",
 	"age": "19",
 	"height": "174 cm",
 	"tagline": {
-		"en": "\"...\"",
-		"jp": "「...」"
+		"en": "\"Boredom is the root of all evil.\"",
+		"jp": "「退屈は万悪の根源である。」"
 	},
 	"colorPalette": {
 		"primary": [
@@ -30,7 +30,7 @@
 		"jp": ""
 	},
 	"personality": {
-		"en": "",
+		"en": "Very confident, playful, and a bit cheeky. He acts proud and likes to tease others, but he is actually a very kind person at heart.",
 		"jp": ""
 	},
 	"abilities": {
@@ -42,22 +42,30 @@
 		"jp": ""
 	},
 	"stats": {
-		"STR": 1,
-		"DEX": 1,
-		"INT": 1,
-		"VIT": 1,
-		"SPD": 1,
+		"STR": 5,
+		"DEX": 2,
+		"INT": 3,
+		"VIT": 6,
+		"SPD": 2,
 		"PWR": 1
 	},
 	"main": {"src": "characters/king/main.png", "label": {"en": "Main", "jp": "メイン"}},
 	"variants": {
 		"main": {
-			"full_body_front": {"src": "characters/king/full_body_main.png", "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
+			"full_body_front": {"src": "characters/king/full_body_main.png",         "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
 			"portrait":        {"src": "characters/king/portrait_main.png",          "label": {"en": "Portrait",           "jp": "ポートレート"}}
 		},
 		"alt": {
-			"full_body_front": {"src": "characters/king/full_body_alt.png",  "label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}},
+			"full_body_front": {"src": "characters/king/full_body_alt.png",          "label": {"en": "Alt. Full Body (Front)", "jp": "代替 フルボディ (正面)"}},
 			"portrait":        {"src": "characters/king/portrait_alt.png",           "label": {"en": "Alt. Portrait",           "jp": "代替 ポートレート"}}
 		}
+	},
+	"misc": {
+		"equipment": [
+			{"src": "characters/king/earring.png",                      "label": {"en": "Earring", "jp": "タッセルイヤリング"}},
+			{"src": "characters/king/armlet.png",                       "label": {"en": "Armlet", "jp": "アームレット"}},
+			{"src": "characters/king/bracelet_reference.png",           "label": {"en": "Bracelet", "jp": "腕当て"}},
+			{"src": "characters/king/belt_buckle.png",                  "label": {"en": "Bracelet", "jp": "ベルトのバックル"}}
+		]
 	}
 }
