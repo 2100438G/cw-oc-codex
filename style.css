@@ -263,7 +263,7 @@ body::after { content: ''; position: fixed; top: 0; left: 0; width: 200%; height
 .lightbox-loader { position: absolute; inset: 0; z-index: 2; display: none; align-items: center; justify-content: center; background: rgba(5,5,8,0.5); backdrop-filter: blur(8px); }
 .lightbox-loader-rings { position: relative; width: 70px; height: 70px; }
 .lightbox-loader-rings .loader-ring,
-.lightbox-loader-rings .loader-ring.delay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.lightbox-loader-rings .loader-ring.delay { position: absolute; }
 .lightbox-sidebar { width: 200px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; border-left: 1px solid var(--border-color); }
 .lightbox-info { display: flex; flex-direction: column; gap: 0.3rem; }
 .lightbox-label { font-family: 'Bebas Neue',sans-serif; font-size: 0.9rem; letter-spacing: 0.08em; color: var(--text-primary); }
