@@ -915,9 +915,13 @@ function navigateLightbox(direction) {
 	state.lightboxIndex = (state.lightboxIndex + direction + total) % total;
 	const item = state.mediaItems[state.lightboxIndex];
 
-	const content = els.lightbox.querySelector('.lightbox-content');
-	gsap.to(content, {
+	const oldMedia = els.lightboxImage.classList.contains('active')
+		? els.lightboxImage : els.lightboxVideo;
+	const newMedia = item.type === 'image' ? els.lightboxImage : els.lightboxVideo;
+
+	gsap.to(oldMedia, {
 		opacity: 0, scale: 0.95, duration: 0.1, ease: 'power2.in',
+		overwrite: 'auto',
 		onComplete: () => {
 			els.lightboxImage.classList.remove('active');
 			els.lightboxImage.classList.remove('pixel-art');
@@ -937,7 +941,10 @@ function navigateLightbox(direction) {
 					els.lightboxLoader.style.display = 'none';
 					els.downloadBtn.href = assetUrl(item.src);
 					els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
-					gsap.to(content, { opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' });
+					gsap.fromTo(newMedia,
+						{ opacity: 0, scale: 0.95 },
+						{ opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' }
+					);
 				};
 				els.lightboxImage.src = assetUrl(item.src);
 			} else {
@@ -947,7 +954,10 @@ function navigateLightbox(direction) {
 					els.downloadBtn.href = assetUrl(item.src);
 					els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
 					els.lightboxVideo.play();
-					gsap.to(content, { opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' });
+					gsap.fromTo(newMedia,
+						{ opacity: 0, scale: 0.95 },
+						{ opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' }
+					);
 				};
 				els.lightboxVideo.src = assetUrl(item.src);
 			}
