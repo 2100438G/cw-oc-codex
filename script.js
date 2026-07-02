@@ -71,6 +71,9 @@ function updateAllLangElements() {
 	document.querySelectorAll('.gallery-zone-title-jp[data-lang-key]').forEach(el => {
 		el.textContent = t(el.dataset.langKey);
 	});
+	document.querySelectorAll('.card-tagline[data-lang-jp]').forEach(el => {
+		el.textContent = state.currentLang === 'jp' ? el.dataset.langJp : el.dataset.langEn;
+	});
 }
 
 /* ============================================
@@ -113,7 +116,8 @@ const els = {
 	lightboxPrev: document.getElementById('lightbox-prev'),
 	lightboxNext: document.getElementById('lightbox-next'),
 	downloadBtn: document.getElementById('download-btn'),
-	lightboxClose: document.getElementById('lightbox-close')
+	lightboxClose: document.getElementById('lightbox-close'),
+	lightboxLoader: document.querySelector('.lightbox-loader')
 };
 
 /* ============================================
@@ -261,7 +265,7 @@ background-image: url('${assetUrl('characters/' + char.id + '/main.png')}')">
 <span class="card-index">${String(index + 1).padStart(2, '0')}</span>
 <p class="card-name-jp">${char.name.jp}</p>
 <h3 class="card-name-en">${char.name.en}</h3>
-${char.tagline ? `<p class="card-tagline">${getText(char.tagline)}</p>` : ''}
+${char.tagline ? `<p class="card-tagline" data-lang-jp="${(char.tagline.jp || '').replace(/"/g, '&quot;')}" data-lang-en="${(char.tagline.en || '').replace(/"/g, '&quot;')}">${getText(char.tagline)}</p>` : ''}
 </div>
 </div>
 `).join('');
@@ -298,7 +302,7 @@ function showSelectPage() {
 	url.hash = '';
 	if (state.currentLang !== 'jp') url.searchParams.set('lang', state.currentLang);
 	else url.searchParams.delete('lang');
-	history.pushState(null, '', url.toString());
+	history.replaceState(null, '', url.toString());
 
 	els.characterPage.classList.remove('visible');
 	if (particleSystem) { particleSystem.stop(); particleSystem = null; }
@@ -839,7 +843,7 @@ function createSwatchHTML(color) {
 }
 
 /* ============================================
-	LIGHTBOX — video fixed, no src clearing
+	LIGHTBOX
 	============================================ */
 
 function openLightbox(index) {
@@ -848,23 +852,13 @@ function openLightbox(index) {
 	const item = state.mediaItems[index];
 
 	els.lightboxImage.classList.remove('active');
+	els.lightboxImage.classList.remove('pixel-art');
 	els.lightboxVideo.classList.remove('active');
 	els.lightboxVideo.pause();
+	els.lightboxImage.removeAttribute('src');
+	els.lightboxVideo.removeAttribute('src');
 
-	if (item.type === 'image') {
-		els.lightboxImage.src = assetUrl(item.src);
-		if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
-		else els.lightboxImage.classList.remove('pixel-art');
-		els.lightboxImage.classList.add('active');
-		els.downloadBtn.href = assetUrl(item.src);
-		els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
-	} else {
-		els.lightboxVideo.src = assetUrl(item.src);
-		els.lightboxVideo.classList.add('active');
-		els.lightboxVideo.play();
-		els.downloadBtn.href = assetUrl(item.src);
-		els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
-	}
+	els.lightboxLoader.style.display = 'flex';
 
 	els.lightboxLabel.textContent = getText(item.label);
 	updateLightboxCounter();
@@ -877,6 +871,26 @@ function openLightbox(index) {
 
 	els.lightbox.classList.add('active');
 	document.body.style.overflow = 'hidden';
+
+	if (item.type === 'image') {
+		if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
+		els.lightboxImage.onload = function () {
+			els.lightboxImage.classList.add('active');
+			els.lightboxLoader.style.display = 'none';
+		};
+		els.lightboxImage.src = assetUrl(item.src);
+		els.downloadBtn.href = assetUrl(item.src);
+		els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
+	} else {
+		els.lightboxVideo.oncanplay = function () {
+			els.lightboxVideo.classList.add('active');
+			els.lightboxLoader.style.display = 'none';
+			els.lightboxVideo.play();
+		};
+		els.lightboxVideo.src = assetUrl(item.src);
+		els.downloadBtn.href = assetUrl(item.src);
+		els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
+	}
 }
 
 function updateLightboxCounter() {
@@ -906,27 +920,37 @@ function navigateLightbox(direction) {
 		opacity: 0, scale: 0.95, duration: 0.1, ease: 'power2.in',
 		onComplete: () => {
 			els.lightboxImage.classList.remove('active');
+			els.lightboxImage.classList.remove('pixel-art');
 			els.lightboxVideo.classList.remove('active');
 			els.lightboxVideo.pause();
+			els.lightboxImage.removeAttribute('src');
+			els.lightboxVideo.removeAttribute('src');
 
-			if (item.type === 'image') {
-				els.lightboxImage.src = assetUrl(item.src);
-				if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
-				else els.lightboxImage.classList.remove('pixel-art');
-				els.lightboxImage.classList.add('active');
-				els.downloadBtn.href = assetUrl(item.src);
-				els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
-			} else {
-				els.lightboxVideo.src = assetUrl(item.src);
-				els.lightboxVideo.classList.add('active');
-				els.lightboxVideo.play();
-				els.downloadBtn.href = assetUrl(item.src);
-				els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
-			}
-
+			els.lightboxLoader.style.display = 'flex';
 			els.lightboxLabel.textContent = getText(item.label);
 			updateLightboxCounter();
-			gsap.to(content, { opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' });
+
+			if (item.type === 'image') {
+				if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
+				els.lightboxImage.onload = function () {
+					els.lightboxImage.classList.add('active');
+					els.lightboxLoader.style.display = 'none';
+					els.downloadBtn.href = assetUrl(item.src);
+					els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
+					gsap.to(content, { opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' });
+				};
+				els.lightboxImage.src = assetUrl(item.src);
+			} else {
+				els.lightboxVideo.oncanplay = function () {
+					els.lightboxVideo.classList.add('active');
+					els.lightboxLoader.style.display = 'none';
+					els.downloadBtn.href = assetUrl(item.src);
+					els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
+					els.lightboxVideo.play();
+					gsap.to(content, { opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' });
+				};
+				els.lightboxVideo.src = assetUrl(item.src);
+			}
 		}
 	});
 }
@@ -1004,7 +1028,6 @@ function setupEventListeners() {
 			resetThemeColor();
 			if (particleSystem) { particleSystem.stop(); particleSystem = null; }
 			killScrollTriggers();
-			resetHeroPosition();
 			els.characterPage.classList.remove('visible');
 			setTimeout(() => {
 				els.characterPage.classList.add('hidden');
