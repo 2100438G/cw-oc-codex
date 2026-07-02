@@ -846,6 +846,20 @@ function createSwatchHTML(color) {
 	LIGHTBOX
 	============================================ */
 
+function hideLightboxLoader() {
+	gsap.to(els.lightboxLoader, {
+		opacity: 0, duration: 0.25, ease: 'power2.out',
+		onComplete: () => {
+			els.lightboxLoader.style.display = 'none';
+			els.lightboxLoader.style.opacity = '1';
+		}
+	});
+}
+
+function cacheImage(src) {
+	(new Image()).src = assetUrl(src);
+}
+
 function openLightbox(index) {
 	if (index < 0 || index >= state.mediaItems.length) return;
 	state.lightboxIndex = index;
@@ -857,8 +871,8 @@ function openLightbox(index) {
 	els.lightboxVideo.pause();
 	els.lightboxImage.removeAttribute('src');
 	els.lightboxVideo.removeAttribute('src');
-
-	els.lightboxLoader.style.display = 'flex';
+	gsap.set(els.lightboxImage, { clearProps: 'all' });
+	gsap.set(els.lightboxVideo, { clearProps: 'all' });
 
 	els.lightboxLabel.textContent = getText(item.label);
 	updateLightboxCounter();
@@ -874,17 +888,20 @@ function openLightbox(index) {
 
 	if (item.type === 'image') {
 		if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
+		els.lightboxImage.classList.add('active');
+		els.lightboxLoader.style.display = 'flex';
 		els.lightboxImage.onload = function () {
-			els.lightboxImage.classList.add('active');
-			els.lightboxLoader.style.display = 'none';
+			hideLightboxLoader();
+			cacheImage(item.src);
 		};
 		els.lightboxImage.src = assetUrl(item.src);
 		els.downloadBtn.href = assetUrl(item.src);
 		els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
 	} else {
+		els.lightboxVideo.classList.add('active');
+		els.lightboxLoader.style.display = 'flex';
 		els.lightboxVideo.oncanplay = function () {
-			els.lightboxVideo.classList.add('active');
-			els.lightboxLoader.style.display = 'none';
+			hideLightboxLoader();
 			els.lightboxVideo.play();
 		};
 		els.lightboxVideo.src = assetUrl(item.src);
@@ -899,12 +916,16 @@ function updateLightboxCounter() {
 
 function closeLightbox() {
 	els.lightboxVideo.pause();
+	els.lightboxLoader.style.display = 'none';
+	els.lightboxLoader.style.opacity = '1';
 	gsap.to('.lightbox-container',
 		{
 			opacity: 0, scale: 0.94, duration: 0.2, ease: 'power2.in',
 			onComplete: () => {
 				els.lightbox.classList.remove('active');
 				els.lightbox.style.display = 'none';
+				gsap.set(els.lightboxImage, { clearProps: 'all' });
+				gsap.set(els.lightboxVideo, { clearProps: 'all' });
 				document.body.style.overflow = '';
 			}
 		});
@@ -929,6 +950,7 @@ function navigateLightbox(direction) {
 			els.lightboxVideo.pause();
 			els.lightboxImage.removeAttribute('src');
 			els.lightboxVideo.removeAttribute('src');
+			gsap.set(newMedia, { clearProps: 'all' });
 
 			els.lightboxLoader.style.display = 'flex';
 			els.lightboxLabel.textContent = getText(item.label);
@@ -936,28 +958,21 @@ function navigateLightbox(direction) {
 
 			if (item.type === 'image') {
 				if (item.pixelArt) els.lightboxImage.classList.add('pixel-art');
+				els.lightboxImage.classList.add('active');
 				els.lightboxImage.onload = function () {
-					els.lightboxImage.classList.add('active');
-					els.lightboxLoader.style.display = 'none';
+					hideLightboxLoader();
+					cacheImage(item.src);
 					els.downloadBtn.href = assetUrl(item.src);
 					els.downloadBtn.download = `${state.currentCharacter.id}_${(getText(item.label) || 'ref').replace(/\s+/g, '_')}.png`;
-					gsap.fromTo(newMedia,
-						{ opacity: 0, scale: 0.95 },
-						{ opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' }
-					);
 				};
 				els.lightboxImage.src = assetUrl(item.src);
 			} else {
+				els.lightboxVideo.classList.add('active');
 				els.lightboxVideo.oncanplay = function () {
-					els.lightboxVideo.classList.add('active');
-					els.lightboxLoader.style.display = 'none';
+					hideLightboxLoader();
 					els.downloadBtn.href = assetUrl(item.src);
 					els.downloadBtn.download = `${state.currentCharacter.id}_motion.mp4`;
 					els.lightboxVideo.play();
-					gsap.fromTo(newMedia,
-						{ opacity: 0, scale: 0.95 },
-						{ opacity: 1, scale: 1, duration: 0.25, ease: 'power3.out' }
-					);
 				};
 				els.lightboxVideo.src = assetUrl(item.src);
 			}
