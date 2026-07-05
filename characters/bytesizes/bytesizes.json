@@ -1,0 +1,64 @@
+{
+	"id": "bytesizes",
+	"name": {
+		"en": "BY",
+		"jp": "BY"
+	},
+	"themeColor": "#327a4a",
+	"age": "19",
+	"height": "172 cm",
+	"tagline": {
+		"en": "\"...\"",
+		"jp": "「」"
+	},
+	"colorPalette": {
+		"primary": [
+			{"name": "Hair",					"hex": "#1a1a18"},
+			{"name": "Eyes",					"hex": "#0ebcf6"},
+			{"name": "Skin",					"hex": "#fddcba"}
+		],
+		"secondary": [
+			{"name": "Shirt",					"hex": "#fefefe"},
+			{"name": "Pants",					"hex": "#9c7757"},
+			{"name": "Hoodie",					"hex": "#2a6d42"},
+			{"name": "Shoes",					"hex": "#5d5d5d"},
+			{"name": "Lotus Flower",			"hex": "#f6c4ca"}
+		]
+	},
+	"appearance": {
+		"en": "",
+		"jp": ""
+	},
+	"personality": {
+		"en": "",
+		"jp": ""
+	},
+	"abilities": {
+		"en": "",
+		"jp": ""
+	},
+	"lore": {
+		"en": "",
+		"jp": ""
+	},
+	"stats": {
+		"STR": 5,
+		"DEX": 4,
+		"INT": 9,
+		"VIT": 3,
+		"SPD": 4,
+		"PWR": 6
+	},
+	"main": {"src": "characters/bytesizes/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body_front": {"src": "characters/bytesizes/full_body.png",         "label": {"en": "Full Body (Front)", "jp": "メインデザイン フルボディ (正面)"}},
+			"portrait":        {"src": "characters/bytesizes/portrait.png",          "label": {"en": "Portrait",           "jp": "ポートレート"}}
+		},
+		"Without Spectacle": {
+			"portrait":        {"src": "characters/bytesizes/portrait_specless.png", "label": {"en": "Portrait (Without Spectacles)",           "jp": "ポートレート（メガネなし）"}}
+		}
+	},
+	"misc": {
+	}
+}
