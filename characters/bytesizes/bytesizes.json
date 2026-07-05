@@ -8,8 +8,8 @@
 	"age": "19",
 	"height": "172 cm",
 	"tagline": {
-		"en": "\"...\"",
-		"jp": "「」"
+		"en": "\"Bloom in Light\"",
+		"jp": "「光の中で咲く」"
 	},
 	"colorPalette": {
 		"primary": [
@@ -26,20 +26,21 @@
 		]
 	},
 	"appearance": {
-		"en": "",
-		"jp": ""
+		"en": "Black hair and blue eyes. Wears round spectacles. Wears a green headband with a lotus flower on the right side. Wears a green hoodie tied around his waist. Often has a bandage on his face.",
+		"jp": "黒髪で青い目。丸い眼鏡をかけている。右側に蓮の花の模様がついた緑色のヘッドバンドを巻いている。緑色のパーカーを腰に巻いている。顔に包帯を巻いていることが多い。"
 	},
 	"personality": {
-		"en": "",
-		"jp": ""
+		"en": "He is optimistic and kind to everyone. He always puts his team first and protects them.",
+		"jp": "彼は楽観的で、誰に対しても親切だ。常にチームを最優先に考え、チームメイトを守っている。"
 	},
 	"abilities": {
-		"en": "",
-		"jp": ""
+		"en": "BY channels light energy to create animals, plants, and natural forms. These projections heal and empower his allies in battle.",
+		"jp": "BYは光のエネルギーを導き、動物や植物、自然の造形を生み出します。これらの投影は、戦闘において味方を癒やし、力を与えます。"
 	},
 	"lore": {
-		"en": "",
-		"jp": ""
+		"en": "He was born with the ability to manipulate light energy and uses it to create nature projections.",
+		"jp": "彼は生まれつき光エネルギーを操る能力を持っており、それを活用して自然を模した投影を作り出している。",
+		"WIP": true
 	},
 	"stats": {
 		"STR": 5,
