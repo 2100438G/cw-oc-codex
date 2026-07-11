@@ -68,5 +68,8 @@
 			{"src": "characters/psycho/gloves.png",        "label": {"en": "Gloves", "jp": ""}},
 			{"src": "characters/psycho/patent_shoes.png",  "label": {"en": "Patent Shoes", "jp": ""}}
 		]
-	}
+	},
+	"gallery": [
+		{"src": "skeb/@simpa_i_NNN/3879335-1.png",     "label": {"en": "【SKEB】", "jp": ""}, "artist": "simpa_i_NNN"}
+	]
 }

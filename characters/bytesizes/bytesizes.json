@@ -60,5 +60,8 @@
 		}
 	},
 	"misc": {
-	}
+	},
+	"gallery": [
+		{"src": "skeb/@homare_appare/3916550-2.png",     "label": {"en": "【SKEB】", "jp": ""}, "artist": "homare_appare"}
+	]
 }
