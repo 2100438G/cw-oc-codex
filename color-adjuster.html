@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Krita Color Manager · Multi‑Source HSV + Overlay</title>
+	<style>
+		:root {
+			--bg: #0d0d0d;
+			--card-bg: #181818;
+			--border: #2a2a2a;
+			--text: #c4c4c4;
+			--text-bright: #e8e8e8;
+			--heading: #f0f0f0;
+			--accent: #5b9bd5;
+			--accent-dim: #3d6a94;
+			--input-bg: #1e1e1e;
+			--input-border: #333333;
+			--danger: #d4726a;
+			--warning: #d4a85c;
+			--success: #7eb77f;
+			--swatch-size: 28px;
+			--preview-size: 44px;
+			--font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Monaco', 'Menlo', monospace;
+			--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			font-size: 14px;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: var(--font-sans);
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			padding: 2rem 1rem;
+			line-height: 1.5;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1100px;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		header {
+			text-align: center;
+			padding: 0.5rem 0 0.25rem;
+		}
+
+		header h1 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: var(--heading);
+			letter-spacing: -0.01em;
+		}
+
+		header .subtitle {
+			font-size: 0.75rem;
+			color: #666;
+			margin-top: 0.2rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		main {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.25rem;
+		}
+
+		@media (max-width: 800px) {
+			main {
+				grid-template-columns: 1fr;
+			}
+
+			body {
+				padding: 1rem 0.5rem;
+			}
+
+			:root {
+				--swatch-size: 24px;
+				--preview-size: 40px;
+			}
+		}
+
+		.card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 0;
+			padding: 1.25rem 1.25rem 1.4rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.card h2 {
+			font-size: 0.9rem;
+			font-weight: 600;
+			color: var(--heading);
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+			margin: 0;
+			padding-bottom: 0.6rem;
+			border-bottom: 1px solid var(--border);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.card.palette-card {
+			grid-column: 1 / -1;
+		}
+
+		.card h2 .dot {
+			width: 7px;
+			height: 7px;
+			background: var(--accent);
+			display: inline-block;
+			flex-shrink: 0;
+		}
+
+		.input-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
+
+		.input-row label {
+			font-size: 0.72rem;
+			font-weight: 500;
+			color: #999;
+			min-width: 3.5rem;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			flex-shrink: 0;
+		}
+
+		.input-row input[type="color"] {
+			-webkit-appearance: none;
+			appearance: none;
+			width: var(--swatch-size);
+			height: var(--swatch-size);
+			border: 2px solid var(--input-border);
+			border-radius: 0;
+			background: transparent;
+			cursor: pointer;
+			padding: 0;
+			flex-shrink: 0;
+		}
+
+		.input-row input[type="color"]:hover {
+			border-color: #555;
+		}
+
+		.input-row input[type="color"]:focus-visible {
+			border-color: var(--accent);
+			outline: none;
+		}
+
+		.input-row input[type="text"] {
+			flex: 1;
+			min-width: 5.5rem;
+			background: var(--input-bg);
+			border: 1px solid var(--input-border);
+			border-radius: 0;
+			color: var(--text-bright);
+			padding: 0.4rem 0.5rem;
+			font-family: var(--font-mono);
+			font-size: 0.8rem;
+			letter-spacing: 0.02em;
+		}
+
+		.input-row input[type="text"]:focus {
+			outline: none;
+			border-color: var(--accent);
+		}
+
+		.input-row input[type="text"].error {
+			border-color: var(--danger);
+		}
+
+		.swatch-inline {
+			width: var(--swatch-size);
+			height: var(--swatch-size);
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+			display: inline-block;
+		}
+
+		.source-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			margin: 0.2rem 0 0.3rem;
+		}
+
+		.source-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: nowrap;
+		}
+
+		.pair-row {
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+			flex-wrap: nowrap;
+			padding: 0.2rem 0;
+		}
+
+		.pair-row .input-row {
+			flex: 1;
+			min-width: 0;
+		}
+
+		.pair-arrow {
+			color: #555;
+			font-size: 0.85rem;
+			flex-shrink: 0;
+			padding: 0 0.15rem;
+		}
+
+		.source-row .input-row {
+			flex: 1;
+			min-width: 0;
+		}
+
+		.btn-icon {
+			background: none;
+			border: 1px solid #2a2a2a;
+			color: #888;
+			font-size: 0.9rem;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			border-radius: 0;
+			transition: all 0.15s;
+			flex-shrink: 0;
+		}
+
+		.btn-icon:hover {
+			border-color: #555;
+			color: #ccc;
+		}
+
+		.btn-icon.danger:hover {
+			border-color: var(--danger);
+			color: var(--danger);
+		}
+
+		.btn-add {
+			background: transparent;
+			border: 1px dashed #2a2a2a;
+			color: #777;
+			padding: 0.3rem 0.6rem;
+			font-size: 0.7rem;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			cursor: pointer;
+			align-self: flex-start;
+			margin-top: 0.1rem;
+			transition: all 0.15s;
+		}
+
+		.btn-add:hover {
+			border-color: #555;
+			color: #aaa;
+		}
+
+		.results {
+			background: #111;
+			border: 1px solid #1f1f1f;
+			border-radius: 0;
+			padding: 0.9rem 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.result-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 0.8rem;
+			gap: 0.5rem;
+		}
+
+		.result-item .label {
+			color: #888;
+			font-size: 0.72rem;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			flex-shrink: 0;
+		}
+
+		.result-item .value {
+			font-family: var(--font-mono);
+			font-size: 0.85rem;
+			color: var(--text-bright);
+			font-weight: 500;
+			text-align: right;
+		}
+
+		.result-item .value.accent {
+			color: var(--accent);
+			font-weight: 600;
+		}
+
+		.result-item .value.warning {
+			color: var(--warning);
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 0.1rem 0.4rem;
+			font-size: 0.65rem;
+			font-weight: 600;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			background: #1a2a1a;
+			color: var(--success);
+			border: 1px solid #2a3a2a;
+		}
+
+		.badge.warn {
+			background: #1a1a15;
+			color: var(--warning);
+			border-color: #3a3520;
+		}
+
+		.badge.info {
+			background: #151a25;
+			color: var(--accent);
+			border-color: #253040;
+		}
+
+		.slider-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
+		}
+
+		.slider-group .slider-header {
+			display: flex;
+			justify-content: space-between;
+			font-size: 0.7rem;
+			color: #888;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		.slider-group .slider-val {
+			font-family: var(--font-mono);
+			font-size: 0.8rem;
+			color: var(--text-bright);
+			font-weight: 500;
+		}
+
+		input[type="range"] {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 4px;
+			background: #2a2a2a;
+			border-radius: 0;
+			outline: none;
+			cursor: pointer;
+		}
+
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 16px;
+			height: 16px;
+			background: #555;
+			border: 2px solid #888;
+			border-radius: 0;
+			cursor: pointer;
+		}
+
+		input[type="range"]::-webkit-slider-thumb:hover {
+			background: #777;
+		}
+
+		.preview-row {
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-size: 0.7rem;
+			color: #777;
+			margin-top: 0.2rem;
+			flex-wrap: wrap;
+		}
+
+		.preview-swatch {
+			width: var(--preview-size);
+			height: var(--preview-size);
+			border: 1px solid #333;
+			flex-shrink: 0;
+		}
+
+		.preview-arrow {
+			font-size: 0.9rem;
+			color: #555;
+			flex-shrink: 0;
+		}
+
+		table.unified-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 0.75rem;
+			margin: 0.4rem 0;
+		}
+
+		.unified-table th {
+			text-align: left;
+			font-weight: 500;
+			color: #999;
+			padding: 0.3rem 0.2rem;
+			border-bottom: 1px solid #222;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+			font-size: 0.65rem;
+		}
+
+		.unified-table td {
+			padding: 0.25rem 0.2rem;
+			border-bottom: 1px solid #1a1a1a;
+			font-family: var(--font-mono);
+			font-size: 0.78rem;
+			color: var(--text-bright);
+		}
+
+		.unified-table td.swatch-cell {
+			width: 20px;
+		}
+
+		.unified-table .diff-warn {
+			color: var(--warning);
+		}
+
+		.note {
+			font-size: 0.68rem;
+			color: #5a5a5a;
+			font-style: italic;
+			line-height: 1.4;
+			margin-top: 0.15rem;
+		}
+
+		.note strong {
+			color: #777;
+			font-style: normal;
+		}
+
+		hr.sep {
+			border: none;
+			border-top: 1px solid #1f1f1f;
+			margin: 0.2rem 0;
+		}
+
+		footer {
+			text-align: center;
+			font-size: 0.65rem;
+			color: #3a3a3a;
+			letter-spacing: 0.04em;
+			padding-top: 0.25rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Krita Color Manager</h1>
+			<p class="subtitle">HSV Filter (Multi‑Source) &amp; Overlay Tools</p>
+		</header>
+		<main>
+			<!-- ============ HSV ADJUSTMENT FILTER (multiple sources) ============ -->
+			<section class="card" id="hsv-card">
+				<h2><span class="dot"></span> HSV Adjustment Filter</h2>
+
+				<!-- Target color (single) -->
+				<div class="input-row" style="margin-bottom:0.2rem;">
+					<label>Target</label>
+					<input type="color" id="hsv-tgt-color" value="#a85f63">
+					<input type="text" id="hsv-tgt-text" value="#a85f63" maxlength="7" placeholder="#RRGGBB">
+					<span class="swatch-inline" id="hsv-tgt-swatch" style="background:#a85f63;"></span>
+				</div>
+
+				<!-- Dynamic source list -->
+				<div style="display:flex; justify-content:space-between; align-items:center;">
+					<span style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.05em;">Source
+						colors</span>
+				</div>
+				<div id="hsv-source-list" class="source-list">
+					<!-- Source rows will be inserted here dynamically -->
+				</div>
+				<button id="hsv-add-source" class="btn-add">＋ Add source</button>
+
+				<!-- Results: per-source shifts + unified recommendation -->
+				<div class="results" id="hsv-results">
+					<div style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">
+						Per‑source shifts</div>
+					<div id="hsv-per-source-table" style="max-height:200px; overflow-y:auto;">
+						<!-- filled dynamically -->
+					</div>
+					<hr class="sep">
+					<div style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">
+						Suggested unified filter</div>
+					<div class="result-item">
+						<span class="label">Hue</span>
+						<span class="value accent" id="hsv-unified-hue">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Saturation</span>
+						<span class="value" id="hsv-unified-sat">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Value</span>
+						<span class="value" id="hsv-unified-val">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Colorize</span>
+						<span class="badge info" id="hsv-unified-colorize">No</span>
+					</div>
+					<div id="hsv-unified-preview-area"
+						style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.3rem;">
+						<!-- preview swatches: source → result (with unified filter) -->
+					</div>
+					<div id="hsv-warning" style="display:none;" class="note"></div>
+				</div>
+				<p class="note">Shift mode (Colorize=No). Unified values use circular mean for hue, median for sat/val.
+					<strong>Check previews</strong> to see if one filter works for all sources.</p>
+			</section>
+
+			<!-- ============ OVERLAY COLOR FINDER (unchanged) ============ -->
+			<section class="card" id="overlay-card">
+				<h2><span class="dot"></span> Overlay Color Finder</h2>
+				<div class="input-row">
+					<label for="ov-base-color">Base</label>
+					<input type="color" id="ov-base-color" value="#fec39d">
+					<input type="text" id="ov-base-text" value="#fec39d" maxlength="7" placeholder="#RRGGBB">
+					<span class="swatch-inline" id="ov-base-swatch" style="background:#fec39d;"></span>
+				</div>
+				<div class="input-row">
+					<label for="ov-tgt-color">Target</label>
+					<input type="color" id="ov-tgt-color" value="#a85f63">
+					<input type="text" id="ov-tgt-text" value="#a85f63" maxlength="7" placeholder="#RRGGBB">
+					<span class="swatch-inline" id="ov-tgt-swatch" style="background:#a85f63;"></span>
+				</div>
+				<div class="results" id="ov-results">
+					<div class="result-item">
+						<span class="label">Min Opacity</span>
+						<span class="value accent" id="ov-min-alpha">—</span>
+					</div>
+					<hr class="sep">
+					<div class="slider-group">
+						<div class="slider-header">
+							<span>Opacity</span>
+							<span class="slider-val" id="ov-alpha-display">—</span>
+						</div>
+						<input type="range" id="ov-alpha-slider" min="0" max="100" value="0" step="0.1">
+					</div>
+					<div class="result-item">
+						<span class="label">Overlay Color</span>
+						<span class="value accent" id="ov-overlay-hex">—</span>
+					</div>
+					<div class="result-item" id="ov-limiting-info" style="display:none;">
+						<span class="label">Limiting Channel</span>
+						<span class="value warning" id="ov-limiting-chan">—</span>
+					</div>
+				</div>
+				<div class="preview-row">
+					<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+						<span class="preview-label">Base</span>
+						<div class="preview-swatch" id="ov-preview-base" style="background:#fec39d;"></div>
+					</div>
+					<span class="preview-arrow">+</span>
+					<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+						<span class="preview-label">Overlay</span>
+						<div class="preview-swatch" id="ov-preview-overlay-container" style="background:#fec39d;">
+							<div class="overlay-layer" id="ov-preview-overlay"></div>
+						</div>
+					</div>
+					<span class="preview-arrow">=</span>
+					<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+						<span class="preview-label">Result</span>
+						<div class="preview-swatch" id="ov-preview-result"></div>
+					</div>
+					<span style="color:#555;font-size:0.7rem;">vs</span>
+					<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+						<span class="preview-label">Target</span>
+						<div class="preview-swatch" id="ov-preview-target" style="background:#a85f63;"></div>
+					</div>
+				</div>
+				<p class="note" id="ov-note">Overlay uses <strong>Normal</strong> blend mode. At min opacity the
+					limiting channel hits 0 or 255.</p>
+			</section>
+			<!-- ============ PALETTE MATCHER (pairwise color matching) ============ -->
+			<section class="card palette-card" id="palette-card">
+				<h2><span class="dot"></span> Palette Matcher</h2>
+				<p class="note" style="margin-bottom:0.4rem;">Pair colors from two images to find a unified HSV filter that maps <strong>From</strong> → <strong>To</strong>.</p>
+
+				<!-- Dynamic pair list -->
+				<div style="display:flex; justify-content:space-between; align-items:center;">
+					<span style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.05em;">Color
+						pairs</span>
+				</div>
+				<div id="pm-pair-list" class="source-list">
+					<!-- Pair rows will be inserted here dynamically -->
+				</div>
+				<button id="pm-add-pair" class="btn-add">＋ Add pair</button>
+
+				<!-- Results -->
+				<div class="results" id="pm-results">
+					<div style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">
+						Per‑pair shifts</div>
+					<div id="pm-per-pair-table" style="max-height:200px; overflow-y:auto;">
+						<!-- filled dynamically -->
+					</div>
+					<hr class="sep">
+					<div style="font-size:0.7rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">
+						Suggested unified filter</div>
+					<div class="result-item">
+						<span class="label">Hue</span>
+						<span class="value accent" id="pm-unified-hue">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Saturation</span>
+						<span class="value" id="pm-unified-sat">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Value</span>
+						<span class="value" id="pm-unified-val">—</span>
+					</div>
+					<div class="result-item">
+						<span class="label">Colorize</span>
+						<span class="badge info" id="pm-unified-colorize">No</span>
+					</div>
+					<div id="pm-unified-preview-area"
+						style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.3rem;">
+						<!-- preview swatches: from → result → to (with unified filter) -->
+					</div>
+					<div id="pm-warning" style="display:none;" class="note"></div>
+				</div>
+				<p class="note">Pick <strong>From</strong> colors from your AI image, <strong>To</strong> colors from your reference. Unified values use circular mean for hue, median for sat/val.</p>
+			</section>
+		</main>
+		<footer>Values formatted for Krita sliders · All calculations in sRGB</footer>
+	</div>
+
+	<script>
+		(function () {
+			// ────────────────────────────── UTILITIES ──────────────────────────────
+			function hexToRgb(hex) {
+				hex = hex.trim().replace(/^#/, '');
+				if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+				if (!/^[0-9A-Fa-f]{6}$/.test(hex)) return null;
+				return {
+					r: parseInt(hex.substring(0, 2), 16),
+					g: parseInt(hex.substring(2, 4), 16),
+					b: parseInt(hex.substring(4, 6), 16)
+				};
+			}
+			function rgbToHex(r, g, b) {
+				const clamp = v => Math.max(0, Math.min(255, Math.round(v)));
+				return '#' + [r, g, b].map(v => clamp(v).toString(16).padStart(2, '0')).join('');
+			}
+			function rgbToHsv(r, g, b) {
+				const rn = r / 255, gn = g / 255, bn = b / 255;
+				const max = Math.max(rn, gn, bn), min = Math.min(rn, gn, bn), delta = max - min;
+				let h = 0;
+				if (delta > 0.00001) {
+					if (max === rn) h = 60 * (((gn - bn) / delta) % 6);
+					else if (max === gn) h = 60 * ((bn - rn) / delta + 2);
+					else h = 60 * ((rn - gn) / delta + 4);
+				}
+				if (h < 0) h += 360;
+				const s = max < 0.00001 ? 0 : delta / max;
+				return { h, s, v: max };
+			}
+			function normalizeHueShift(dh) {
+				while (dh > 180) dh -= 360;
+				while (dh < -180) dh += 360;
+				return dh;
+			}
+			function roundTo(v, d = 1) { const m = Math.pow(10, d); return Math.round(v * m) / m; }
+			function fmtSigned(v, suf = '') { const r = roundTo(v, 1); return (r > 0 ? '+' : '') + r + suf; }
+
+			// ──────────── HSV MULTI-SOURCE STATE ────────────
+			const hsvTargetColor = document.getElementById('hsv-tgt-color');
+			const hsvTargetText = document.getElementById('hsv-tgt-text');
+			const hsvTargetSwatch = document.getElementById('hsv-tgt-swatch');
+			const sourceListContainer = document.getElementById('hsv-source-list');
+			const addSourceBtn = document.getElementById('hsv-add-source');
+			const hsvWarning = document.getElementById('hsv-warning');
+			const hsvUnifiedHue = document.getElementById('hsv-unified-hue');
+			const hsvUnifiedSat = document.getElementById('hsv-unified-sat');
+			const hsvUnifiedVal = document.getElementById('hsv-unified-val');
+			const hsvUnifiedColorize = document.getElementById('hsv-unified-colorize');
+			const hsvPerSourceTable = document.getElementById('hsv-per-source-table');
+			const hsvUnifiedPreviewArea = document.getElementById('hsv-unified-preview-area');
+
+			let hsvTargetRgb = hexToRgb(hsvTargetColor.value) || { r: 168, g: 95, b: 99 };
+			let sourceList = []; // { id, rgb, rowElement, colorInput, textInput, swatch }
+
+			// ---- Create source row ----
+			function createSourceRow(rgb = { r: 244, g: 193, b: 160 }) {
+				const id = 'src-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+				const row = document.createElement('div');
+				row.className = 'source-row';
+				row.dataset.sourceId = id;
+				const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+
+				row.innerHTML = `
+						<div class="input-row" style="flex:1; min-width:0;">
+							<label style="min-width:2.8rem;">Source</label>
+							<input type="color" class="src-color" value="${hex}">
+							<input type="text" class="src-text" value="${hex}" maxlength="7" placeholder="#RRGGBB">
+							<span class="swatch-inline src-swatch" style="background:${hex};"></span>
+						</div>
+						<button class="btn-icon danger src-delete" title="Remove source">✕</button>
+					`;
+				const colorInput = row.querySelector('.src-color');
+				const textInput = row.querySelector('.src-text');
+				const swatch = row.querySelector('.src-swatch');
+				const deleteBtn = row.querySelector('.src-delete');
+
+				const sourceObj = { id, rgb: { ...rgb }, rowElement: row, colorInput, textInput, swatch };
+
+				// Sync events
+				colorInput.addEventListener('input', () => {
+					syncPickerToText(colorInput, textInput, swatch, sourceObj.rgb);
+					updateHsvAll();
+				});
+				textInput.addEventListener('input', () => {
+					const ok = syncTextToPicker(textInput, colorInput, swatch, sourceObj.rgb);
+					if (ok) updateHsvAll();
+				});
+				textInput.addEventListener('blur', () => {
+					if (textInput.classList.contains('error')) {
+						textInput.value = rgbToHex(sourceObj.rgb.r, sourceObj.rgb.g, sourceObj.rgb.b);
+						textInput.classList.remove('error');
+					}
+				});
+				deleteBtn.addEventListener('click', () => {
+					removeSource(id);
+				});
+
+				sourceList.push(sourceObj);
+				sourceListContainer.appendChild(row);
+				return sourceObj;
+			}
+
+			function removeSource(id) {
+				const idx = sourceList.findIndex(s => s.id === id);
+				if (idx === -1) return;
+				if (sourceList.length <= 1) return; // keep at least one source
+				const obj = sourceList[idx];
+				obj.rowElement.remove();
+				sourceList.splice(idx, 1);
+				updateHsvAll();
+			}
+
+			function syncPickerToText(picker, text, swatch, rgbStore) {
+				const hex = picker.value;
+				text.value = hex;
+				text.classList.remove('error');
+				swatch.style.background = hex;
+				const parsed = hexToRgb(hex);
+				if (parsed) { rgbStore.r = parsed.r; rgbStore.g = parsed.g; rgbStore.b = parsed.b; }
+			}
+			function syncTextToPicker(text, picker, swatch, rgbStore) {
+				const val = text.value.trim();
+				const parsed = hexToRgb(val);
+				if (parsed) {
+					const hex = rgbToHex(parsed.r, parsed.g, parsed.b);
+					picker.value = hex;
+					text.value = hex;
+					text.classList.remove('error');
+					swatch.style.background = hex;
+					rgbStore.r = parsed.r; rgbStore.g = parsed.g; rgbStore.b = parsed.b;
+					return true;
+				} else if (val.length > 0) {
+					text.classList.add('error');
+					return false;
+				}
+				return false;
+			}
+
+			// ---- Target sync ----
+			function syncTargetFromPicker() {
+				syncPickerToText(hsvTargetColor, hsvTargetText, hsvTargetSwatch, hsvTargetRgb);
+				updateHsvAll();
+			}
+			function syncTargetFromText() {
+				const ok = syncTextToPicker(hsvTargetText, hsvTargetColor, hsvTargetSwatch, hsvTargetRgb);
+				if (ok) updateHsvAll();
+			}
+			hsvTargetColor.addEventListener('input', syncTargetFromPicker);
+			hsvTargetText.addEventListener('input', syncTargetFromText);
+			hsvTargetText.addEventListener('blur', () => {
+				if (hsvTargetText.classList.contains('error')) {
+					hsvTargetText.value = rgbToHex(hsvTargetRgb.r, hsvTargetRgb.g, hsvTargetRgb.b);
+					hsvTargetText.classList.remove('error');
+				}
+			});
+
+			// ---- Compute per-source shifts ----
+			function computeShift(srcRgb, tgtRgb) {
+				const srcHsv = rgbToHsv(srcRgb.r, srcRgb.g, srcRgb.b);
+				const tgtHsv = rgbToHsv(tgtRgb.r, tgtRgb.g, tgtRgb.b);
+				let dh = tgtHsv.h - srcHsv.h;
+				dh = normalizeHueShift(dh);
+				let satSlider = null, satValid = true;
+				if (srcHsv.s < 0.0001) {
+					if (tgtHsv.s > 0.0001) { satValid = false; satSlider = null; }
+					else satSlider = 0;
+				} else {
+					satSlider = (tgtHsv.s / srcHsv.s - 1) * 100;
+				}
+				let valSlider = null, valValid = true;
+				if (srcHsv.v < 0.0001) {
+					if (tgtHsv.v > 0.0001) { valValid = false; valSlider = null; }
+					else valSlider = 0;
+				} else {
+					valSlider = (tgtHsv.v / srcHsv.v - 1) * 100;
+				}
+				return { dh, satSlider, satValid, valSlider, valValid, srcHsv, tgtHsv };
+			}
+
+			// Apply a unified filter (dh, satFactor, valFactor) to a source color
+			function applyUnifiedFilter(srcRgb, dh, satFactor, valFactor) {
+				const hsv = rgbToHsv(srcRgb.r, srcRgb.g, srcRgb.b);
+				let newH = hsv.h + dh;
+				newH = ((newH % 360) + 360) % 360;
+				let newS = hsv.s * satFactor;
+				newS = Math.max(0, Math.min(1, newS));
+				let newV = hsv.v * valFactor;
+				newV = Math.max(0, Math.min(1, newV));
+				// Convert back to RGB
+				const c = newV * newS;
+				const x = c * (1 - Math.abs((newH / 60) % 2 - 1));
+				const m = newV - c;
+				let r1, g1, b1;
+				if (newH < 60) { r1 = c; g1 = x; b1 = 0; }
+				else if (newH < 120) { r1 = x; g1 = c; b1 = 0; }
+				else if (newH < 180) { r1 = 0; g1 = c; b1 = x; }
+				else if (newH < 240) { r1 = 0; g1 = x; b1 = c; }
+				else if (newH < 300) { r1 = x; g1 = 0; b1 = c; }
+				else { r1 = c; g1 = 0; b1 = x; }
+				return {
+					r: Math.round((r1 + m) * 255),
+					g: Math.round((g1 + m) * 255),
+					b: Math.round((b1 + m) * 255)
+				};
+			}
+
+			// ---- Main HSV update ----
+			function updateHsvAll() {
+				if (sourceList.length === 0) return;
+				const tgt = hsvTargetRgb;
+				const shifts = sourceList.map(src => ({
+					source: src,
+					shift: computeShift(src.rgb, tgt)
+				}));
+
+				// Build per-source table
+				let tableHtml = '<table class="unified-table"><thead><tr><th>Source</th><th>Hue</th><th>Sat</th><th>Val</th></tr></thead><tbody>';
+				shifts.forEach(({ source, shift }) => {
+					const hex = rgbToHex(source.rgb.r, source.rgb.g, source.rgb.b);
+					const hueStr = fmtSigned(shift.dh, '°');
+					const satStr = shift.satValid ? fmtSigned(shift.satSlider, '%') : 'N/A';
+					const valStr = shift.valValid ? fmtSigned(shift.valSlider, '%') : 'N/A';
+					tableHtml += `<tr>
+							<td class="swatch-cell"><span style="display:inline-block;width:14px;height:14px;background:${hex};border:1px solid #333;"></span></td>
+							<td>${hueStr}</td>
+							<td class="${!shift.satValid ? 'diff-warn' : ''}">${satStr}</td>
+							<td class="${!shift.valValid ? 'diff-warn' : ''}">${valStr}</td>
+						</tr>`;
+				});
+				tableHtml += '</tbody></table>';
+				hsvPerSourceTable.innerHTML = tableHtml;
+
+				// Compute unified suggestion
+				// Hue: circular mean
+				const angles = shifts.map(s => s.shift.dh * Math.PI / 180);
+				let sumSin = 0, sumCos = 0;
+				angles.forEach(a => { sumSin += Math.sin(a); sumCos += Math.cos(a); });
+				const meanAngle = Math.atan2(sumSin, sumCos); // in radians
+				let meanHueShift = meanAngle * 180 / Math.PI;
+				meanHueShift = normalizeHueShift(meanHueShift);
+
+				// Sat: median of valid sat sliders
+				const validSats = shifts.filter(s => s.shift.satValid).map(s => s.shift.satSlider);
+				const validVals = shifts.filter(s => s.shift.valValid).map(s => s.shift.valSlider);
+				const medianSat = validSats.length ? median(validSats) : 0;
+				const medianVal = validVals.length ? median(validVals) : 0;
+
+				// Factors
+				const satFactor = 1 + medianSat / 100;
+				const valFactor = 1 + medianVal / 100;
+
+				let needsColorize = false;
+				let warningMsg = '';
+				if (shifts.some(s => !s.shift.satValid || !s.shift.valValid)) {
+					needsColorize = true;
+					warningMsg = 'Some sources have zero saturation or value — shift mode cannot fully adjust. Consider <strong>Colorize=Yes</strong>.';
+				}
+
+				hsvUnifiedHue.textContent = fmtSigned(meanHueShift, '°');
+				hsvUnifiedSat.textContent = fmtSigned(medianSat, '%');
+				hsvUnifiedVal.textContent = fmtSigned(medianVal, '%');
+				hsvUnifiedColorize.textContent = needsColorize ? 'Yes (recommended)' : 'No';
+				hsvUnifiedColorize.className = needsColorize ? 'badge warn' : 'badge info';
+
+				if (warningMsg) {
+					hsvWarning.style.display = 'block';
+					hsvWarning.innerHTML = '⚠ ' + warningMsg;
+				} else {
+					hsvWarning.style.display = 'none';
+				}
+
+				// Preview: apply unified filter to each source and show swatches
+				let previewHtml = '';
+				shifts.forEach(({ source }) => {
+					const resultRgb = applyUnifiedFilter(source.rgb, meanHueShift, satFactor, valFactor);
+					const srcHex = rgbToHex(source.rgb.r, source.rgb.g, source.rgb.b);
+					const resHex = rgbToHex(resultRgb.r, resultRgb.g, resultRgb.b);
+					previewHtml += `<div style="display:flex; align-items:center; gap:0.2rem; font-size:0.65rem;">
+							<span style="width:18px;height:18px;background:${srcHex};border:1px solid #333;" title="Source"></span>
+							<span style="color:#555;">→</span>
+							<span style="width:18px;height:18px;background:${resHex};border:1px solid #555;" title="Unified result"></span>
+						</div>`;
+				});
+				hsvUnifiedPreviewArea.innerHTML = previewHtml;
+			}
+
+			function median(arr) {
+				const sorted = [...arr].sort((a, b) => a - b);
+				const mid = Math.floor(sorted.length / 2);
+				return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+			}
+
+			// ---- Initialize sources ----
+			function initSources() {
+				// Clear existing
+				sourceListContainer.innerHTML = '';
+				sourceList = [];
+				// Create default first source
+				createSourceRow({ r: 244, g: 193, b: 160 });
+				// Optionally add a second default for demonstration
+				createSourceRow({ r: 210, g: 160, b: 130 });
+			}
+
+			addSourceBtn.addEventListener('click', () => {
+				createSourceRow({ r: 200, g: 150, b: 120 }); // default new source
+				updateHsvAll();
+			});
+
+			// Initial setup
+			initSources();
+			syncTargetFromPicker();
+			updateHsvAll();
+
+			// ──────────── OVERLAY (unchanged) ────────────
+			const ovBaseColor = document.getElementById('ov-base-color');
+			const ovBaseText = document.getElementById('ov-base-text');
+			const ovBaseSwatch = document.getElementById('ov-base-swatch');
+			const ovTgtColor = document.getElementById('ov-tgt-color');
+			const ovTgtText = document.getElementById('ov-tgt-text');
+			const ovTgtSwatch = document.getElementById('ov-tgt-swatch');
+			const ovMinAlpha = document.getElementById('ov-min-alpha');
+			const ovAlphaSlider = document.getElementById('ov-alpha-slider');
+			const ovAlphaDisplay = document.getElementById('ov-alpha-display');
+			const ovOverlayHex = document.getElementById('ov-overlay-hex');
+			const ovLimitingInfo = document.getElementById('ov-limiting-info');
+			const ovLimitingChan = document.getElementById('ov-limiting-chan');
+			const ovPreviewBase = document.getElementById('ov-preview-base');
+			const ovPreviewOverlay = document.getElementById('ov-preview-overlay');
+			const ovPreviewOverlayContainer = document.getElementById('ov-preview-overlay-container');
+			const ovPreviewResult = document.getElementById('ov-preview-result');
+			const ovPreviewTarget = document.getElementById('ov-preview-target');
+			const ovNote = document.getElementById('ov-note');
+
+			let ovBaseRgb = hexToRgb(ovBaseColor.value) || { r: 254, g: 195, b: 157 };
+			let ovTgtRgb = hexToRgb(ovTgtColor.value) || { r: 168, g: 95, b: 99 };
+			let ovAlphaMinVal = 0, ovCurrentAlpha = 0;
+
+			function computeOverlayMinAlpha(base, tgt) {
+				const alphas = [];
+				for (const ch of ['r', 'g', 'b']) {
+					const b = base[ch], t = tgt[ch];
+					if (t < b) alphas.push({ ch, alpha: (b - t) / b, type: 'darken' });
+					else if (t > b) alphas.push({ ch, alpha: (t - b) / (255 - b), type: 'brighten' });
+					else alphas.push({ ch, alpha: 0, type: 'equal' });
+				}
+				const maxAlpha = Math.max(...alphas.map(a => a.alpha));
+				const limiting = alphas.filter(a => Math.abs(a.alpha - maxAlpha) < 0.00001);
+				return { alphaMin: maxAlpha, limiting };
+			}
+			function computeOverlayColor(base, tgt, alpha) {
+				if (alpha < 0.00001) return { r: base.r, g: base.g, b: base.b, alpha: 0 };
+				const inv = 1 - alpha;
+				const r = (tgt.r - base.r * inv) / alpha;
+				const g = (tgt.g - base.g * inv) / alpha;
+				const b = (tgt.b - base.b * inv) / alpha;
+				return {
+					r: Math.max(0, Math.min(255, Math.round(r))),
+					g: Math.max(0, Math.min(255, Math.round(g))),
+					b: Math.max(0, Math.min(255, Math.round(b))),
+					alpha
+				};
+			}
+			function updateOverlay() {
+				const { alphaMin, limiting } = computeOverlayMinAlpha(ovBaseRgb, ovTgtRgb);
+				ovAlphaMinVal = alphaMin;
+				ovMinAlpha.textContent = roundTo(alphaMin * 100, 1) + '%';
+				const sliderMin = roundTo(alphaMin * 100, 2);
+				ovAlphaSlider.min = sliderMin;
+				ovAlphaSlider.max = 100;
+				ovAlphaSlider.step = '0.1';
+				const cur = parseFloat(ovAlphaSlider.value);
+				if (isNaN(cur) || cur < sliderMin) ovAlphaSlider.value = sliderMin;
+				ovCurrentAlpha = parseFloat(ovAlphaSlider.value) / 100;
+				updateOverlayWithAlpha(ovCurrentAlpha);
+				if (alphaMin > 0.0001 && limiting.length) {
+					ovLimitingInfo.style.display = 'flex';
+					ovLimitingChan.textContent = limiting.map(l => l.ch.toUpperCase() + (l.type === 'darken' ? '→0' : '→255')).join(', ');
+				} else {
+					ovLimitingInfo.style.display = 'none';
+				}
+				ovNote.innerHTML = alphaMin < 0.0001 ? 'Base and target identical.' : (alphaMin > 0.9999 ? 'High opacity needed.' : 'Overlay uses Normal blend.');
+			}
+			function updateOverlayWithAlpha(alpha) {
+				ovCurrentAlpha = alpha;
+				const overlay = computeOverlayColor(ovBaseRgb, ovTgtRgb, alpha);
+				ovOverlayHex.textContent = rgbToHex(overlay.r, overlay.g, overlay.b);
+				ovAlphaDisplay.textContent = roundTo(alpha * 100, 1) + '%';
+				ovPreviewBase.style.background = rgbToHex(ovBaseRgb.r, ovBaseRgb.g, ovBaseRgb.b);
+				ovPreviewTarget.style.background = rgbToHex(ovTgtRgb.r, ovTgtRgb.g, ovTgtRgb.b);
+				ovPreviewOverlayContainer.style.background = rgbToHex(ovBaseRgb.r, ovBaseRgb.g, ovBaseRgb.b);
+				ovPreviewOverlay.style.background = `rgba(${overlay.r},${overlay.g},${overlay.b},${alpha})`;
+				const resR = Math.round(overlay.r * alpha + ovBaseRgb.r * (1 - alpha));
+				const resG = Math.round(overlay.g * alpha + ovBaseRgb.g * (1 - alpha));
+				const resB = Math.round(overlay.b * alpha + ovBaseRgb.b * (1 - alpha));
+				ovPreviewResult.style.background = rgbToHex(resR, resG, resB);
+			}
+			function syncOvBasePicker() { syncPickerToText(ovBaseColor, ovBaseText, ovBaseSwatch, ovBaseRgb); updateOverlay(); }
+			function syncOvBaseText() { if (syncTextToPicker(ovBaseText, ovBaseColor, ovBaseSwatch, ovBaseRgb)) updateOverlay(); }
+			function syncOvTgtPicker() { syncPickerToText(ovTgtColor, ovTgtText, ovTgtSwatch, ovTgtRgb); updateOverlay(); }
+			function syncOvTgtText() { if (syncTextToPicker(ovTgtText, ovTgtColor, ovTgtSwatch, ovTgtRgb)) updateOverlay(); }
+			ovBaseColor.addEventListener('input', syncOvBasePicker);
+			ovBaseText.addEventListener('input', syncOvBaseText);
+			ovBaseText.addEventListener('blur', () => { if (ovBaseText.classList.contains('error')) { ovBaseText.value = rgbToHex(ovBaseRgb.r, ovBaseRgb.g, ovBaseRgb.b); ovBaseText.classList.remove('error'); } });
+			ovTgtColor.addEventListener('input', syncOvTgtPicker);
+			ovTgtText.addEventListener('input', syncOvTgtText);
+			ovTgtText.addEventListener('blur', () => { if (ovTgtText.classList.contains('error')) { ovTgtText.value = rgbToHex(ovTgtRgb.r, ovTgtRgb.g, ovTgtRgb.b); ovTgtText.classList.remove('error'); } });
+			ovAlphaSlider.addEventListener('input', () => {
+				const a = parseFloat(ovAlphaSlider.value) / 100;
+				if (!isNaN(a)) updateOverlayWithAlpha(a);
+			});
+			syncOvBasePicker();
+			syncOvTgtPicker();
+			ovAlphaSlider.value = roundTo(ovAlphaMinVal * 100, 2);
+			updateOverlayWithAlpha(ovAlphaMinVal);
+
+			// ──────────── PALETTE MATCHER ────────────
+			const pmPairListContainer = document.getElementById('pm-pair-list');
+			const pmAddPairBtn = document.getElementById('pm-add-pair');
+			const pmPerPairTable = document.getElementById('pm-per-pair-table');
+			const pmUnifiedHue = document.getElementById('pm-unified-hue');
+			const pmUnifiedSat = document.getElementById('pm-unified-sat');
+			const pmUnifiedVal = document.getElementById('pm-unified-val');
+			const pmUnifiedColorize = document.getElementById('pm-unified-colorize');
+			const pmUnifiedPreviewArea = document.getElementById('pm-unified-preview-area');
+			const pmWarning = document.getElementById('pm-warning');
+
+			let pairList = []; // { id, fromRgb, toRgb, rowElement, fromColor, fromText, fromSwatch, toColor, toText, toSwatch }
+
+			function createPairRow(fromRgb, toRgb) {
+				const id = 'pair-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+				const row = document.createElement('div');
+				row.className = 'pair-row';
+				row.dataset.pairId = id;
+				const fromHex = rgbToHex(fromRgb.r, fromRgb.g, fromRgb.b);
+				const toHex = rgbToHex(toRgb.r, toRgb.g, toRgb.b);
+
+				row.innerHTML = `
+					<div class="input-row" style="flex:1; min-width:0;">
+						<label style="min-width:2.3rem;">From</label>
+						<input type="color" class="pm-from-color" value="${fromHex}">
+						<input type="text" class="pm-from-text" value="${fromHex}" maxlength="7" placeholder="#RRGGBB">
+						<span class="swatch-inline pm-from-swatch" style="background:${fromHex};"></span>
+					</div>
+					<span class="pair-arrow">→</span>
+					<div class="input-row" style="flex:1; min-width:0;">
+						<label style="min-width:1.6rem;">To</label>
+						<input type="color" class="pm-to-color" value="${toHex}">
+						<input type="text" class="pm-to-text" value="${toHex}" maxlength="7" placeholder="#RRGGBB">
+						<span class="swatch-inline pm-to-swatch" style="background:${toHex};"></span>
+					</div>
+					<button class="btn-icon danger pm-delete" title="Remove pair">✕</button>
+				`;
+
+				const fromColor = row.querySelector('.pm-from-color');
+				const fromText = row.querySelector('.pm-from-text');
+				const fromSwatch = row.querySelector('.pm-from-swatch');
+				const toColor = row.querySelector('.pm-to-color');
+				const toText = row.querySelector('.pm-to-text');
+				const toSwatch = row.querySelector('.pm-to-swatch');
+				const deleteBtn = row.querySelector('.pm-delete');
+
+				const pairObj = {
+					id,
+					fromRgb: { ...fromRgb },
+					toRgb: { ...toRgb },
+					rowElement: row,
+					fromColor, fromText, fromSwatch,
+					toColor, toText, toSwatch
+				};
+
+				fromColor.addEventListener('input', () => {
+					syncPickerToText(fromColor, fromText, fromSwatch, pairObj.fromRgb);
+					updatePaletteAll();
+				});
+				fromText.addEventListener('input', () => {
+					const ok = syncTextToPicker(fromText, fromColor, fromSwatch, pairObj.fromRgb);
+					if (ok) updatePaletteAll();
+				});
+				fromText.addEventListener('blur', () => {
+					if (fromText.classList.contains('error')) {
+						fromText.value = rgbToHex(pairObj.fromRgb.r, pairObj.fromRgb.g, pairObj.fromRgb.b);
+						fromText.classList.remove('error');
+					}
+				});
+				toColor.addEventListener('input', () => {
+					syncPickerToText(toColor, toText, toSwatch, pairObj.toRgb);
+					updatePaletteAll();
+				});
+				toText.addEventListener('input', () => {
+					const ok = syncTextToPicker(toText, toColor, toSwatch, pairObj.toRgb);
+					if (ok) updatePaletteAll();
+				});
+				toText.addEventListener('blur', () => {
+					if (toText.classList.contains('error')) {
+						toText.value = rgbToHex(pairObj.toRgb.r, pairObj.toRgb.g, pairObj.toRgb.b);
+						toText.classList.remove('error');
+					}
+				});
+				deleteBtn.addEventListener('click', () => {
+					removePair(id);
+				});
+
+				pairList.push(pairObj);
+				pmPairListContainer.appendChild(row);
+				return pairObj;
+			}
+
+			function removePair(id) {
+				const idx = pairList.findIndex(p => p.id === id);
+				if (idx === -1) return;
+				if (pairList.length <= 1) return;
+				const obj = pairList[idx];
+				obj.rowElement.remove();
+				pairList.splice(idx, 1);
+				updatePaletteAll();
+			}
+
+			function updatePaletteAll() {
+				if (pairList.length === 0) return;
+				const shifts = pairList.map(pair => ({
+					pair,
+					shift: computeShift(pair.fromRgb, pair.toRgb)
+				}));
+
+				let tableHtml = '<table class="unified-table"><thead><tr><th>From</th><th>To</th><th>Hue</th><th>Sat</th><th>Val</th></tr></thead><tbody>';
+				shifts.forEach(({ pair, shift }) => {
+					const fromHex = rgbToHex(pair.fromRgb.r, pair.fromRgb.g, pair.fromRgb.b);
+					const toHex = rgbToHex(pair.toRgb.r, pair.toRgb.g, pair.toRgb.b);
+					const hueStr = fmtSigned(shift.dh, '°');
+					const satStr = shift.satValid ? fmtSigned(shift.satSlider, '%') : 'N/A';
+					const valStr = shift.valValid ? fmtSigned(shift.valSlider, '%') : 'N/A';
+					tableHtml += `<tr>
+						<td class="swatch-cell"><span style="display:inline-block;width:14px;height:14px;background:${fromHex};border:1px solid #333;"></span></td>
+						<td class="swatch-cell"><span style="display:inline-block;width:14px;height:14px;background:${toHex};border:1px solid #333;"></span></td>
+						<td>${hueStr}</td>
+						<td class="${!shift.satValid ? 'diff-warn' : ''}">${satStr}</td>
+						<td class="${!shift.valValid ? 'diff-warn' : ''}">${valStr}</td>
+					</tr>`;
+				});
+				tableHtml += '</tbody></table>';
+				pmPerPairTable.innerHTML = tableHtml;
+
+				const angles = shifts.map(s => s.shift.dh * Math.PI / 180);
+				let sumSin = 0, sumCos = 0;
+				angles.forEach(a => { sumSin += Math.sin(a); sumCos += Math.cos(a); });
+				const meanAngle = Math.atan2(sumSin, sumCos);
+				let meanHueShift = meanAngle * 180 / Math.PI;
+				meanHueShift = normalizeHueShift(meanHueShift);
+
+				const validSats = shifts.filter(s => s.shift.satValid).map(s => s.shift.satSlider);
+				const validVals = shifts.filter(s => s.shift.valValid).map(s => s.shift.valSlider);
+				const medianSat = validSats.length ? median(validSats) : 0;
+				const medianVal = validVals.length ? median(validVals) : 0;
+
+				const satFactor = 1 + medianSat / 100;
+				const valFactor = 1 + medianVal / 100;
+
+				let needsColorize = false;
+				let warningMsg = '';
+				if (shifts.some(s => !s.shift.satValid || !s.shift.valValid)) {
+					needsColorize = true;
+					warningMsg = 'Some colors have zero saturation or value — shift mode cannot fully adjust. Consider <strong>Colorize=Yes</strong>.';
+				}
+
+				pmUnifiedHue.textContent = fmtSigned(meanHueShift, '°');
+				pmUnifiedSat.textContent = fmtSigned(medianSat, '%');
+				pmUnifiedVal.textContent = fmtSigned(medianVal, '%');
+				pmUnifiedColorize.textContent = needsColorize ? 'Yes (recommended)' : 'No';
+				pmUnifiedColorize.className = needsColorize ? 'badge warn' : 'badge info';
+
+				if (warningMsg) {
+					pmWarning.style.display = 'block';
+					pmWarning.innerHTML = '⚠ ' + warningMsg;
+				} else {
+					pmWarning.style.display = 'none';
+				}
+
+				let previewHtml = '';
+				shifts.forEach(({ pair }) => {
+					const resultRgb = applyUnifiedFilter(pair.fromRgb, meanHueShift, satFactor, valFactor);
+					const fromHex = rgbToHex(pair.fromRgb.r, pair.fromRgb.g, pair.fromRgb.b);
+					const toHex = rgbToHex(pair.toRgb.r, pair.toRgb.g, pair.toRgb.b);
+					const resHex = rgbToHex(resultRgb.r, resultRgb.g, resultRgb.b);
+					previewHtml += `<div style="display:flex; align-items:center; gap:0.2rem; font-size:0.65rem;">
+						<span style="width:18px;height:18px;background:${fromHex};border:1px solid #333;" title="From"></span>
+						<span style="color:#555;">→</span>
+						<span style="width:18px;height:18px;background:${resHex};border:1px solid #555;" title="Unified result"></span>
+						<span style="color:#555;">vs</span>
+						<span style="width:18px;height:18px;background:${toHex};border:1px solid #666;" title="To (target)"></span>
+					</div>`;
+				});
+				pmUnifiedPreviewArea.innerHTML = previewHtml;
+			}
+
+			function initPalette() {
+				pmPairListContainer.innerHTML = '';
+				pairList = [];
+				createPairRow({ r: 180, g: 140, b: 110 }, { r: 160, g: 120, b: 90 });
+				createPairRow({ r: 200, g: 160, b: 130 }, { r: 180, g: 140, b: 110 });
+			}
+
+			pmAddPairBtn.addEventListener('click', () => {
+				createPairRow({ r: 200, g: 150, b: 120 }, { r: 180, g: 130, b: 100 });
+				updatePaletteAll();
+			});
+
+			initPalette();
+			updatePaletteAll();
+		})();
+	</script>
+</body>
+
+</html>
