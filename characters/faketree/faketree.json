@@ -1,0 +1,72 @@
+{
+	"id": "faketree",
+	"name": {
+		"en": "FAKETREE",
+		"jp": "フェイクツリー"
+	},
+	"themeColor": "#e56422",
+	"age": "19",
+	"height": "181 cm",
+	"tagline": {
+		"en": "\".\"",
+		"jp": "「」"
+	},
+	"colorPalette": {
+		"primary": [
+			{"name": "Hair",		"hex": "#0a0b0d"},
+			{"name": "Eyes",		"hex": "#000000"},
+			{"name": "Skin",		"hex": "#f5d4bf"}
+		],
+		"secondary": [
+			{"name": "Shirt",		"hex": "#f8f9fc"},
+			{"name": "Jacket",		"hex": "#f47300"},
+			{"name": "Pants",		"hex": "#f47300"},
+			{"name": "Shoes",		"hex": "#020001"}
+		]
+	},
+	"appearance": {
+		"en": "",
+		"jp": ""
+	},
+	"personality": {
+		"en": "",
+		"jp": ""
+	},
+	"abilities": {
+		"en": "",
+		"jp": ""
+	},
+	"lore": {
+		"en": "",
+		"jp": ""
+	},
+	"stats": {
+		"STR": 1,
+		"DEX": 5,
+		"INT": 10,
+		"VIT": 5,
+		"SPD": 1,
+		"PWR": 1
+	},
+	"main": {"src": "characters/faketree/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body": {"src": "characters/faketree/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
+			"portrait":  {"src": "characters/faketree/portrait_main.png",  "label": {"en": "Portrait", "jp": "ポートレート"}}
+		},
+		"alt": {
+			"full_body": {"src": "characters/faketree/full_body_alt.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
+			"portrait":  {"src": "characters/faketree/portrait_alt.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
+		}
+	},
+	"misc": {
+		"equipment": [
+			{"src": "characters/faketree/test_tubes.png",    "label": {"en": "Chemical Tubes", "jp": "化学用チューブ"}}
+		],
+		"details": [
+			{"src": "characters/faketree/eye.png",          "label": {"en": "Eye Pupil Design", "jp": "瞳孔のデザイン"}}
+		]
+	},
+	"gallery": [
+	]
+}
