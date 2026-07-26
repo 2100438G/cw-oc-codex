@@ -8,8 +8,8 @@
 	"age": "19",
 	"height": "181 cm",
 	"tagline": {
-		"en": "\".\"",
-		"jp": "「」"
+		"en": "\"WIP.\"",
+		"jp": "「制作中」"
 	},
 	"colorPalette": {
 		"primary": [
@@ -25,20 +25,20 @@
 		]
 	},
 	"appearance": {
-		"en": "Black hair and black cross pupils eyes. Wears a orange combat jacket and pants with a chemical tube belt.",
-		"jp": ""
+		"en": "Black hair and black cross pupils eyes. Wears a orange combat jacket and pants with a chemical test tube belt.",
+		"jp": "黒髪で、瞳は黒い十字形をしている。オレンジ色のコンバットジャケットとパンツを着用し、ベルトには化学実験用の試験管がぶら下がっている。"
 	},
 	"personality": {
-		"en": "",
-		"jp": ""
+		"en": "WIP",
+		"jp": "制作中"
 	},
 	"abilities": {
-		"en": "",
-		"jp": ""
+		"en": "WIP",
+		"jp": "制作中"
 	},
 	"lore": {
-		"en": "",
-		"jp": ""
+		"en": "WIP",
+		"jp": "制作中"
 	},
 	"stats": {
 		"STR": 1,
