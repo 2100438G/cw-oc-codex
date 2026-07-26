@@ -13,17 +13,15 @@
 	},
 	"colorPalette": {
 		"primary": [
-			{"name": "Hair",		"hex": "#3F2B2A"},
-			{"name": "Eyes",		"hex": "#E42F37"},
-			{"name": "Skin",		"hex": "#D4B8A2"}
+			{"name": "Hair",		"hex": "#0a0b0d"},
+			{"name": "Eyes",		"hex": "#000000"},
+			{"name": "Skin",		"hex": "#f5d4bf"}
 		],
 		"secondary": [
-			{"name": "Shirt",		"hex": "#5E2E6B"},
-			{"name": "Jacket",		"hex": "#F8F8F8"},
-			{"name": "Pants",		"hex": "#1A1A1A"},
-			{"name": "Sneakers",	"hex": "#1A1A1A"},
-			{"name": "Sneaker Sole","hex": "#BFBFBF"},
-			{"name": "Crystal",		"hex": "#8C3FA0"}
+			{"name": "Shirt",		"hex": "#f8f9fc"},
+			{"name": "Jacket",		"hex": "#f47300"},
+			{"name": "Pants",		"hex": "#f47300"},
+			{"name": "Shoes",		"hex": "#020001"}
 		]
 	},
 	"appearance": {
