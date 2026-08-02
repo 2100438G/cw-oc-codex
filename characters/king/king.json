@@ -67,5 +67,8 @@
 			{"src": "characters/king/bracelet_reference.png",           "label": {"en": "Bracelet", "jp": "腕当て"}},
 			{"src": "characters/king/belt_buckle.png",                  "label": {"en": "Belt Buckle", "jp": "ベルトのバックル"}}
 		]
-	}
+	},
+	"gallery": [
+		{"src": "skeb/@Syaya_X/3928034-1.png",    "label": {"en": "【SKEB】", "jp": ""}, "artist": "Syaya_X"}
+	]
 }
