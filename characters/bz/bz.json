@@ -1,0 +1,67 @@
+{
+	"id": "bz",
+	"name": {
+		"en": "BZ",
+		"jp": "BZ"
+	},
+	"themeColor": "#e4dbd4",
+	"age": "19",
+	"height": "172 cm",
+	"tagline": {
+		"en": "\"Patience\"",
+		"jp": "「忍耐」"
+	},
+	"colorPalette": {
+		"primary": [
+			{"name": "Hair",					"hex": "#1a1a18"},
+			{"name": "Eyes",					"hex": "#0ebcf6"},
+			{"name": "Skin",					"hex": "#f8dbc8"}
+		],
+		"secondary": [
+			{"name": "Shirt",					"hex": "#e4dbd4"},
+			{"name": "Cape",					"hex": "#7c4e38"},
+			{"name": "Armor",					"hex": "#989394"}
+		]
+	},
+	"appearance": {
+		"en": "Black hair and blue eyes. Wears a grey Greek-style tunic with a brown cape with a left shoulder pauldron and laced sandals. In combat, he wears a bronze Corinthian helmet.",
+		"jp": "黒髪に青い瞳。灰色のギリシャ風チュニックに、左肩に肩当てが付いた茶色のマント、そして紐で締めるサンダルを身につけている。戦闘時には、青銅製のコリント式兜をかぶる。"
+	},
+	"personality": {
+		"en": "Calm, focused & patient. Only striking once the time is right. Outside of combat, he is lively and talkative.",
+		"jp": "冷静で、集中力があり、忍耐強い。絶好のタイミングを見計らって初めて攻撃を仕掛ける。戦闘以外では、活発でおしゃべりだ。"
+	},
+	"abilities": {
+		"en": "BZ manifests light energy and can transform any stick into a bow, bending light into the bowstring, firing a charged energy shot. He is also very agile and quick in hand-to-hand combat.",
+		"jp": "BZは光エネルギーを具現化し、どんな棒でも弓に変えることができる。光を弓弦のように曲げて、エネルギーを込めた一撃を放つ。また、白兵戦においても非常に機敏で素早い。"
+	},
+	"lore": {
+		"en": "The older brother of [[bytesizes|BY]] from another reality. Like his brother, he too can manipulate light energy. He was born with the ability to manipulate light energy and uses it to manifest powerful arrows and bows.",
+		"jp": "別の現実世界の[[bytesizes|BY]]の兄。弟と同様、彼もまた光エネルギーを操ることができる。生まれつき光エネルギーを操る能力を持っており、それを用いて強力な矢や弓を生み出している。"
+	},
+	"stats": {
+		"STR": 2,
+		"DEX": 6,
+		"INT": 5,
+		"VIT": 6,
+		"SPD": 4,
+		"PWR": 8
+	},
+	"main": {"src": "characters/bz/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body_maint": {"src": "characters/bz/full_body_main.png",             "label": {"en": "Full Body",          "jp": "メインデザイン フルボディ"}},
+			"portrait":        {"src": "characters/bz/portrait_main.png",              "label": {"en": "Portrait",           "jp": "ポートレート"}}
+		},
+		"alt": {
+			"full_body_main":  {"src": "characters/bz/full_body_alt.png",              "label": {"en": "Alt. Full Body",     "jp": "代替 フルボディ"}},
+			"portrait":        {"src": "characters/bz/portrait_alt.png",               "label": {"en": "Alt. Portrait",      "jp": "代替 ポートレート"}}
+		}
+	},
+	"misc": {
+		"equipment": [
+		]
+	},
+	"gallery": [
+	]
+}

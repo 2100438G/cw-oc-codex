@@ -4,4 +4,5 @@ psycho
 captain
 king
 bytesizes
+bz
 faketree
