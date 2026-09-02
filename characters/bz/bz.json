@@ -60,6 +60,7 @@
 	},
 	"misc": {
 		"equipment": [
+			{"src": "characters/bz/bow.png", "label": {"en": "Bow", "jp": "弓"}}
 		]
 	},
 	"gallery": [
