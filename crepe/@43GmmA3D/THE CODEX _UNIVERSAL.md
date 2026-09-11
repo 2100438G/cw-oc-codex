@@ -1,0 +1,1 @@
+I chose UNIVERSAL and ENGINEER, cuz I read about their relationship and found it really interesting for me! Their appearances are so cool and those character's stories are the most interesting part! I want to saty thank you again, and thank you for showing me this attractive world and characters! (It was pretty hard to choose only two of them haha)

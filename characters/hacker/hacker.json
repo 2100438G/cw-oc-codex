@@ -1,0 +1,72 @@
+{
+	"id": "hacker",
+	"name": {
+		"en": "HACKER",
+		"jp": "ハッカー"
+	},
+	"themeColor": "#fbca1f",
+	"age": "19",
+	"height": "164 cm",
+	"tagline": {
+		"en": "\"...\"",
+		"jp": "「...」"
+	},
+	"colorPalette": {
+		"primary": [
+			{"name": "Hair",	"hex": "#A9D1E6"},
+			{"name": "Eyes",	"hex": "#FFDA45"},
+			{"name": "Skin",	"hex": "#FFE4CF"}
+		],
+		"secondary": [
+			{"name": "Shirt & Shorts",	"hex": "#202228"},
+			{"name": "Jacket",	"hex": "#aca9ae"},
+			{"name": "Socks",	"hex": "#ffffff"},
+			{"name": "Shoes",	"hex": "#fbef09"}
+		]
+	},
+	"appearance": {
+		"en": "",
+		"jp": ""
+	},
+	"personality": {
+		"en": "",
+		"jp": ""
+	},
+	"abilities": {
+		"en": "",
+		"jp": ""
+	},
+	"lore": {
+		"en": "",
+		"jp": ""
+	},
+	"stats": {
+		"STR": 2,
+		"DEX": 3,
+		"INT": 9,
+		"VIT": 3,
+		"SPD": 5,
+		"PWR": 4
+	},
+	"main": {"src": "characters/hacker/main.png", "label": {"en": "Main", "jp": "メイン"}},
+	"variants": {
+		"main": {
+			"full_body": {"src": "characters/hacker/full_body_main.png", "label": {"en": "Full Body", "jp": "メインデザイン フルボディ"}},
+			"portrait":  {"src": "characters/hacker/portrait_main.png",  "label": {"en": "Portrait", "jp": "ポートレート"}}
+		},
+		"alt 1": {
+			"full_body": {"src": "characters/hacker/full_body_alt_1.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}, "omit_website": true},
+			"portrait":  {"src": "characters/hacker/portrait_alt_1.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}, "omit_website": true}
+		},
+		"alt 2": {
+			"full_body": {"src": "characters/hacker/full_body_alt_2.png", "label": {"en": "Alt. Full Body", "jp": "代替 フルボディ"}},
+			"portrait":  {"src": "characters/hacker/portrait_alt_2.png",   "label": {"en": "Alt. Portrait", "jp": "代替 ポートレート"}}
+		}
+
+	},
+	"misc": {
+	},
+	"gallery":[
+		{"src": "crepe/@Every_day/커미션 2026(16).jpg",    "label": {"en": "【CREPE】", "jp": ""}, "artist": "Every_day"}
+	]
+}
