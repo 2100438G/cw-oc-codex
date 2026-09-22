@@ -69,5 +69,9 @@
 			{"src": "characters/captain/anchor.png", "label": {"en": "Anchor", "jp": ""}},
 			{"src": "characters/captain/rifle.png",  "label": {"en": "Rifle", "jp": ""}}
 		]
-	}
+	},
+	"gallery": [
+		{"src": "crepe/@GoyPeHwp/if님_컬러_샘플미공개.jpg", "label": {"en": "【CREPE】", "jp": ""}, "artist": "GoyPeHwp"},
+		{"src": "skeb/@kab_0427/4028990-1.png", "label": {"en": "【SKEB】", "jp": ""}, "artist": "kab_0427"}
+	]
 }
