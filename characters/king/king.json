@@ -30,16 +30,16 @@
 		"jp": "所属組織の規定により、彼は王室の正装を身につけている。金色の縁取りが施されたノースリーブのシャツ。アクセサリーは「インフィニティ・アームレット」、花柄のベルト、タッセル付きイヤリング、アンクレット、サンダル、そして王室のコートだ。しかし、彼はこれらすべてを身につけることを嫌っており、王室のコートを着ていない姿がよく見られる。"
 	},
 	"personality": {
-		"en": "Very confident, playful, and a mischievous. He acts proud and likes to tease others.",
-		"jp": "とても自信に満ちていて、遊び心があり、いたずら好きだ。誇らしげな態度を取り、他人をからかうのが好きだ。"
+		"en": "Very confident, playful, and a mischievous. He acts proud and likes to tease others. Easily panicked, especially when [[hacker|HACKER]] hacks into his stuff.",
+		"jp": "非常に自信に満ちていて、遊び心があり、いたずら好きだ。誇り高い態度を取り、他人をからかうのが好きだ。特に[[ハッカー|HACKER]]に自分のものをハッキングされると、すぐにパニックに陥ってしまう。"
 	},
 	"abilities": {
-		"en": "He doesn't have any abilities but only resources from his organization. Varying from tools, workers, weapons at his disposal.",
-		"jp": "彼には特別な能力はなく、組織から提供された資源しか持っていない。工具や労働者、武器など、さまざまなものが彼の自由に使える。"
+		"en": "He doesn't have any abilities but only resources from APEX. Varying from tools, workers, weapons at his disposal.",
+		"jp": "彼には特別な能力はなく、APEXから提供されるリソースしか持っていない。工具や作業員、武器など、さまざまなリソースを自由に使える。"
 	},
 	"lore": {
-		"en": "He is the young leader of APEX, a large organization in Asia, inherited by his parents with the rank \"KING\". He loves luxury and having fun, so he usually avoids doing actual work.",
-		"jp": "彼はアジアの大規模な組織の若きリーダーであり、両親から「キング」という地位を継承した。贅沢と遊びが大好きなので、普段は実際の仕事を避ける傾向にある。"
+		"en": "He is the young leader of APEX, a vast Asian company dealing in weapons, goods, food and almost everything in between. He inherited the rank of \"KING\" from his parents. He loves luxury and having fun, so he usually avoids doing actual work, leaving it all to his mercenaries and workers. Despite their near-inifnite resources, APEX is always plagued by [[hacker|HACKER]]. Instead of anger, [[king|KING]] is more interested about the man behind these hacks.",
+		"jp": "彼は、武器、商品、食料、そしてその間のほぼあらゆるものを扱うアジアの大企業「APEX」の若きリーダーである。両親から「KING」という地位を継承した。贅沢と楽しみを愛するため、普段は実際の仕事を避け、すべてを傭兵や従業員に任せている。ほぼ無限とも言える資源を持つにもかかわらず、APEXは常に[[hacker|HACKER]]に悩まされている。しかし[[king|KING]]は怒りを覚えるどころか、むしろこれらのハッキングの背後にいる人物に興味を抱いている。"
 	},
 	"stats": {
 		"STR": 5,

@@ -25,20 +25,20 @@
 		]
 	},
 	"appearance": {
-		"en": "Wears a grey jacket with an inner shirt and shorts. He also wears a pair of silver metal stud earrings and a simple silver chain necklace.",
-		"jp": ""
+		"en": "Light blue hair and yellow eyes. Wears a black shirt and shorts beneath a grey jacket, long white socks and yellow shoes.",
+		"jp": "水色の髪と黄色い瞳。グレーのジャケットの下に黒いシャツとショートパンツを着ており、長い白い靴下と黄色い靴を履いている。"
 	},
 	"personality": {
-		"en": "",
-		"jp": ""
+		"en": "Cold and expressionless on the surface, but is actually mischievous. He rarely says a word, communicates usually by texting. Inside, he finds it amusing seeing [[king|KING]]'s reactions to his shenanigans.",
+		"jp": "表面的には冷たく無表情だが、実はいたずら好きだ。めったに口を開かず、普段はメッセージでやり取りをする。内心では、自分の悪ふざけに対する[[king|KING]]の反応を見て楽しんでいる。"
 	},
 	"abilities": {
-		"en": "Has extreme coding and hacking skills.",
-		"jp": ""
+		"en": "Very versatile in any technology equipment and can hack into any networks. He slips through APEX's ENTROPY-powered networks at will. He reroutes supply lines, glitches weapons and gear mid-operation, and floods [[king|KING]]'s terminal with memes while APEX's mercenaries stumble around confused.",
+		"jp": "あらゆる技術機器を自在に操り、どんなネットワークにも侵入できる。彼はAPEXの「エントロピー」を動力源とするネットワークを意のままにすり抜ける。作戦の最中に補給ラインを迂回させたり、武器や装備に不具合を起こさせたり、APEXの傭兵たちが混乱して右往左往している間に、[[king|KING]]の端末にミームを大量に送り込んだりする。"
 	},
 	"lore": {
-		"en": "",
-		"jp": ""
+		"en": "He is the most notorious anonymous hacker around. Nobody knows where he operates from or what he wants, only that he enjoys watching the APEX trip over itself. Despite countless breaches, [[king|KING]] has never once pursued him.",
+		"jp": "彼は、今最も悪名高い匿名のハッカーだ。彼がどこから活動しているのか、何を目論んでいるのかは誰にもわからない。ただ、APEXが自滅していく様子を見るのを楽しんでいることだけは確かだ。数え切れないほどの侵入事件が起きているにもかかわらず、[[king|KING]]は一度も彼を追及したことがない。"
 	},
 	"stats": {
 		"STR": 2,
