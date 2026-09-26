@@ -31,7 +31,7 @@
 	},
 	"personality": {
 		"en": "Very confident, playful, and a mischievous. He acts proud and likes to tease others. Easily panicked, especially when [[hacker|HACKER]] hacks into his stuff.",
-		"jp": "非常に自信に満ちていて、遊び心があり、いたずら好きだ。誇り高い態度を取り、他人をからかうのが好きだ。特に[[ハッカー|HACKER]]に自分のものをハッキングされると、すぐにパニックに陥ってしまう。"
+		"jp": "非常に自信に満ちていて、遊び心があり、いたずら好きだ。誇り高い態度を取り、他人をからかうのが好きだ。特に[[hacker|HACKER]]に自分のものをハッキングされると、すぐにパニックに陥ってしまう。"
 	},
 	"abilities": {
 		"en": "He doesn't have any abilities but only resources from APEX. Varying from tools, workers, weapons at his disposal.",
