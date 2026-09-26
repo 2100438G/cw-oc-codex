@@ -72,6 +72,8 @@
 	},
 	"gallery": [
 		{"src": "crepe/@GoyPeHwp/if님_컬러_샘플미공개.jpg", "label": {"en": "【CREPE】", "jp": ""}, "artist": "GoyPeHwp"},
-		{"src": "skeb/@kab_0427/4028990-1.png", "label": {"en": "【SKEB】", "jp": ""}, "artist": "kab_0427"}
+		{"src": "skeb/@kab_0427/4028990-1.png", "label": {"en": "【SKEB】", "jp": ""}, "artist": "kab_0427"},
+		{"src": "crepe/@TWlgARY8/일러스트 20260924.png", "label": {"en": "【CREPE】", "jp": ""}, "artist": "TWlgARY8"},
+		{"src": "crepe/@umu_octopus/Ifi.png", "label": {"en": "【CREPE】", "jp": ""}, "artist": "umu_octopus"}
 	]
 }
