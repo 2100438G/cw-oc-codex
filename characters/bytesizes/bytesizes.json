@@ -65,6 +65,7 @@
 		]
 	},
 	"gallery": [
-		{"src": "skeb/@homare_appare/3916550-2.png",     "label": {"en": "【SKEB】", "jp": ""}, "artist": "homare_appare"}
+		{"src": "skeb/@homare_appare/3916550-2.png",     "label": {"en": "【SKEB】", "jp": ""}, "artist": "homare_appare"},
+		{"src": "crepe/@heh_724/IMG_5549.png",           "label": {"en": "【CREPE】", "jp": ""}, "artist": "heh_724"}
 	]
 }
