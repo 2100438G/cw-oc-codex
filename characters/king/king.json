@@ -69,6 +69,7 @@
 		]
 	},
 	"gallery": [
-		{"src": "skeb/@Syaya_X/3928034-1.png",    "label": {"en": "【SKEB】", "jp": ""}, "artist": "Syaya_X"}
+		{"src": "skeb/@Syaya_X/3928034-1.png",    "label": {"en": "【SKEB】", "jp": ""}, "artist": "Syaya_X"},
+		{"src": "crepe/@G_a2ya/무제535_20261014095018.png", "label": {"en": "【CREPE】", "jp": ""}, "artist": "G_a2ya"}
 	]
 }
