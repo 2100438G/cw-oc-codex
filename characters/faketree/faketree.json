@@ -29,16 +29,16 @@
 		"jp": "黒髪で、瞳は黒い十字形をしている。オレンジ色のコンバットジャケットとパンツを着用し、ベルトには化学実験用の試験管がぶら下がっている。"
 	},
 	"personality": {
-		"en": "WIP",
-		"jp": "制作中"
+		"en": "Curious and reckless. Likes to tease. Despite his recklessness, he has a 99.9% success rate on all his chemical experiments. Often has a cynical take on information.",
+		"jp": "好奇心旺盛で無鉄砲。人をからかうのが好き。無鉄砲な性格にもかかわらず、化学実験の成功率は99.9％を誇る。情報に対しては、しばしば皮肉な見方をする。"
 	},
 	"abilities": {
-		"en": "WIP",
-		"jp": "制作中"
+		"en": "He carries various liquid chemical compounds which he consumes or throws at his opponents. Only he knows exactly what these substances are. These subtances can vary in effects. They can boost his strength, set enemies on fire, or cause acidic corrosion.",
+		"jp": "彼はさまざまな液体の化学物質を携えており、それを自ら摂取したり、敵に投げつけたりする。これらの物質が具体的に何であるかは、彼だけが知っている。これらの物質の効果はさまざまで、彼の体力を増強したり、敵に火をつけたり、酸による腐食を引き起こしたりすることがある。"
 	},
 	"lore": {
-		"en": "WIP",
-		"jp": "制作中"
+		"en": "A former chemist engineer at HEXALABS. He left his job after discovering a unique compound that could synthesize the properties of other chemicals with no energy required. With this freedom, he intend to experiment deeper with this discovery.",
+		"jp": "HEXALABSの元化学エンジニア。エネルギーを一切必要とせずに他の化学物質の特性を合成できる独自の化合物を発見したことをきっかけに、同社を退職した。この自由を活かし、彼はこの発見についてさらに深く研究を進めていくつもりだ。"
 	},
 	"stats": {
 		"STR": 1,
