@@ -65,6 +65,8 @@
 	},
 	"gallery": [
 		{"src": "crepe/@nKzsWbTY/무제414_20260915135154.png",	"label": {"en": "【CREPE】", "jp": ""}, "artist": "nKzsWbTY"},
-		{"src": "crepe/@030_b/일러스트 20260915 (2).png", 		"label": {"en": "【CREPE】", "jp": ""}, "artist": "030_b"}
+		{"src": "crepe/@030_b/일러스트 20260915 (2).png", 		"label": {"en": "【CREPE】", "jp": ""}, "artist": "030_b"},
+		{"src": "crepe/@G_a2ya/무제552_20261028205524.png",           "label": {"en": "【CREPE】", "jp": ""}, "artist": "G_a2ya"},
+		{"src": "crepe/@G_a2ya/덤그림용 캔버스_20261028210503.png",    "label": {"en": "【CREPE】", "jp": ""}, "artist": "G_a2ya"}
 	]
 }
